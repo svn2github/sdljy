@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <Transactions>
+    <Transaction>2009-05-20 00:52:35.937.cpp,D:\My Documents\RAD Studio\Projects\File1.cpp=H:\develop\sdljy\File1.cpp</Transaction>
+    <Transaction>2009-05-20 00:52:39.421.cbproj,D:\My Documents\RAD Studio\Projects\Project2.cbproj=H:\develop\sdljy\sdljy.cbproj</Transaction>
+    <Transaction>2009-05-20 00:52:43.203.cpp,H:\develop\sdljy\File1.cpp=</Transaction>
+    <Transaction>2009-05-20 01:09:56.953.h,H:\develop\sdljy\File1.h=H:\develop\sdljy\common.h</Transaction>
+  </Transactions>
+</BorlandProject>
