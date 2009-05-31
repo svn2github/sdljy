@@ -1,0 +1,12 @@
+/*
+============================================================================
+ Name        : bld.inf
+ Author      : netwan@163.com
+ Copyright   : Your copyright notice
+ Description : This file provides the information required for building the
+               whole of a sdljy2.
+============================================================================
+*/
+
+PRJ_MMPFILES
+sdljy2.mmp

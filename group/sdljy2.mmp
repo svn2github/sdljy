@@ -1,0 +1,77 @@
+/*
+============================================================================
+ Name        : sdljy2.mmp
+ Author      : netwan@163.com
+ Copyright   : Your copyright notice
+ Description : This is the project specification file for sdljy2.
+============================================================================
+*/
+
+TARGET          sdljy2.exe
+TARGETTYPE      exe
+UID             0x100039CE 0xE29E53D9
+VENDORID        0
+
+SOURCEPATH      ..\data
+START RESOURCE  sdljy2_reg.rss
+#ifdef WINSCW
+TARGETPATH      \private\10003a3f\apps
+#else
+TARGETPATH      \private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+
+USERINCLUDE     ..\inc
+USERINCLUDE     ..\PGE
+USERINCLUDE     ..\lua
+USERINCLUDE     ..\lzo
+
+
+SYSTEMINCLUDE   \epoc32\include
+/*SYSTEMINCLUDE   \epoc32\include\libc //这个rixplay无法编译*/
+SYSTEMINCLUDE   \epoc32\include\sdl
+
+SYSTEMINCLUDE   \epoc32\include\stdapis
+SYSTEMINCLUDE	\epoc32\include\stdapis\sys
+SYSTEMINCLUDE	\epoc32\include\stdapis\stlport
+SYSTEMINCLUDE	\epoc32\include\stdapis\stlport\stl
+
+// Using main() as entry point
+//STATICLIBRARY   libcrt0.lib
+//STATICLIBRARY sdlmain.lib
+
+
+// libc and euser are always needed when using main() entry point
+LIBRARY		libstdcpp.lib
+LIBRARY		libc.lib
+LIBRARY		libpthread.lib
+LIBRARY		euser.lib
+LIBRARY		sdl.lib
+LIBRARY		sdlexe.lib
+LIBRARY		estlib.lib
+LIBRARY		libm.lib
+
+// No capabilities needed by this application
+CAPABILITY ReadUserData WriteUserData 
+/*UserEnvironment*/
+
+EPOCSTACKSIZE 0x5000
+OPTION_REPLACE ARMCC --cpu ARM926EJ-S -O3 -Otime
+ALWAYS_BUILD_AS_ARM
+
+#ifdef ENABLE_ABIV2_MODE
+DEBUGGABLE_UDEBONLY
+#endif
+SOURCEPATH ..\PGE\GameObject
+SOURCE PGEMaps.cpp PGEPlayer.cpp
+SOURCEPATH ..\PGE\Lzo
+SOURCE LZO.C
+SOURCEPATH ..\PGE\oggInc
+SOURCE TgPlayOgg_use_vorbisfile.cpp
+SOURCEPATH ..\PGE
+SOURCE PGEApplication.cpp PGEDevice.cpp PGEFont.cpp PGEIme.cpp PGELog.cpp PGESTD.CPP PGESocket.cpp PGESound.cpp PGESurface.cpp PGEWaveFile.cpp PGEvKeyBoard.cpp Sound.cpp
+SOURCEPATH ..\lua
+SOURCE lapi.cc lauxlib.cc lbaselib.cc lcode.cc ldblib.cc ldebug.cc ldo.cc ldump.cc lfunc.cc lgc.cc linit.cc liolib.cc llex.cc lmathlib.cc lmem.cc loadlib.cc lobject.cc lopcodes.cc loslib.cc lparser.cc lstate.cc lstring.cc lstrlib.cc ltable.cc ltablib.cc ltm.cc lundump.cc lvm.cc lzio.cc print.cc
+SOURCEPATH ..\src
+SOURCE JyApp.cpp JyLib.cpp gamelib.cpp input.cpp jy_s60.cpp main.cpp
