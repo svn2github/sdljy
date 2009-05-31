@@ -155,7 +155,8 @@ char* GetResFile(char* caFileName)
 	if (caFileName == NULL) return NULL;
 	char caBuf[200];
 	memset(caBuf, 0, sizeof(caBuf));
-	//int iLen = GetModuleFileName(NULL, caBuf, sizeof(caBuf));
+	int iLen = GetModuleFileName(NULL, caBuf, sizeof(caBuf));
+	params[0];
 	char caFilePath[200];
 #ifdef _WIN32_WCE
 	WideCharToMultiByte(CP_ACP, 0, caBuf, sizeof(caBuf), caFilePath, sizeof(caFilePath),0,0);
