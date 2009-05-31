@@ -1,27 +1,42 @@
-#include "common.h"
+#include "pgestd.h"
+#include "pgesurface.h"
 #include "gamelib.h"
+#include "input.h"
 #include <time.h>
+#include <iconv.h>
 #include "SDL.h"
+#include "SDL_mixer.h"
 #include <map>
+#include "KLuaWrap.h"
 using namespace std;
-//int ass = 0;
+int ass = 0;
 
 #define tostring(l, n) ((char*)lua_tostring((l),(n)))
 #define C24toC16(color) RGBto16bit565((((color)&0xff0000)>>16), (((color)&0xff00)>>8), ((color)&0xff))
 
-extern SDL_Surface* theMainSurf; // 这个你可以看成sdlpal中的gpScreen,而filp()就是向gpScreenReal上绘制
-SDL_Surface* g_backupSuf; // 这个用来实现淡入淡出
+extern SuperSurface* theMainSurf; // 这个你可以看成sdlpal中的gpScreen,而filp()就是向gpScreenReal上绘制
+SuperSurface* g_backupSuf; // 这个用来实现淡入淡出
 
 #define MMAXX 480
 #define MMAXY 480
 #define SUBSX 64
 #define SUBSY 64
 
-typedef map<DWORD, SDL_Surface*> picmap;
+typedef map<DWORD, SuperSurface*> picmap;
 #define PICMAP(j) (*((j)->piccache))
 
+#define TEXT_BIG5_LEN	1024
+#define TEXT_UTF8_LEN	(TEXT_BIG5_LEN * 4)
+iconv_t g_utf8ToBig5 = 0;
+iconv_t g_big5ToUtf8 = 0;
+iconv_t g_gbToBig5 = 0;
+iconv_t g_big5ToGb = 0;
 
 PALINPUTSTATE            g_InputState;
+
+Mix_Music* g_music = NULL;
+Mix_Chunk* g_sound = NULL;		//声音
+
 struct JyFile
 {
 	JyFile(FILE* _f = 0, DWORD* _d = 0)
@@ -139,42 +154,125 @@ static int L_GetTime(lua_State* L)//
 }
 
 static int L_Delay(lua_State* L)//(t)
-{	
+{
 	int tm = lua_tonumber(L, 1);
 	//lua_pop(L, 1);
 	if (tm)
 		SDL_Delay(tm);
 	return 0;
 }
+//初始化字体
+void InitialFont()
+{
+	g_utf8ToBig5 = iconv_open("BIG5", "UTF-8");
+	g_big5ToUtf8 = iconv_open("UTF-8", "BIG5");
+	g_gbToBig5 = iconv_open("GBK", "BIG5");
+	g_big5ToGb = iconv_open("BIG5", "GBK");
+
+	/*TTF_Init();
+	g_HanFont = TTF_OpenFont(HAN_FONT, g_HanFontSize);
+	if (g_HanFont == NULL) {
+		printf("Can\'t initialize font: %s\n", HAN_FONT);
+		exit(-1);
+	} */
+}
+//UTF8转为BIG5
+char* Utf8ToBig5(char* utf8)
+{
+	static char big5[TEXT_BIG5_LEN];
+	memset(big5, 0, TEXT_BIG5_LEN);
+
+	if (utf8) {
+		size_t utf8Len = strlen(utf8);
+		size_t big5Len = TEXT_BIG5_LEN;
+
+		const char* in = utf8;
+		char* out = big5;
+		iconv(g_utf8ToBig5, &in, &utf8Len, &out, &big5Len);
+	}
+
+	return big5;
+}
+
+//big5转为UTF8
+char* Big5ToUtf8(char* big5)
+{
+	static char utf8[TEXT_UTF8_LEN];
+	memset(utf8, 0, TEXT_UTF8_LEN);
+
+	if (big5) {
+		size_t big5Len = strlen(big5);
+		size_t utf8Len = TEXT_UTF8_LEN;
+
+		const char* in = big5;
+		char* out = utf8;
+		iconv(g_big5ToUtf8, &in, &big5Len, &out, &utf8Len);
+	}
+
+	return utf8;
+}
+
+//gb转为big5
+char* GbToBig5(char* gb)
+{
+	static char big5[TEXT_UTF8_LEN];
+	memset(big5, 0, TEXT_UTF8_LEN);
+
+	if (gb) {
+		size_t big5Len = strlen(big5);
+		size_t utf8Len = TEXT_UTF8_LEN;
+
+		const char* in = gb;
+		char* out = big5;
+		iconv(g_big5ToUtf8, &in, &big5Len, &out, &utf8Len);
+	}
+
+	return big5;
+}
+//gb转为big5
+char* Big5ToGb(char* big5)
+{
+	static char gb[TEXT_UTF8_LEN];
+	memset(gb, 0, TEXT_UTF8_LEN);
+
+	if (big5) {
+		size_t big5Len = strlen(big5);
+		size_t utf8Len = TEXT_UTF8_LEN;
+
+		const char* in = gb;
+		char* out = big5;
+		iconv(g_big5ToGb, &in, &big5Len, &out, &utf8Len);
+	}
+
+	return gb;
+}
 
 /*
 lib.CharSet(str,flag)
 返回把str转换后的字符串
 
-flag=0   Big5 ---> GBK   
+flag=0   Big5 ---> GBK
 =1   GBK  ---> Big5
-GBK → MultiByteToWideChar(CodePage=936) → WideCharToMultiByte(CodePage=950) → BIG5 
-BIG5 → MultiByteToWideChar(CodePage=950) → WideCharToMultiByte(CodePage=936) → GBK 
+GBK → MultiByteToWideChar(CodePage=936) → WideCharToMultiByte(CodePage=950) → BIG5
+BIG5 → MultiByteToWideChar(CodePage=950) → WideCharToMultiByte(CodePage=936) → GBK
 
 */
 
 static int L_CharSet(lua_State* L)//(str,flag)
 {
 	char* str = tostring(L,1);
+	char* tostr;
 	int f = lua_tonumber(L,2);
 	int n = strlen(str);
 	if (f) // gbk2big5
 	{
-		n = MultiByteToWideChar(936, 0, str, n, g_data.wcrBuf, 2048); 
-		n = WideCharToMultiByte(950, 0, g_data.wcrBuf, n, g_data.mcrBuf, 2048, 0, 0);
-		g_data.mcrBuf[n]=0;
+		//tostr = Big5ToUtf8((char*)g_data.wcrBuf);
+		tostr = GbToBig5((char*)tostr);
 
 	}
 	else // big52gb
 	{
-		n = MultiByteToWideChar(950, 0, str, n, g_data.wcrBuf, 2048);
-		n = WideCharToMultiByte(936, 0, g_data.wcrBuf, n, g_data.mcrBuf, 2048, 0, 0);
-		g_data.mcrBuf[n] = 0;
+		tostr = Big5ToGb((char*)g_data.wcrBuf);
 	}
 	lua_pushstring(L, g_data.mcrBuf);
 	return 1;
@@ -187,10 +285,10 @@ lib.SetClip(x1,y1,x2,y2)
 */
 static int L_SetClip(lua_State* L)//(x1,y1,x2,y2)
 {
-	int x1 = lua_tonumber(L, 1);
-	int y1 = lua_tonumber(L, 2);
-	int x2 = lua_tonumber(L, 3);
-	int y2 = lua_tonumber(L, 4);
+	short x1 = lua_tonumber(L, 1);
+	short y1 = lua_tonumber(L, 2);
+	short x2 = lua_tonumber(L, 3);
+	short y2 = lua_tonumber(L, 4);
 	if (x1==0 && x2==0 && y1==0 && y2==0)
 		x2 = g_data.screenW, y2=g_data.screenH;
 	g_data.rclip = RECT(x1,y1,x2,y2);
@@ -281,8 +379,9 @@ static int L_DrawStr(lua_State* L)//x,y,str,color,size,fontname,charset,OScharse
 static int L_ShowSurface(lua_State* L)//)
 {
 	// 这个是把theMainSuf上的内容翻转到屏幕上
-	theApp->GetDevice()->Flip();
-	//Sleep(10);
+	//todo:
+	//theApp->GetDevice()->Flip();
+	//SDL_Delay(10);
 	return 0;
 }
 
@@ -324,8 +423,9 @@ static int L_ShowSlow(lua_State* L)//t,flag)
 				*(pdes+j) = RGBto16bit565(r>>5,g>>5,b>>5);
 			}
 		}
-		theApp->GetDevice()->Flip();
-		Sleep(t>>1);
+		//todo: fix video
+	//theApp->GetDevice()->Flip();
+		SDL_Delay(t>>1);
 	}
 	return 0;
 }
@@ -369,7 +469,7 @@ static int L_PicLoadFile(lua_State* L)//filename,id)
 			for(picmap::iterator it = j->piccache->begin();
 				it != j->piccache->end(); )
 			{
-				CPGESurface* p = it->second;
+				SuperSurface* p = it->second;
 				if (p)
 				{
 					ass -= p->GetDataSize()*2;
@@ -402,14 +502,14 @@ static int L_PicLoadFile(lua_State* L)//filename,id)
 }
 
 
-void DecodeRle(CPGESurface** psuf, BYTE* prle, int len)
+void DecodeRle(SuperSurface** psuf, BYTE* prle, int len)
 {
 	JyRleHead* hd = (JyRleHead*)prle;
 	BYTE* rledata = prle+8;
 	len -= 8;
 
-	(*psuf) = new CPGESurface;
-	(*psuf)->CreateSurface(hd->w, hd->h, PGE_NOMARL_SURFACE, PGE_PURPLE);
+	(*psuf) = new SuperSurface;
+	(*psuf)->CreateSurface(hd->w, hd->h, SGE_NOMARL_SURFACE, SGE_PURPLE);
 	(*psuf)->GetSurfaceInfo()->ptCentPoint = WPOINT(hd->x, hd->y);
 
 	ass += (*psuf)->GetDataSize()*2;
@@ -429,7 +529,7 @@ void DecodeRle(CPGESurface** psuf, BYTE* prle, int len)
 			rco = *(rledata++);
 
 			for(i=0; i<tco; ++i)
-				*(p++) = PGE_PURPLE;
+				*(p++) = SGE_PURPLE;
 
 			for (i=0; i<rco; ++i)
 				*(p++) = g_data.pal[*(rledata+i)];
@@ -443,7 +543,7 @@ void DecodeRle(CPGESurface** psuf, BYTE* prle, int len)
 		if (l)
 		{
 			for(i=0; i<l; ++i)
-				*(p++) = PGE_PURPLE;
+				*(p++) = SGE_PURPLE;
 		}
 
 		rledata = pn;
@@ -472,7 +572,7 @@ void DrawResPic(int id, int picid, int x, int y, int flag, int value)
 		j->piccache = new picmap;
 	}
 
-	CPGESurface*& psuf = PICMAP(j)[picid];
+	SuperSurface*& psuf = PICMAP(j)[picid];
 	if (!psuf)
 	{
 		fseek(j->fp, s, SEEK_SET);
@@ -503,8 +603,8 @@ void DrawResPic(int id, int picid, int x, int y, int flag, int value)
 	if (rdes.bottom>g_data.screenH) rsrc.bottom -= (rdes.bottom-g_data.screenH), rdes.bottom=g_data.screenH;
 	if (rdes.right>g_data.screenW) rsrc.right -= (rdes.right-g_data.screenW), rdes.right = g_data.screenW;
 
-	psuf->AddEdge(PGE_RED);
-	theMainSurf->Blt(psuf, &rsrc, &rdes, PGE_BLT_NORMAL | PGE_BLT_MASK);
+	psuf->AddEdge(SGE_RED);
+	theMainSurf->Blt(psuf, &rsrc, &rdes, SGE_BLT_NORMAL | SGE_BLT_MASK);
 
 }
 
@@ -536,7 +636,8 @@ static int L_PlayMIDI(lua_State* L)//filename)
 static int L_PlayWAV(lua_State* L)//filename) 
 {
 	char* szfile = tostring(L,1);
-	SoundPlayer.play(GetResFile(szfile),1);
+	g_sound = Mix_LoadWAV(GetResFile(szfile));
+	Mix_PlayChannel(-1, g_sound, 1);
 	return 0;
 }
 
@@ -759,9 +860,9 @@ static int L_DrawSMap(lua_State* L)
 	int DNum = 200;
 
 	int i,j,i1,j1;
-	int  x1,y1;
+	short  x1,y1;
 	int picNum;
-	int xx,yy;
+	short xx,yy;
 	int j_2;
 
 	int dx = xoff + bx;
@@ -828,7 +929,10 @@ static int L_DrawSMap(lua_State* L)
 				{
 					if ((x1-18)<g_data.screenW && (y1-9)<g_data.screenH && (x1+18)>0 && (y1+9)>0)
 					{
-						g_data.mapScreenGrid[((x1<<16)|(y1))] = ScreenGrid(RECT(x1, y1, x1+36, y1+18), WPOINT(xx, yy));
+						RECT r(x1, y1, x1+36, y1+18);
+						WPOINT p(xx, yy);
+						ScreenGrid s(r, p);
+						g_data.mapScreenGrid[((x1<<16)|(y1))] = s;
 					}
 					DrawResPic(0,d0/2,x1,y1,0,0);    // --地面
 				}
@@ -899,7 +1003,10 @@ static int L_DrawMMap(lua_State* L)//x,y,mypic)
 
 					if (picnum>0 && (x1-18)<g_data.screenW && (y1-9)<g_data.screenH && (x1+18)>0 && (y1+9)>0)
 					{
-						g_data.mapScreenGrid[((x1<<16)|(y1))] = ScreenGrid(RECT(x1, y1, x1+36, y1+18), WPOINT(xx+i1, yy+j1));
+						RECT r(x1, y1, x1+36, y1+18);
+						WPOINT p(xx+i1, yy+j1);
+						ScreenGrid s(r, p);
+						g_data.mapScreenGrid[((x1<<16)|(y1))] = s;
 						DrawResPic(0, picnum,x1, y1,0,0);
 					}
 
@@ -943,14 +1050,14 @@ static int L_LoadPicture(lua_State* L)
 	int y = lua_tonumber(L, 3);
 
 	static string name;
-	static CPGESurface* pic = 0;
+	static SuperSurface* pic = 0;
 
 	if(name != szpic)
 	{
 
 		if (!pic)
 		{
-			pic = new CPGESurface;
+			pic = new SuperSurface;
 			pic->CreateSurface(320,200);
 		}
 		WORD* p = 0;
@@ -1095,7 +1202,7 @@ static int L_DtoSMap(lua_State* L)
 #define GETG24(c) (((c) & 0xff00) >> 8)
 #define GETB24(c) ((c) & 0xff)
 
-static int L_RGB(lua_State* L) 
+static int L_RGB(lua_State* L)
 {
 	int r = lua_tonumber(L, 1);
 	int g = lua_tonumber(L, 2);
@@ -1178,9 +1285,10 @@ void OnTalkWaitKey()
 		n=0;
 		c = !c;
 
-		theMainSurf->DrawText("▼", 300,75, (c ? PGE_YELLOW : PGE_WHITE));
+		theMainSurf->DrawText("▼", 300,75, (c ? SGE_YELLOW : SGE_WHITE));
 		RECT r(300,75, 320, 100);
-		theApp->GetDevice()->Flip(&r);
+		//todo: fix video
+	//theApp->GetDevice()->Flip(&r);
 	}
 
 
@@ -1198,12 +1306,12 @@ int WaitAnyKey()
 			anykeypress = 0;
 			return x;
 		}
-		else if (CPGEMouse::Instance()->lBtn)
-		{
-			CPGEMouse::Instance()->lBtn = 0;
-			return  CPGEKey::Instance()->vkA;
-		}
-		Sleep(1);
+//		else if (CPGEMouse::Instance()->lBtn)
+//		{
+//			CPGEMouse::Instance()->lBtn = 0;
+//			return  CPGEKey::Instance()->vkA;
+//		}
+		SDL_Delay(1);
 	}
 }
 
@@ -1282,7 +1390,7 @@ static int L_TalkEx(lua_State* L)
 		{
 			lua_call(L, 0, 0);
 		}
-		DrawBoard(PGE_BLUE, bx, by, 280, 70, 0);
+		DrawBoard(SGE_BLUE, bx, by, 280, 70, 0);
 
 		if (bsh)
 			DrawResPic(1, headid, hx+2, hy+2, 1, 0);
@@ -1290,16 +1398,17 @@ static int L_TalkEx(lua_State* L)
 		int k = 0;
 		for (int i=sline; i<eline; ++i)
 		{
-			theMainSurf->DrawText(spl[i], tx+2, ty+(k++)*21+2, PGE_WHITE);
+			theMainSurf->DrawText(spl[i], tx+2, ty+(k++)*21+2, SGE_WHITE);
 		}
 
 
-		//theMainSurf->DrawText("▼", bx+300, by+75, PGE_YELLOW);
+		//theMainSurf->DrawText("▼", bx+300, by+75, SGE_YELLOW);
 
-		theApp->GetDevice()->Flip();
+		//todo: fix video
+	//theApp->GetDevice()->Flip();
 
 		WaitAnyKey();
-		Sleep(200);
+		SDL_Delay(200);
 		if (n>eline)
 		{
 			sline = eline;
@@ -1371,12 +1480,13 @@ int ShowMenu(char* menuDesc, int showNmb, int x1, int y1, int x2, int y2
 			{
 				DrawBoard(selColor, tx, nty, x2-x1-6, 20, 0);
 			}
-			theMainSurf->DrawText(par[0], tx, nty, PGE_YELLOW);
+			theMainSurf->DrawText(par[0], tx, nty, SGE_YELLOW);
 			asfunc[i] = par[1];
 			rbf[i-sline] = RECT(tx, nty, tx+x2-x1-6, nty+20);
 		}
 		RECT r(x1,y1,x2,y2);
-		theApp->GetDevice()->Flip(&r);
+		//todo: fix video
+	//theApp->GetDevice()->Flip(&r);
 
 		anykeypress = 0;
 		int brk = 0;
@@ -1458,7 +1568,7 @@ int ShowMenu(char* menuDesc, int showNmb, int x1, int y1, int x2, int y2
 				pmous->lBtn = 0;
 			}
 			if (brk) break;
-			Sleep(10);
+			SDL_Delay(10);
 		}
 
 	}
@@ -1804,7 +1914,7 @@ static int L_MsgBox(lua_State* L)
 		y = (g_data.screenH-h)/2;
 	}
 
-	DrawStrOnBoard(str, PGE_YELLOW, PGE_BLUE, x, y, w, h);
+	DrawStrOnBoard(str, SGE_YELLOW, SGE_BLUE, x, y, w, h);
 	int isel = 0;
 	RECT r[4];
 	while(1)
@@ -1812,27 +1922,28 @@ static int L_MsgBox(lua_State* L)
 		klua["Cls"]();
 		if (btn == 1)
 		{
-			DrawStrOnBoard(strb1, PGE_WHITE, PGE_BLUE, x+w/2-20, y+40, 40, 18);
+			DrawStrOnBoard(strb1, SGE_WHITE, SGE_BLUE, x+w/2-20, y+40, 40, 18);
 			r[1] = RECT(x+w/2-20, y+40, x+w/2-20+40, y+40+18);
 		}
 		else if (btn == 2)
 		{
-			DrawStrOnBoard(strb1, PGE_WHITE, isel==1 ? PGE_GREEN : PGE_BLUE, x+w/4-20, y+40, 40, 18);
+			DrawStrOnBoard(strb1, SGE_WHITE, isel==1 ? SGE_GREEN : SGE_BLUE, x+w/4-20, y+40, 40, 18);
 			r[1] = RECT(x+w/4-20, y+40, x+w/4-20+40, y+40+18);
-			DrawStrOnBoard(strb2, PGE_WHITE, isel==2 ? PGE_GREEN : PGE_BLUE, x+w/2+w/4-20, y+40, 40, 18);
+			DrawStrOnBoard(strb2, SGE_WHITE, isel==2 ? SGE_GREEN : SGE_BLUE, x+w/2+w/4-20, y+40, 40, 18);
 			r[2] = RECT(x+w/2+w/4-20, y+40, x+w/2+w/4-20+40, y+40+18);
 		}
 		else if (btn == 3)
 		{
-			DrawStrOnBoard(strb1, PGE_YELLOW, isel==1 ? PGE_GREEN : PGE_BLUE, x+w/6-20, y+40, 40, 18);
+			DrawStrOnBoard(strb1, SGE_YELLOW, isel==1 ? SGE_GREEN : SGE_BLUE, x+w/6-20, y+40, 40, 18);
 			r[1] = RECT(x+w/6-20, y+40, x+w/6-20+40, y+40+18);
-			DrawStrOnBoard(strb2, PGE_YELLOW, isel==2 ? PGE_GREEN : PGE_BLUE, x+w/2-20, y+40, 40, 18);
+			DrawStrOnBoard(strb2, SGE_YELLOW, isel==2 ? SGE_GREEN : SGE_BLUE, x+w/2-20, y+40, 40, 18);
 			r[2] = RECT(x+w/2-20, y+40, x+w/2-20+40, y+40+18);
-			DrawStrOnBoard(strb3, PGE_YELLOW, isel==3 ? PGE_GREEN : PGE_BLUE, x+w*5/6-20, y+40, 40, 18);
+			DrawStrOnBoard(strb3, SGE_YELLOW, isel==3 ? SGE_GREEN : SGE_BLUE, x+w*5/6-20, y+40, 40, 18);
 			r[3] = RECT(x+w*5/6-20, y+40, x+w*5/6-20+40, y+40+18);
 		}
 		RECT rs(x, y, x+w, x+h);
-		theApp->GetDevice()->Flip(&rs);
+		//todo: fix video
+	//theApp->GetDevice()->Flip(&rs);
 
 		while(1)
 		{
@@ -1859,7 +1970,7 @@ static int L_MsgBox(lua_State* L)
 				}
 			}
 
-			Sleep(10);
+			SDL_Delay(10);
 			if (brk) break;
 		}
 
@@ -2157,13 +2268,13 @@ void JyInit()
 {
 	g_pdata = new JyData;
 
-	g_backupSuf = new CPGESurface;
+	g_backupSuf = new SuperSurface;
 	g_data.screenH = theMainSurf->GetSurfaceInfo()->wHeigh;
 	g_data.screenW = theMainSurf->GetSurfaceInfo()->wWiedth;
 
 	g_backupSuf->CreateSurface(g_data.screenW, g_data.screenH);
 
-	lua_State* L = lua_open(); 
+	lua_State* L = lua_open();
 	luaL_openlibs(L);
 	RegJyLib(L);
 

@@ -1,5 +1,10 @@
+#include "stdlib.h"
 #include "gamelib.h"
 #include "SDL.h"
+#include "lua.h"
+#include "lualib.h"
+#include "lauxlib.h"
+
 SDL_Surface* theMainSurf = 0;
 int GameLock = 0;
 
@@ -28,7 +33,7 @@ int main(int argc, char* argv[])
 //关闭所有已打开的资源, 退出
 static void Quit()
 {
-	CloseVedio();
+	//CloseVedio();
 	SDL_Quit();
 
 	exit(0);
