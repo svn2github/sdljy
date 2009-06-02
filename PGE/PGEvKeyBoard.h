@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PGEvKeyBoard_H
+#define PGEvKeyBoard_H
+
 
 #include "PGEstd.h"
 #include "pgeime.h"
@@ -73,3 +75,4 @@ private:
 
 
 };
+#endif

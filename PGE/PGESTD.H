@@ -37,7 +37,7 @@ typedef struct tagPOINT
 //typedef PGEDisplayProperties GXDisplayProperties		// PGE屏幕信息
 //基本类型重定义
  typedef short  int8;
- typedef long int16;
+ typedef long int16,LONG;
  typedef long long int32;
  typedef __int64 int64;
  typedef unsigned short uint8;
@@ -51,11 +51,11 @@ typedef struct tagPOINT
  typedef int BOOL;
  typedef unsigned char* LPSTR,PSTR;
  typedef unsigned long HINSTANCE ;
- typedef unsigned long HWND ;
+ typedef unsigned long HWND,HANDLE ;
  typedef unsigned int WPARAM;
  typedef unsigned long LPARAM;
  
-#define CALLBACK(foo)   WORD foo __attribute__((stdcall)) 
+ #define CALLBACK(foo)   WORD foo __attribute__((stdcall)) 
  #define PAS_PTR(x,arg)  typedef WORD (*x) arg __attribute__((stdcall)) 
  #define GUARD()         __asm__ __volatile__ ("pushfd; cli") 
  #define UNGUARD()       __asm__ __volatile__ ("popfd");
@@ -63,6 +63,7 @@ typedef struct tagPOINT
  typedef char CHAR;
  #define VOID         void
  #define WINAPI      __attribute__((stdcall))
+ #define LPVOID void*
 // #define CALLBACK  __attribute__((stdcall));
  typedef struct { 
  UINT uMsg; 

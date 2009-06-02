@@ -152,7 +152,7 @@ RECT SubRect(RECT r1, RECT r2)
 char m_caResFile[200];
 char* GetResFile(char* caFileName)
 {
-	if (caFileName == NULL) return NULL;
+	/*if (caFileName == NULL) return NULL;
 	char caBuf[200];
 	memset(caBuf, 0, sizeof(caBuf));
 	int iLen = GetModuleFileName(NULL, caBuf, sizeof(caBuf));
@@ -187,6 +187,7 @@ char* GetResFile(char* caFileName)
 	strcpy(m_caResFile, caFilePath);
 //	SAFE_DELETE(caFilePath);
 	return m_caResFile;
+	*/
 }
 
 
@@ -196,7 +197,7 @@ FILE* PGEFileOpen(char* fileName, char* tp)
 	if (!fp)
 	{
 		char caBuf[200];
-		TCHAR wBuf[100];
+		char wBuf[100];
 		sprintf(caBuf, "’“≤ªµΩ%s", fileName);
 
 	}

@@ -1,13 +1,15 @@
-#include "StdAfx.h"
-#include ".\sound.h"
+#include "PGESTD.h"
+#include "sound.h"
 #include <stdio.h>
-
+#include <stdlib.h>
+#include <string.h>
+#include <sdl.h>
 HANDLE g_hldfSoundThId = NULL;	// 读取文件线程的句柄
 DWORD g_dwldfSoundID = 0;		// 线程ID
 SoundObj g_arSound[255];
 DWORD WINAPI LDSOUND(LPVOID lpparm)
 {
-	int i=0;
+	/*int i=0;
 	while(1)
 	{
 		for (i=0; i<255; i++)
@@ -24,16 +26,16 @@ DWORD WINAPI LDSOUND(LPVOID lpparm)
 				
 			}
 		}
-	}
+	}*/
 }
 
 CSound::CSound(void)
 {
-	memset(g_arSound, 0, sizeof(g_arSound));
+	/*memset(g_arSound, 0, sizeof(g_arSound));
 	if (!g_hldfSoundThId)	// 启动文件读取线程
 	{
 		g_hldfSoundThId = CreateThread(NULL,0,LDSOUND,NULL,0,&g_dwldfSoundID);			
-	}
+	}*/
 }
 
 CSound::~CSound(void)
@@ -47,7 +49,7 @@ int CSound::LoadSound(char* caFile, int index)
 	if (g_arSound[index].pSoundFile) return -1;
 	
 	g_arSound[index].pSoundFile = new CPGESoundFile();
-	g_arSound[index].pSoundFile->LoadSound(caFile);
+	//g_arSound[index].pSoundFile->LoadSound(caFile);
 	g_arSound[index].caFileName = new char[strlen(caFile)+1];
 	strcpy(g_arSound[index].caFileName, caFile);
 	return 0;
@@ -59,18 +61,18 @@ void CSound::PlaySound(int index, int iLoop)
 {
 	if (g_arSound[index].iStat == PLAYERPAUSE)
 	{
-		g_arSound[index].pSoundFile->PausePlay();
+		//g_arSound[index].pSoundFile->PausePlay();
 		g_arSound[index].iStat = PLAYERPLAYING;
 	}
 	if (g_arSound[index].iStat 
 		|| g_arSound[index].iLoopTimes) return;
-	if (!g_arSound[index].pSoundFile->m_iStat)
-	{
-		if (!g_arSound[index].pSoundFile->m_iType)
-			g_arSound[index].pSoundFile->LoadSound(g_arSound[index].caFileName);
-		else 
-			g_arSound[index].pSoundFile->RestartWave();
-	}
+//	if (!g_arSound[index].pSoundFile->m_iStat)
+//	{
+//		if (!g_arSound[index].pSoundFile->m_iType)
+//			g_arSound[index].pSoundFile->LoadSound(g_arSound[index].caFileName);
+//		else 
+//			g_arSound[index].pSoundFile->RestartWave();
+//	}
 	g_arSound[index].iStat = PLAYERPLAYING;
 	g_arSound[index].iLoopTimes = iLoop;
 }
@@ -79,14 +81,14 @@ void CSound::Pause(int index)
 {
 	if (!g_arSound[index].iStat) return;
 	g_arSound[index].iStat = PLAYERPAUSE;
-	g_arSound[index].pSoundFile->Pause();
+	//g_arSound[index].pSoundFile->Pause();
 }
 
 void CSound::Stop(int index)
 {
 	g_arSound[index].iStat = 0;
 	g_arSound[index].iLoopTimes = 0;
-	g_arSound[index].pSoundFile->Destory();
+	//g_arSound[index].pSoundFile->Destory();
 }
 
 void CSound::Clear(int index)
@@ -170,7 +172,7 @@ void CPGESoundFile::LoadSound(char* caFileName)
 	m_waveFreeBlockCount = BLOCK_COUNT;
 	m_waveCurrentBlock   = 0;
 
-	InitializeCriticalSection(&m_waveCriticalSection);
+	//InitializeCriticalSection(&m_waveCriticalSection);
 
 	if (0 == strcmp(caExtName, "ogg"))
 	{
@@ -234,20 +236,20 @@ void CPGESoundFile::LoadSound(char* caFileName)
 		m_iType = PGE_WAVE;
 	}
 
-		if(waveOutOpen(
-			&m_hWaveOut, 
-			WAVE_MAPPER, 
-			&wfx, 
-			(DWORD_PTR)waveOutProc, 
-			(DWORD_PTR)this, 
-			CALLBACK_FUNCTION
-			) != MMSYSERR_NOERROR) {
-				//fprintf(stderr, "%s: unable to open wave mapper device\n", argv[0]);
-				//ExitProcess(1);
-			}
+//		if(waveOutOpen(
+//			&m_hWaveOut, 
+//			WAVE_MAPPER, 
+//			&wfx, 
+//			(DWORD_PTR)waveOutProc, 
+//			(DWORD_PTR)this, 
+//			CALLBACK_FUNCTION
+//			) != MMSYSERR_NOERROR) {
+//				//fprintf(stderr, "%s: unable to open wave mapper device\n", argv[0]);
+//				//ExitProcess(1);
+//			}
 
 
-	m_iStat = PGE_PREPARE;
+//	m_iStat = PGE_PREPARE;
 
 }
 
@@ -263,7 +265,7 @@ void CPGESoundFile::Play()
 	if (m_iStat != PGE_PREPARE) return;
 	if (!m_iType)
 	{
-		writeAudio(m_hWaveOut, m_pLoadBuffer, m_iLoadSize); 
+		//writeAudio(m_hWaveOut, m_pLoadBuffer, m_iLoadSize); 
 
 		m_iLoadSize = ogg_decode_at_most_one_vorbis_packet(m_pf, 
 			m_pLoadBuffer, 1024, 16, 
@@ -278,7 +280,7 @@ void CPGESoundFile::Play()
 	else
 	{
 		m_iLoadSize = fread(m_pLoadBuffer, 1024, 1, m_pf);
-		writeAudio(m_hWaveOut, m_pLoadBuffer, m_iLoadSize);
+		//writeAudio(m_hWaveOut, m_pLoadBuffer, m_iLoadSize);
 		if (!m_iLoadSize)
 		{
 			m_iStat = PGE_PLAYEROVER;
@@ -292,24 +294,24 @@ void CPGESoundFile::Destory()
 {
 
 	while(m_waveFreeBlockCount < BLOCK_COUNT)
-		Sleep(10);
+		SDL_Delay(10);
 
 	for(int i = 0; i < m_waveFreeBlockCount; i++) 
-		if(m_waveBlocks[i].dwFlags & WHDR_PREPARED)
-			waveOutUnprepareHeader(m_hWaveOut, &m_waveBlocks[i], sizeof(WAVEHDR));
+//		if(m_waveBlocks[i].dwFlags & WHDR_PREPARED)
+//			waveOutUnprepareHeader(m_hWaveOut, &m_waveBlocks[i], sizeof(WAVEHDR));
 
 	if (m_iType == PGE_OGG)
 		final_ogg_cleanup(m_pf);
-	DeleteCriticalSection(&m_waveCriticalSection);
+//	DeleteCriticalSection(&m_waveCriticalSection);
 	freeBlocks(m_waveBlocks);
-	waveOutClose(m_hWaveOut);
+//	waveOutClose(m_hWaveOut);
 	m_hWaveOut = NULL;
 	m_iStat = PGE_NONEFILE;
 }
 
 void CPGESoundFile::writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size)
 {
-	WAVEHDR* current;
+	/*WAVEHDR* current;
 	int remain;
 
 	current = &m_waveBlocks[m_waveCurrentBlock];
@@ -346,7 +348,7 @@ void CPGESoundFile::writeAudio(HWAVEOUT hWaveOut, LPSTR data, int size)
 
 		current = &m_waveBlocks[m_waveCurrentBlock];
 		current->dwUser = 0;
-	}
+	}*/
 }
 
 WAVEHDR* CPGESoundFile::allocateBlocks(int size, int count)
@@ -362,8 +364,8 @@ WAVEHDR* CPGESoundFile::allocateBlocks(int size, int count)
 	blocks = (WAVEHDR*)buffer;
 	buffer += sizeof(WAVEHDR) * count;
 	for(i = 0; i < count; i++) {
-		blocks[i].dwBufferLength = size;
-		blocks[i].lpData = (char*)buffer;
+		//blocks[i].dwBufferLength = size;
+		//blocks[i].lpData = (char*)buffer;
 		buffer += size;
 	}
 
@@ -372,13 +374,13 @@ WAVEHDR* CPGESoundFile::allocateBlocks(int size, int count)
 
 void CPGESoundFile::Pause()
 {
-	waveOutPause(m_hWaveOut);
+	//waveOutPause(m_hWaveOut);
 	m_iStat = PGE_PLAYPAUSE;
 }
 
 void CPGESoundFile::PausePlay()
 {
-	waveOutRestart(m_hWaveOut);
+	//waveOutRestart(m_hWaveOut);
 	m_iStat = PGE_PREPARE;
 }
 
@@ -400,7 +402,7 @@ static void CALLBACK waveOutProc(
 	if(uMsg != WOM_DONE)
 		return;
 
-	EnterCriticalSection(&pCtrl->m_waveCriticalSection);
+	//EnterCriticalSection(&pCtrl->m_waveCriticalSection);
 	(pCtrl->m_waveFreeBlockCount)++;
-	LeaveCriticalSection(&pCtrl->m_waveCriticalSection);
+	//LeaveCriticalSection(&pCtrl->m_waveCriticalSection);
 }

@@ -2,9 +2,10 @@
 // WaveFile.cpp: implementation of the CWaveFile class.
 //
 //////////////////////////////////////////////////////////////////////
+#include "PGESTD.h"
 #include "PgeWaveFile.h"
 #include "ogginc/TgPlayOgg_use_vorbisfile.h"
-
+#include <string.h>
 
 #define WF_OFFSET_FORMATTAG			20
 #define WF_OFFSET_CHANNELS			22
@@ -28,7 +29,7 @@ DWORD g_dwldfSoundID = 0;		// 线程ID
 //////////////////////////////////////////////////////////////////////
 DWORD WINAPI LDSOUND(LPVOID lpparm)	
 {
-	MSG msg; 
+	/*MSG msg; 
 	while(1)
 	{
 		if( PeekMessage( &msg, NULL, 0, 0, PM_NOREMOVE ) )		// 是否有消息
@@ -97,7 +98,7 @@ OggOk:
 		{
 			Sleep(30);	// 没有消息，休眠线程
 		}
-	}
+	}*/
 }
 
 //////////////////////////////////////////////////////////////////////
@@ -292,7 +293,7 @@ char** CPGEWaveFile::GetWaveDataPtr(int iBufId)
 
 PGE_RESULT CPGEWaveFile::ContinueLoad(BOOL &bLoop)
 {
-	SRESULT;
+	/*SRESULT;
 	if (bLoadOver) RET;
 	m_iUseMem = !m_iUseMem;
 	if (PostThreadMessage(g_dwldfSoundID, MSG_PGE_SOUND_LOAD, (WPARAM)&bLoop, (LPARAM)this))
@@ -300,7 +301,7 @@ PGE_RESULT CPGEWaveFile::ContinueLoad(BOOL &bLoop)
 		OKRESULT;
 	}
 
-	RET;
+	RET;*/
 }
 
 PGE_RESULT CPGEWaveFile::ReLoad()

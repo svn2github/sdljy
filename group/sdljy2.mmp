@@ -22,8 +22,9 @@ TARGETPATH      \private\10003a3f\import\apps
 END //RESOURCE
 
 
-USERINCLUDE     ..\inc
 USERINCLUDE     ..\PGE
+USERINCLUDE     ..\inc
+USERINCLUDE     ..\PGE\oggInc
 USERINCLUDE     ..\lua
 USERINCLUDE     ..\lzo
 
