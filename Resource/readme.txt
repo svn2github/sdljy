@@ -1,1 +1,0 @@
-extract data.rar to .\data

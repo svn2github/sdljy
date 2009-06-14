@@ -1,0 +1,23 @@
+/*
+============================================================================
+ Name        : sdljy2_reg.rss
+ Author      : netwan@163.com
+ Copyright   : Your copyright notice
+ Description : This file contains all the resources for the sdljy2.
+============================================================================
+*/
+
+#include <appinfo.rh>
+#include <sdljy.rsg>
+
+UID2 KUidAppRegistrationResourceFile
+UID3 0xE29E53D9
+
+
+RESOURCE APP_REGISTRATION_INFO
+    {
+    app_file = "sdljy";
+    localisable_resource_file = "\\resource\\apps\\sdljy";
+    localisable_resource_id = R_APP_INFO;
+    }
+

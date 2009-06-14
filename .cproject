@@ -26,7 +26,7 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\bld.inf;Z:\sdljy\group\sdljy2.mmp;" includesCache="Z:/sdljy/PGE[LOCAL];Z:/sdljy/inc[LOCAL];Z:/sdljy/PGE/oggInc[LOCAL];Z:/sdljy/lua[LOCAL];Z:/sdljy/lzo[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/stdapis;Z:/epoc32/include/stdapis/sys;Z:/epoc32/include/stdapis/stlport;Z:/epoc32/include/stdapis/stlport/stl;" macrosCache="__EXE__;__WINSCW__;__SUPPORT_CPP_EXCEPTIONS__;__SYMBIAN32__;__S60_3X__;_UNICODE;__SERIES60_3X__;_DEBUG;__S60_32__;__WINS__;__CW32__;" moduleId="configDataCache" sourcesCache="/sdljy/PGE;/sdljy/data;/sdljy/inc;/sdljy/lua;/sdljy/lzo;/sdljy/src;" timestampCache="1243881892689" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__CW32__;LUA_BUILD_AS_DLL;__WINSCW__;_UNICODE;__S60_3X__;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__S60_32__;__WINS__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;data;inc;src;" timestampCache="1244994410875" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
@@ -53,7 +53,7 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\bld.inf;Z:\sdljy\group\sdljy2.mmp;" includesCache="Z:/sdljy/PGE[LOCAL];Z:/sdljy/inc[LOCAL];Z:/sdljy/PGE/oggInc[LOCAL];Z:/sdljy/lua[LOCAL];Z:/sdljy/lzo[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/stdapis;Z:/epoc32/include/stdapis/sys;Z:/epoc32/include/stdapis/stlport;Z:/epoc32/include/stdapis/stlport/stl;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/PGE;/sdljy/data;/sdljy/inc;/sdljy/lua;/sdljy/lzo;/sdljy/src;" timestampCache="1243881892704" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__ARMCC__;__MARM__;LUA_BUILD_AS_DLL;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;data;inc;src;" timestampCache="1244994410890" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
@@ -80,7 +80,7 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\bld.inf;Z:\sdljy\group\sdljy2.mmp;" includesCache="Z:/sdljy/PGE[LOCAL];Z:/sdljy/inc[LOCAL];Z:/sdljy/PGE/oggInc[LOCAL];Z:/sdljy/lua[LOCAL];Z:/sdljy/lzo[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/stdapis;Z:/epoc32/include/stdapis/sys;Z:/epoc32/include/stdapis/stlport;Z:/epoc32/include/stdapis/stlport/stl;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;NDEBUG;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/PGE;/sdljy/data;/sdljy/inc;/sdljy/lua;/sdljy/lzo;/sdljy/src;" timestampCache="1243881892720" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;NDEBUG;__ARMCC__;__MARM__;LUA_BUILD_AS_DLL;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;data;inc;src;" timestampCache="1244994410906" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
@@ -106,7 +106,7 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\bld.inf;Z:\sdljy\group\sdljy2.mmp;" includesCache="Z:/sdljy/PGE[LOCAL];Z:/sdljy/inc[LOCAL];Z:/sdljy/PGE/oggInc[LOCAL];Z:/sdljy/lua[LOCAL];Z:/sdljy/lzo[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/stdapis;Z:/epoc32/include/stdapis/sys;Z:/epoc32/include/stdapis/stlport;Z:/epoc32/include/stdapis/stlport/stl;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;__MARM__;_UNICODE;__S60_3X__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/PGE;/sdljy/data;/sdljy/inc;/sdljy/lua;/sdljy/lzo;/sdljy/src;" timestampCache="1243881892736" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;__MARM__;LUA_BUILD_AS_DLL;_UNICODE;__S60_3X__;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;data;inc;src;" timestampCache="1244994410921" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
@@ -132,7 +132,7 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\bld.inf;Z:\sdljy\group\sdljy2.mmp;" includesCache="Z:/sdljy/PGE[LOCAL];Z:/sdljy/inc[LOCAL];Z:/sdljy/PGE/oggInc[LOCAL];Z:/sdljy/lua[LOCAL];Z:/sdljy/lzo[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/stdapis;Z:/epoc32/include/stdapis/sys;Z:/epoc32/include/stdapis/stlport;Z:/epoc32/include/stdapis/stlport/stl;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;NDEBUG;__MARM__;_UNICODE;__S60_3X__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/PGE;/sdljy/data;/sdljy/inc;/sdljy/lua;/sdljy/lzo;/sdljy/src;" timestampCache="1243881892751" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;NDEBUG;__MARM__;LUA_BUILD_AS_DLL;_UNICODE;__S60_3X__;__STRICT_ANSI__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;data;inc;src;" timestampCache="1244994410937" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
