@@ -159,7 +159,7 @@ int Lua_Main(void)
  
 
 	//¼ÓÔØluaÎÄ¼ş
-    result=luaL_loadfile(pL_main,va("%s%s", JY_PREFIX, JYMain_Lua));
+    result=luaL_loadfile(pL_main, JYMain_Lua);
     switch(result){
     case LUA_ERRSYNTAX:
         fprintf(stderr,"load lua file %s error: syntax error!\n",JYMain_Lua);
@@ -282,7 +282,7 @@ int JY_Debug(const char * str)
     if(IsDebug==0)
         return 0;
 
-	fp=fopen("debug.txt","a+t");
+	fp=fopen(va("%s%s", JY_PREFIX, "debug.txt"),"a+t");
 	time(&t);
     newtime=localtime(&t);
 	fprintf(fp,"%02d:%02d:%02d %s\n",newtime->tm_hour,newtime->tm_min,newtime->tm_sec,str);
