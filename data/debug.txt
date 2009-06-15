@@ -1,0 +1,335 @@
+19:33:49 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+19:33:49 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\sc
+19:38:00 Video Driver: epoc
+
+19:38:01 IncludeFile done!
+19:38:01 JY_Main start.
+19:38:15 Start game cycle
+19:38:26 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+19:38:26 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\sc
+19:39:51 Video Driver: epoc
+
+19:39:52 IncludeFile done!
+19:39:52 JY_Main start.
+19:39:58 Start game cycle
+19:40:12 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+19:40:12 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2479: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+19:52:31 Video Driver: epoc
+
+19:52:32 IncludeFile done!
+19:52:32 JY_Main start.
+19:52:40 Start game cycle
+19:52:56 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+19:52:56 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2479: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+19:54:02 Video Driver: epoc
+
+19:54:03 IncludeFile done!
+19:54:03 JY_Main start.
+19:54:09 Start game cycle
+19:54:21 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+19:54:21 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2479: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+20:04:54 Video Driver: epoc
+
+20:04:55 IncludeFile done!
+20:04:55 JY_Main start.
+20:05:06 Start game cycle
+20:05:18 EventExecute(65535,3)
+20:05:18 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+20:05:18 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+20:10:25 Video Driver: epoc
+
+20:10:26 IncludeFile done!
+20:10:26 JY_Main start.
+20:11:35 Start game cycle
+20:16:12 Video Driver: epoc
+
+20:16:14 IncludeFile done!
+20:16:14 JY_Main start.
+20:16:21 Start game cycle
+20:18:58 Video Driver: epoc
+
+20:18:59 IncludeFile done!
+20:18:59 JY_Main start.
+20:19:08 Start game cycle
+20:19:24 EventExecute(65535,3)
+20:19:24 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+20:19:24 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+20:22:33 Video Driver: epoc
+
+20:22:34 IncludeFile done!
+20:22:34 JY_Main start.
+20:22:41 Start game cycle
+20:23:01 EventExecute(65535,3)
+20:23:01 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+20:23:01 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+20:25:15 Video Driver: epoc
+
+20:25:17 IncludeFile done!
+20:25:17 JY_Main start.
+20:25:23 Start game cycle
+20:25:37 EventExecute(65535,3)
+20:25:37 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+20:25:37 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+20:29:28 Video Driver: epoc
+
+20:29:29 IncludeFile done!
+20:29:29 JY_Main start.
+20:29:40 Start game cycle
+20:29:54 EventExecute(65535,3)
+20:30:06 EventExecute(15,3)
+20:30:06 oldevent_672.lua
+20:30:10 EventExecute(65535,1)
+20:30:12 EventExecute(65535,3)
+20:30:18 EventExecute(5,1)
+20:30:18 oldevent_671.lua
+20:30:22 EventExecute(5,1)
+20:30:22 oldevent_671.lua
+20:30:24 EventExecute(5,1)
+20:30:24 oldevent_671.lua
+20:30:26 EventExecute(5,1)
+20:30:26 oldevent_671.lua
+20:30:35 EventExecute(15,3)
+20:30:35 EventExecute(65535,3)
+20:30:42 EventExecute(18,3)
+20:33:13 Video Driver: epoc
+
+20:33:14 IncludeFile done!
+20:33:14 JY_Main start.
+20:33:30 Start game cycle
+20:33:42 EventExecute(65535,3)
+20:33:42 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+20:33:42 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+20:36:40 Video Driver: epoc
+
+20:36:41 IncludeFile done!
+20:36:41 JY_Main start.
+20:36:48 Start game cycle
+20:46:33 Video Driver: epoc
+
+20:46:34 IncludeFile done!
+20:46:34 JY_Main start.
+20:46:41 Start game cycle
+20:48:07 Video Driver: epoc
+
+20:48:08 IncludeFile done!
+20:48:08 JY_Main start.
+20:49:31 Start game cycle
+20:49:43 EventExecute(65535,3)
+20:49:43 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+20:49:43 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+20:53:06 Video Driver: epoc
+
+20:53:07 IncludeFile done!
+20:53:07 JY_Main start.
+20:53:14 Start game cycle
+20:53:26 EventExecute(65535,3)
+20:53:41 EventExecute(65535,1)
+20:53:42 EventExecute(65535,1)
+20:53:42 EventExecute(65535,1)
+20:55:09 EventExecute(65535,1)
+20:56:09 Video Driver: epoc
+
+20:56:10 IncludeFile done!
+20:56:10 JY_Main start.
+20:56:17 Start game cycle
+20:56:28 EventExecute(65535,3)
+20:59:45 Video Driver: epoc
+
+20:59:46 IncludeFile done!
+20:59:46 JY_Main start.
+21:00:11 Start game cycle
+21:00:22 EventExecute(65535,3)
+21:00:22 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+21:00:22 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+21:01:50 Video Driver: epoc
+
+21:01:51 IncludeFile done!
+21:01:51 JY_Main start.
+21:02:48 Start game cycle
+21:03:00 EventExecute(65535,3)
+21:03:00 newCallEvent(flag:3,eventnum:57054)
+21:03:00 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+21:03:00 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+21:07:26 Video Driver: epoc
+
+21:07:27 IncludeFile done!
+21:07:27 JY_Main start.
+21:09:36 Video Driver: epoc
+
+21:09:37 IncludeFile done!
+21:09:37 JY_Main start.
+21:09:51 Start game cycle
+21:10:02 EventExecute(65535,3)
+21:10:02 newCallEvent(flag:3,eventnum:0)
+21:10:02 cannot open e:\data\jy\script\newevent\scene_1_event_65535.lua: No such file or directory
+21:10:02 stack traceback:
+	e:\data\jy\script\jymain.lua:88: in function <e:\data\jy\script\jymain.lua:86>
+	[C]: in function 'dofile'
+	e:/data/jy/script/jymodify.lua:281: in function 'newCallEvent'
+	e:/data/jy/script/jymodify.lua:259: in function '?'
+	e:\data\jy\script\jymain.lua:2480: in function 'EventExecute'
+	e:\data\jy\script\jymain.lua:1148: in function 'Game_SMap'
+	e:\data\jy\script\jymain.lua:289: in function 'Game_Cycle'
+	e:\data\jy\script\jymain.lua:174: in function <e:\data\jy\script\jymain.lua:91>
+	[C]: in function 'xpcall'
+	e:\data\jy\script\jymain.lua:83: in function <e:\data\jy\script\jymain.lua:81>
+21:12:08 Video Driver: epoc
+
+21:12:09 IncludeFile done!
+21:12:09 JY_Main start.
+21:12:17 Start game cycle
+21:12:31 EventExecute(65535,3)
+21:12:31 newCallEvent(flag:3,eventnum:0)
+21:12:37 EventExecute(15,3)
+21:12:37 oldevent_672.lua
+21:12:40 EventExecute(65535,3)
+21:12:40 newCallEvent(flag:3,eventnum:0)
+21:12:44 EventExecute(65535,1)
+21:12:44 newCallEvent(flag:1,eventnum:0)
+21:12:46 EventExecute(5,1)
+21:12:46 oldevent_671.lua
+21:12:49 EventExecute(5,1)
+21:12:49 oldevent_671.lua
+21:12:51 EventExecute(5,1)
+21:12:51 oldevent_671.lua
+21:12:55 EventExecute(5,1)
+21:12:55 oldevent_671.lua
+21:13:00 EventExecute(5,1)
+21:13:00 oldevent_671.lua
+21:13:12 EventExecute(15,3)
+21:13:12 EventExecute(65535,3)
+21:13:12 newCallEvent(flag:3,eventnum:0)
+21:13:16 EventExecute(17,3)
+21:13:31 EventExecute(65535,3)
+21:13:31 oldevent_0.lua
+21:13:44 EventExecute(1,1)
+21:13:44 oldevent_692.lua
+21:14:57 Video Driver: epoc
+
+21:14:58 IncludeFile done!
+21:14:58 JY_Main start.
+21:15:13 Start game cycle
+21:15:13 EventExecute(0,3)
+21:15:13 oldevent_691.lua
+21:15:43 EventExecute(65535,3)
+21:15:43 oldevent_0.lua

@@ -1,0 +1,2 @@
+21:14:57 Couldn't initialize SDL_Mixer: 
+
