@@ -120,10 +120,9 @@ static const struct luaL_reg bytelib [] = {
 // 主程序
 int main(int argc, char *argv[])
 {
-    int i;
-    i = 0;
-	remove("debug.txt");
-    freopen("error.txt","wt",stderr);    //设置stderr输出到文件
+    
+	remove(va("%s%s", JY_PREFIX, "debug.txt"));
+    freopen(va("%s%s", JY_PREFIX, "error.txt"),"wt",stderr);    //设置stderr输出到文件
 
     Lua_Config();        //读取lua配置文件，设置参数
 
@@ -131,7 +130,7 @@ int main(int argc, char *argv[])
 
 	InitGame();          //初始化游戏数据
 
-	LoadMB("hzmb.dat");  //加载汉字字符集转换码表
+	LoadMB(va("%s%s", JY_PREFIX, "hzmb.dat"));  //加载汉字字符集转换码表
 
     Lua_Main();          //调用Lua主函数，开始游戏
  
@@ -160,7 +159,7 @@ int Lua_Main(void)
  
 
 	//加载lua文件
-    result=luaL_loadfile(pL_main,JYMain_Lua);
+    result=luaL_loadfile(pL_main,va("%s%s", JY_PREFIX, JYMain_Lua));
     switch(result){
     case LUA_ERRSYNTAX:
         fprintf(stderr,"load lua file %s error: syntax error!\n",JYMain_Lua);
@@ -190,7 +189,7 @@ int Lua_Main(void)
 //Lua读取配置信息
 int Lua_Config(void)
 {
-    char *filename="config.lua";
+    char *filename=va("%s%s", JY_PREFIX, "config.lua");
 	int result=0; 
 
 	//初始化lua
@@ -319,5 +318,34 @@ int FileLength(const char *filename)
 	return ll;
 }
 
+char *
+va(
+   const char *format,
+   ...
+)
+/*++
+  Purpose:
 
+    Does a varargs printf into a temp buffer, so we don't need to have
+    varargs versions of all text functions.
+
+  Parameters:
+
+    format - the format string.
+
+  Return value:
+
+    Pointer to the result string.
+
+--*/
+{
+   static char string[256];
+   va_list     argptr;
+
+   va_start(argptr, format);
+   vsnprintf(string, 256, format, argptr);
+   va_end(argptr);
+
+   return string;
+}
 

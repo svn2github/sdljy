@@ -31,7 +31,7 @@ RESOURCE EIK_APP_INFO
 	        {
 	        caption = "金庸群侠传";
 					number_of_icons = 1;
-					//icon_file = "z:\\resource\\apps\\sdlpal_aif.mbm";
+					icon_file = "z:\\resource\\apps\\sdljy_aif.mbm";
 	        };
 	}
 

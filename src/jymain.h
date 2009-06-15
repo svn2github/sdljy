@@ -24,7 +24,10 @@
 #define SafeFree(p) do {if(p) {free(p);p=NULL;}} while(0)
 
 //全程变量
-
+#if defined (__SYMBIAN32__)
+#define JY_PREFIX            "e:/data/jy/"
+#define JY_SAVE_PREFIX       "e:/data/jy/"
+#endif
 
 // jymain.c
 
@@ -37,7 +40,10 @@ int limitX(int x, int xmin, int xmax);
 //取文件长度
 int FileLength(const char *filename);
 
-
+char *va(
+   const char *format,
+   ...
+);
 
 //CharSet.c
 

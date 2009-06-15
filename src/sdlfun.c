@@ -51,8 +51,8 @@ int InitSDL(void)
     if(r<0)
         g_EnableSound=0;
 
-    r=Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096);
-
+   // r=Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096);
+   r = -1; 
    if( r < 0 ) {
         fprintf(stderr,
                 "Couldn't initialize SDL_Mixer: %s\n", SDL_GetError());
