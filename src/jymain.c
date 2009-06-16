@@ -273,7 +273,7 @@ int getfieldstr(lua_State *pL,const char *key,char *str)
 
 // 调试函数
 // 输出到debug.txt中
-int JY_Debug(const char * fmt,...)
+int JY_Log(const char * fmt,...)
 {
     time_t t;
 	FILE *fp;
@@ -294,7 +294,24 @@ int JY_Debug(const char * fmt,...)
  	fclose(fp);
 	return 0;
 }
+// 调试函数
+// 输出到debug.txt中
+int JY_Debug(const char * str)
+{
+    time_t t;
+	FILE *fp;
+    struct tm *newtime;
+ 
+    if(IsDebug==0)
+        return 0;
 
+	fp=fopen(_("debug.txt"),"a+t");
+	time(&t);
+    newtime=localtime(&t);
+	fprintf(fp,"%02d:%02d:%02d %s\n",newtime->tm_hour,newtime->tm_min,newtime->tm_sec,str);
+ 	fclose(fp);
+	return 0;
+}
 int JY_Error(const char * fmt,...)
 {
     time_t t;
@@ -304,9 +321,6 @@ int JY_Error(const char * fmt,...)
     va_list argptr;
     char string[1024];
        
-    if(IsDebug==0)
-        return 0;
-    
 	va_start(argptr, fmt);
 	vsnprintf(string, sizeof(string), fmt, argptr);
 	va_end(argptr);

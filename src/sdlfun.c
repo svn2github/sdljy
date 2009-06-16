@@ -43,7 +43,7 @@ int InitSDL(void)
     atexit(SDL_Quit);    
  
     SDL_VideoDriverName(tmpstr, 255);
-    JY_Debug("Video Driver: %s\n",tmpstr);
+    JY_Log("Video Driver: %s\n",tmpstr);
 
     InitFont();  //≥ı ºªØ
     

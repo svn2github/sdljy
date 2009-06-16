@@ -26,10 +26,10 @@ TARGETPATH      \private\10003a3f\import\apps
 END //RESOURCE
 
 SYSTEMINCLUDE   \epoc32\include
-//SYSTEMINCLUDE   \epoc32\include\libc
+SYSTEMINCLUDE   \epoc32\include\libc
 SYSTEMINCLUDE   \epoc32\include\sdl
 SYSTEMINCLUDE   \epoc32\include\lua
-SYSTEMINCLUDE   \epoc32\include\stdapis
+//SYSTEMINCLUDE   \epoc32\include\stdapis
 //SYSTEMINCLUDE	\epoc32\include\stdapis\sys
 //SYSTEMINCLUDE	\epoc32\include\stdapis\stlport
 //SYSTEMINCLUDE	\epoc32\include\stdapis\stlport\stl
@@ -72,7 +72,7 @@ DEBUGGABLE_UDEBONLY
 #endif
 
 //MACRO	LUA_BUILD_AS_DLL
-MACRO	__STRICT_ANSI__
+//MACRO	__STRICT_ANSI__
 
 SOURCEPATH ..\src
 SOURCE charset.c jymain.c luafun.c mainmap.c piccache.c sdlfun.c jy_s60.cpp 
