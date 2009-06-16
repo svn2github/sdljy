@@ -35,7 +35,7 @@ int InitSDL(void)
    
 	r=SDL_Init(SDL_INIT_VIDEO);
     if( r < 0 ) {
-        fprintf(stderr,
+        JY_Error(
                 "Couldn't initialize SDL: %s\n", SDL_GetError());
         exit(1);
     }
@@ -43,7 +43,7 @@ int InitSDL(void)
     atexit(SDL_Quit);    
  
     SDL_VideoDriverName(tmpstr, 255);
-	fprintf(stderr,"Video Driver: %s\n",tmpstr);
+    JY_Debug("Video Driver: %s\n",tmpstr);
 
     InitFont();  //³õÊ¼»¯
     
@@ -51,10 +51,12 @@ int InitSDL(void)
     if(r<0)
         g_EnableSound=0;
 
-   // r=Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096);
-   r = -1; 
-   if( r < 0 ) {
-        fprintf(stderr,
+    r= -1; /*Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096);*/
+    //r=Mix_OpenAudio(22050, AUDIO_S16LSB, 2, 4096 );
+    
+    
+    if( r < 0 ) {
+        JY_Error(
                 "Couldn't initialize SDL_Mixer: %s\n", SDL_GetError());
         g_EnableSound=0;
     }
@@ -108,7 +110,7 @@ int InitGame(void)
 
 
 	if(g_Surface==NULL)
-		fprintf(stderr,"Cannot set video mode");
+		JY_Error("Cannot set video mode");
 
     Init_Cache();
 	
@@ -180,7 +182,7 @@ int JY_LoadPicture(const char* str,int x,int y)
 
 	}
 	else{
-        fprintf(stderr,"JY_LoadPicture: Load picture file %s failed!",str);
+        JY_Error("JY_LoadPicture: Load picture file %s failed!",str);
 	}
 
 	return 0;
@@ -219,7 +221,7 @@ int JY_ShowSlow(int delaytime,int Flag)
 		                      g_Surface->format->Rmask,g_Surface->format->Gmask,g_Surface->format->Bmask,0);
 
 	if(lps1==NULL){
-		fprintf(stderr,"JY_ShowSlow: Create surface failed!");
+		JY_Error("JY_ShowSlow: Create surface failed!");
 		return 1;
 	}
 
@@ -284,7 +286,7 @@ int JY_PlayMIDI(const char *filename)
 	currentMusic=Mix_LoadMUS(filename);
 
 	if(currentMusic==NULL){
-		fprintf(stderr,"Open music file %s failed!",filename);
+		JY_Error("Open music file %s failed!",filename);
 		return 1;
 	}
 
@@ -331,7 +333,7 @@ int JY_PlayWAV(const char *filename)
 			currentWav=0;
 	}
 	else{
-		fprintf(stderr,"Open wav file %s failed!",filename);
+		JY_Error("Open wav file %s failed!",filename);
 	}
 
 	return 0;
@@ -699,7 +701,7 @@ int JY_PlayMPEG(const char* filename,int esckey)
   
 	 err=SMPEG_error(mpg);
 	 if(err!=NULL){
-		 fprintf(stderr,"Open file %s error: %s\n",filename,err);
+		 JY_Error("Open file %s error: %s\n",filename,err);
 		 return 1;
 	 }
      

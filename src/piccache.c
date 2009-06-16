@@ -105,12 +105,12 @@ int JY_PicLoadFile(const char*filename, int id)
 	pic_file[id].num =FileLength(str)/4;    //idx 贴图个数
     pic_file[id].idx =(int *)malloc((pic_file[id].num+1)*4);
     if(pic_file[id].idx ==NULL){
-		fprintf(stderr,"JY_PicLoadFile: cannot malloc idx memory!\n");
+		JY_Error("JY_PicLoadFile: cannot malloc idx memory!\n");
 		return 1;
     }
 		//读取贴图idx文件
 	if((fp=fopen(str,"rb"))==NULL){
-        fprintf(stderr,"JY_PicLoadFile: idx file not open ---%s",str);
+        JY_Error("JY_PicLoadFile: idx file not open ---%s",str);
 		return 1;
 	}
 
@@ -126,12 +126,12 @@ int JY_PicLoadFile(const char*filename, int id)
 
     pic_file[id].grp =(unsigned char*)malloc(pic_file[id].filelength);
     if(pic_file[id].grp ==NULL){
-		fprintf(stderr,"JY_PicLoadFile: cannot malloc grp memory!\n");
+		JY_Error("JY_PicLoadFile: cannot malloc grp memory!\n");
 		return 1;
     }
 		//读取贴图grp文件
 	if((fp=fopen(str,"rb"))==NULL){
-        fprintf(stderr,"JY_PicLoadFile: grp file not open ---%s",str);
+        JY_Error("JY_PicLoadFile: grp file not open ---%s",str);
 		return 1;
 	}
     count=fread(pic_file[id].grp,1,pic_file[id].filelength,fp);
@@ -140,7 +140,7 @@ int JY_PicLoadFile(const char*filename, int id)
 
     pic_file[id].pcache =(struct CacheNode **)malloc(pic_file[id].num*sizeof(struct CacheNode *));
     if(pic_file[id].pcache ==NULL){
-		fprintf(stderr,"JY_PicLoadFile: cannot malloc pcache memory!\n");
+		JY_Error("JY_PicLoadFile: cannot malloc pcache memory!\n");
 		return 1;
     }
   	
@@ -176,7 +176,7 @@ int JY_LoadPic(int fileid, int picid, int x,int y,int flag,int value)
 		//生成cache数据
 		newcache=(struct CacheNode *)malloc(sizeof(struct CacheNode));
 		if(newcache==NULL){
-			fprintf(stderr,"JY_LoadPic: cannot malloc newcache memory!\n");
+			JY_Error("JY_LoadPic: cannot malloc newcache memory!\n");
 			return 1;
 		}
 
@@ -233,7 +233,7 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
     SDL_Surface *surf=NULL;
 
     if(pic_file[fileid].idx ==NULL){
-        fprintf(stderr,"LoadPic: fileid %d can not load?\n",fileid);
+        JY_Error("LoadPic: fileid %d can not load?\n",fileid);
         return NULL;
     }
     id1=pic_file[fileid].idx[picid];
@@ -270,7 +270,7 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
         else{      //读取png格式
             tmpsurf=IMG_LoadPNG_RW(fp_SDL);
 	        if(tmpsurf==NULL){
-		        fprintf(stderr,"LoadPic: cannot create SDL_Surface tmpsurf!\n");
+		        JY_Error("LoadPic: cannot create SDL_Surface tmpsurf!\n");
 	        }
             *xoffset=tmpsurf->w/2;
             *yoffset=tmpsurf->h/2;
@@ -328,7 +328,7 @@ static SDL_Surface* CreatePicSurface32(unsigned char *data, int w,int h,int data
 
     data32=(Uint32 *)malloc(w*h*4);
 	if(data32==NULL){
-		fprintf(stderr,"CreatePicSurface32: cannot malloc data32 memory!\n");
+		JY_Error("CreatePicSurface32: cannot malloc data32 memory!\n");
 		return NULL;
 	}
 
@@ -368,11 +368,11 @@ static SDL_Surface* CreatePicSurface32(unsigned char *data, int w,int h,int data
  
     ps1=SDL_CreateRGBSurfaceFrom(data32,w,h,32,w*4,0xff0000,0xff00,0xff,0);  //创建32位表面
 	if(ps1==NULL){
-		fprintf(stderr,"CreatePicSurface32: cannot create SDL_Surface ps1!\n");
+		JY_Error("CreatePicSurface32: cannot create SDL_Surface ps1!\n");
 	}
 	ps2=SDL_DisplayFormat(ps1);   // 把32位表面改为当前表面
 	if(ps2==NULL){
-		fprintf(stderr,"CreatePicSurface32: cannot create SDL_Surface ps2!\n");
+		JY_Error("CreatePicSurface32: cannot create SDL_Surface ps2!\n");
 	}
 
 	SDL_FreeSurface(ps1);      
@@ -395,7 +395,7 @@ static int LoadPallette(char *filename)
 	if(strlen(filename)==0)    
 		return 1;
 	if((fp=fopen(filename,"rb"))==NULL){
-        fprintf(stderr,"Pallette File not open ---%s",filename);
+        JY_Error("Pallette File not open ---%s",filename);
 		return 1;
 	}
 	for(i=0;i<256;i++)

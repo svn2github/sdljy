@@ -17,6 +17,9 @@
 
 #include "list.h" 
 
+#ifdef __cplusplus
+extern "C" { 
+#endif
 // 公共部分
 
 //安全free指针的宏
@@ -28,11 +31,13 @@
 #define JY_PREFIX            "e:/data/jy/"
 #define JY_SAVE_PREFIX       "e:/data/jy/"
 #endif
-
+#define _(f) va("%s%s",JY_PREFIX,f) 
 // jymain.c
 
 // 输出信息到文件debug.txt中
-int JY_Debug(const char * str);
+int JY_Debug(const char * str,...);
+// 输出信息到文件error.txt中
+int JY_Error(const char * str,...);
 
 //限制 x在 xmin-xmax之间
 int limitX(int x, int xmin, int xmax);
@@ -257,5 +262,8 @@ int JY_PlayMPEG(const char* filename,int esckey);
 
 int JY_FullScreen();
 
- 
+#ifdef __cplusplus
+}
+#endif
+
 #endif

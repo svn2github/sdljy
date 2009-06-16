@@ -6,7 +6,9 @@
 #ifndef __LUAFUN_H
 #define __LUAFUN_H
 
-
+#ifdef __cplusplus
+extern "C" { 
+#endif
 // luafun.c
 
 int Lua_Main(void);
@@ -139,6 +141,8 @@ int HAPI_LoadPic(lua_State *pL);
 
 
 
-
+#ifdef __cplusplus
+}
+#endif
 
 #endif

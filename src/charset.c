@@ -80,7 +80,7 @@ static TTF_Font *GetFont(const char *filename,int size)
 	if(myfont==NULL){    //没有打开
 		myfont =TTF_OpenFont(filename,size);           //打开新字体
 		if(myfont==NULL){
-            fprintf(stderr,"GetFont error: can not open font file %s\n",filename);
+			JY_Error("GetFont error: can not open font file %s\n",filename);
 			return NULL;
 		}
 		Font[currentFont].size =size;
@@ -256,9 +256,9 @@ int LoadMB(const char* mbfile)
 
 	Uint16 gbk,gbkf,big5,unicode;
  
-	fp=fopen(mbfile,"rb");
+	fp=fopen(_(mbfile),"rb");
     if(fp==NULL){
-		fprintf(stderr,"cannot open mbfile");
+		JY_Error("cannot open mbfile: %s", mbfile);
 		return 1;
 	}
 

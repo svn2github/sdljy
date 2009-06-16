@@ -67,7 +67,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
     pEarth=(Uint16*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(earthname,"rb"))==NULL){
-        fprintf(stderr,"file not open ---%s",earthname);
+        JY_Error("file not open ---%s",earthname);
 		return 1;
 	}
     fread(pEarth,2,XMax*YMax,fp);
@@ -77,7 +77,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
     pSurface=(Uint16*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(surfacename,"rb"))==NULL){
-        fprintf(stderr,"file not open ---%s",surfacename);
+        JY_Error("file not open ---%s",surfacename);
 		return 0;
 	}
     fread(pSurface,2,XMax*YMax,fp);
@@ -87,7 +87,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
     pBuilding=(Uint16*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(buildingname,"rb"))==NULL){
-        fprintf(stderr,"file not open ---%s",buildingname);
+        JY_Error("file not open ---%s",buildingname);
 		return 0;
 	}
     fread(pBuilding,2,XMax*YMax,fp);
@@ -97,7 +97,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
     pBuildX=(Uint16*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(buildxname,"rb"))==NULL){
-        fprintf(stderr,"file not open ---%s",buildxname);
+        JY_Error("file not open ---%s",buildxname);
 		return 0;
 	}
     fread(pBuildX,2,XMax*YMax,fp);
@@ -107,7 +107,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
     pBuildY=(Uint16*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(buildyname,"rb"))==NULL){
-        fprintf(stderr,"file not open ---%s",buildyname);
+        JY_Error("file not open ---%s",buildyname);
 		return 0;
 	}
     fread(pBuildY,2,XMax*YMax,fp);
@@ -342,16 +342,16 @@ int JY_LoadSMap(const char *Sfilename,const char*tmpfilename, int num,int x_max,
             pS=(Uint16*) malloc(S_XMax*S_YMax*6*2);
 
 	    if(pS==NULL){
-		    fprintf(stderr,"JY_LoadSMap error: can not malloc memory\n");
+		    JY_Error("JY_LoadSMap error: can not malloc memory\n");
 		    return 0;
 	    }
 
 	    if((fp=fopen(Sfilename,"rb"))==NULL){
-            fprintf(stderr,"JY_LoadSMap error:file not open ---%s",Sfilename);
+            JY_Error("JY_LoadSMap error:file not open ---%s",Sfilename);
 		    return 0;
 	    }
 	    if((fp2=fopen(TempS_filename,"wb"))==NULL){
-            fprintf(stderr,"JY_LoadSMap error:file not open ---%s",TempS_filename);
+            JY_Error("JY_LoadSMap error:file not open ---%s",TempS_filename);
 		    return 0;
 	    }
         for(i=0;i<S_Num;i++){
@@ -367,12 +367,12 @@ int JY_LoadSMap(const char *Sfilename,const char*tmpfilename, int num,int x_max,
             pS=(Uint16*) malloc(S_XMax*S_YMax*6*2*S_Num);
 
 	    if(pS==NULL){
-		    fprintf(stderr,"JY_LoadSMap error: can not malloc memory\n");
+		    JY_Error("JY_LoadSMap error: can not malloc memory\n");
 		    return 0;
 	    }
 
 	    if((fp=fopen(Sfilename,"rb"))==NULL){
-            fprintf(stderr,"JY_LoadSMap error:file not open ---%s",Sfilename);
+            JY_Error("JY_LoadSMap error:file not open ---%s",Sfilename);
 		    return 0;
 	    }
         fread(pS,2,S_XMax*S_YMax*6*S_Num,fp); 
@@ -388,12 +388,12 @@ int JY_LoadSMap(const char *Sfilename,const char*tmpfilename, int num,int x_max,
 	if(pD==NULL)
         pD=(Uint16*) malloc(D_Num1*D_Num2*S_Num*2);
 	if(pD==NULL){
-		fprintf(stderr,"JY_LoadSMap error: can not malloc memory\n");
+		JY_Error("JY_LoadSMap error: can not malloc memory\n");
 		return 0;
 	}
 
 	if((fp=fopen(Dfilename,"rb"))==NULL){
-        fprintf(stderr,"JY_LoadSMap error:file not open ---%s",Dfilename);
+        JY_Error("JY_LoadSMap error:file not open ---%s",Dfilename);
 		return 0;
 	}
     fread(pD,2,D_Num1*D_Num2*S_Num,fp);
@@ -414,12 +414,12 @@ int JY_SaveSMap(const char *Sfilename,const char *Dfilename)
     if(g_LoadFullS==0){    //读取部分S时的保存
         WriteS(currentS);
         currentS=-1;
-	    if((fp=fopen(Sfilename,"wb"))==NULL){
-            fprintf(stderr,"file not open ---%s",Sfilename);
+	    if((fp=fopen(_(Sfilename),"wb"))==NULL){
+            JY_Error("file not open ---%s",Sfilename);
 		    return 0;
 	    }
-	    if((fp2=fopen(TempS_filename,"rb"))==NULL){
-            fprintf(stderr,"JY_LoadSMap error:file not open ---%s",TempS_filename);
+	    if((fp2=fopen(_(TempS_filename),"rb"))==NULL){
+            JY_Error("JY_LoadSMap error:file not open ---%s",TempS_filename);
 		    return 0;
 	    }
         for(i=0;i<S_Num;i++){
@@ -430,8 +430,8 @@ int JY_SaveSMap(const char *Sfilename,const char *Dfilename)
         fclose(fp2);
     }
     else{
-	    if((fp=fopen(Sfilename,"wb"))==NULL){
-            fprintf(stderr,"file not open ---%s",Sfilename);
+	    if((fp=fopen(_(Sfilename),"wb"))==NULL){
+            JY_Error("file not open ---%s",Sfilename);
 		    return 0;
 	    }
  
@@ -443,8 +443,8 @@ int JY_SaveSMap(const char *Sfilename,const char *Dfilename)
 	if(pD==NULL)
 		return 0;
     
-	if((fp=fopen(Dfilename,"wb"))==NULL){
-        fprintf(stderr,"file not open ---%s",Dfilename);
+	if((fp=fopen(_(Dfilename),"wb"))==NULL){
+        JY_Error("file not open ---%s",Dfilename);
 		return 0;
 	}
  
@@ -470,7 +470,7 @@ int ReadS(int id)
         return 1;
 
 	if((fp=fopen(TempS_filename,"rb"))==NULL){
-        fprintf(stderr,"JY_LoadSMap error:file not open ---%s",TempS_filename);
+        JY_Error("JY_LoadSMap error:file not open ---%s",TempS_filename);
 		return 0;
 	}
     fseek(fp,S_XMax*S_YMax*6*2*id,SEEK_SET);
@@ -487,8 +487,8 @@ int WriteS(int id)
     if(id<0 || id>=S_Num)
         return 1;
 
-	if((fp=fopen(TempS_filename,"r+b"))==NULL){
-        fprintf(stderr,"JY_LoadSMap error:file not open ---%s",TempS_filename);
+	if((fp=fopen(_(TempS_filename),"r+b"))==NULL){
+        JY_Error("JY_LoadSMap error:file not open ---%s",TempS_filename);
 		return 0;
 	}
     fseek(fp,S_XMax*S_YMax*6*2*id,SEEK_SET);
@@ -503,7 +503,7 @@ int JY_GetS(int id,int x,int y,int level)
 {
     int s;
     if(id<0 || id>=S_Num){
-        fprintf(stderr,"GetS error: sceneid=%d out of range!\n",id);
+        JY_Error("GetS error: sceneid=%d out of range!\n",id);
         return 0;
     }
     if(g_LoadFullS==0){    
@@ -517,7 +517,7 @@ int JY_GetS(int id,int x,int y,int level)
     else{
         s=S_XMax*S_YMax*(id*6+level)+y*S_XMax+x;
     }
- 	return *(pS+s);
+ 	return *(Uint16 *)(pS+s);
 
 }
 
@@ -528,7 +528,7 @@ int JY_SetS(int id,int x,int y,int level,int v)
     int s;
     short value=(short)v;
     if(id<0 || id>=S_Num){
-        fprintf(stderr,"SetS error: sceneid=%d out of range!\n",id);
+        JY_Error("SetS error: sceneid=%d out of range!\n",id);
         return 0;
     }
     if(g_LoadFullS==0){ 
@@ -537,8 +537,8 @@ int JY_SetS(int id,int x,int y,int level,int v)
 	        *(pS+s)=value;
         }
         else{
-	        if((fp=fopen(TempS_filename,"r+b"))==NULL){
-                fprintf(stderr,"JY_LoadSMap error:file not open ---%s",TempS_filename);
+	        if((fp=fopen(_(TempS_filename),"r+b"))==NULL){
+                JY_Error("JY_LoadSMap error:file not open ---%s",TempS_filename);
 		        return 0;
 	        }
             fseek(fp,(S_XMax*S_YMax*(id*6+level)+y*S_XMax+x)*2,SEEK_SET);
@@ -574,7 +574,7 @@ int JY_SetD(int Sceneid,int id,int i,int v)
 {
     int s;
     if(Sceneid<0 || Sceneid>=S_Num){
-        fprintf(stderr,"GetD error: sceneid=%d out of range!\n",Sceneid);
+        JY_Error("GetD error: sceneid=%d out of range!\n",Sceneid);
         return 0;
     }
 
@@ -698,7 +698,7 @@ int JY_LoadWarMap(const char *WarIDXfilename,const char *WarGRPfilename, int map
 	    pWar=(Uint16*) malloc(x_max*y_max*num*2);
 
 	if(pWar==NULL){
-		fprintf(stderr,"JY_LoadWarMap error: can not malloc memory\n");
+		JY_Error("JY_LoadWarMap error: can not malloc memory\n");
 		return 0;
 	}
 
@@ -706,8 +706,8 @@ int JY_LoadWarMap(const char *WarIDXfilename,const char *WarGRPfilename, int map
 		p=0;
 	}
 	else{
-		if((fp=fopen(WarIDXfilename,"rb"))==NULL){      //读idx文件
-            fprintf(stderr,"file not open ---%s",WarIDXfilename);
+		if((fp=fopen(_(WarIDXfilename),"rb"))==NULL){      //读idx文件
+            JY_Error("file not open ---%s",WarIDXfilename);
 		    return 0;
 		}
         fseek(fp,4*(mapid-1),SEEK_SET);
@@ -716,8 +716,8 @@ int JY_LoadWarMap(const char *WarIDXfilename,const char *WarGRPfilename, int map
 	};
 
 
-	if((fp=fopen(WarGRPfilename,"rb"))==NULL){
-        fprintf(stderr,"file not open ---%s",WarIDXfilename);
+	if((fp=fopen(_(WarGRPfilename),"rb"))==NULL){
+        JY_Error("file not open ---%s",WarIDXfilename);
 		return 0;
 	}
     fseek(fp,p,SEEK_SET);
@@ -741,7 +741,7 @@ int JY_GetWarMap(int x,int y,int level)
 {
     int s=War_XMax*War_YMax*level+y*War_XMax+x;
 
-	return *(pWar+s);
+	return *((Uint16 *)pWar+s);
 
 }
 

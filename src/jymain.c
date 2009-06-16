@@ -273,7 +273,7 @@ int getfieldstr(lua_State *pL,const char *key,char *str)
 
 // 调试函数
 // 输出到debug.txt中
-int JY_Debug(const char * str)
+int JY_Debug(const char * str,...)
 {
     time_t t;
 	FILE *fp;
