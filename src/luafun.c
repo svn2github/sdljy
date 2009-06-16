@@ -620,7 +620,7 @@ int Byte_savefile(lua_State *pL)
 	int length=(int)lua_tonumber(pL,4);
 
 	FILE *fp;
-    if((fp=fopen(_(filename),"r+b"))==NULL){
+    if((fp=fopen(filename,"r+b"))==NULL){
         JY_Error("file not open ---%s",filename);
 		return 1;
 	}

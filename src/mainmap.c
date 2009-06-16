@@ -414,11 +414,11 @@ int JY_SaveSMap(const char *Sfilename,const char *Dfilename)
     if(g_LoadFullS==0){    //读取部分S时的保存
         WriteS(currentS);
         currentS=-1;
-	    if((fp=fopen(_(Sfilename),"wb"))==NULL){
+	    if((fp=fopen(Sfilename,"wb"))==NULL){
             JY_Error("file not open ---%s",Sfilename);
 		    return 0;
 	    }
-	    if((fp2=fopen(_(TempS_filename),"rb"))==NULL){
+	    if((fp2=fopen(TempS_filename,"rb"))==NULL){
             JY_Error("JY_LoadSMap error:file not open ---%s",TempS_filename);
 		    return 0;
 	    }
@@ -430,7 +430,7 @@ int JY_SaveSMap(const char *Sfilename,const char *Dfilename)
         fclose(fp2);
     }
     else{
-	    if((fp=fopen(_(Sfilename),"wb"))==NULL){
+	    if((fp=fopen(Sfilename,"wb"))==NULL){
             JY_Error("file not open ---%s",Sfilename);
 		    return 0;
 	    }
@@ -443,7 +443,7 @@ int JY_SaveSMap(const char *Sfilename,const char *Dfilename)
 	if(pD==NULL)
 		return 0;
     
-	if((fp=fopen(_(Dfilename),"wb"))==NULL){
+	if((fp=fopen(Dfilename,"wb"))==NULL){
         JY_Error("file not open ---%s",Dfilename);
 		return 0;
 	}
@@ -487,7 +487,7 @@ int WriteS(int id)
     if(id<0 || id>=S_Num)
         return 1;
 
-	if((fp=fopen(_(TempS_filename),"r+b"))==NULL){
+	if((fp=fopen(TempS_filename,"r+b"))==NULL){
         JY_Error("JY_LoadSMap error:file not open ---%s",TempS_filename);
 		return 0;
 	}
@@ -537,7 +537,7 @@ int JY_SetS(int id,int x,int y,int level,int v)
 	        *(pS+s)=value;
         }
         else{
-	        if((fp=fopen(_(TempS_filename),"r+b"))==NULL){
+	        if((fp=fopen(TempS_filename,"r+b"))==NULL){
                 JY_Error("JY_LoadSMap error:file not open ---%s",TempS_filename);
 		        return 0;
 	        }
@@ -706,7 +706,7 @@ int JY_LoadWarMap(const char *WarIDXfilename,const char *WarGRPfilename, int map
 		p=0;
 	}
 	else{
-		if((fp=fopen(_(WarIDXfilename),"rb"))==NULL){      //读idx文件
+		if((fp=fopen(WarIDXfilename,"rb"))==NULL){      //读idx文件
             JY_Error("file not open ---%s",WarIDXfilename);
 		    return 0;
 		}
@@ -716,7 +716,7 @@ int JY_LoadWarMap(const char *WarIDXfilename,const char *WarGRPfilename, int map
 	};
 
 
-	if((fp=fopen(_(WarGRPfilename),"rb"))==NULL){
+	if((fp=fopen(WarGRPfilename,"rb"))==NULL){
         JY_Error("file not open ---%s",WarIDXfilename);
 		return 0;
 	}

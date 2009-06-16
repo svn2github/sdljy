@@ -121,8 +121,8 @@ static const struct luaL_reg bytelib [] = {
 int main(int argc, char *argv[])
 {
     
-	remove(va("%s%s", JY_PREFIX, "debug.txt"));
-    freopen(va("%s%s", JY_PREFIX, "error.txt"),"wt",stderr);    //设置stderr输出到文件
+	remove(_("debug.txt"));
+    freopen(_("error.txt"),"wt",stderr);    //设置stderr输出到文件
 
     Lua_Config();        //读取lua配置文件，设置参数
 
@@ -130,7 +130,7 @@ int main(int argc, char *argv[])
 
 	InitGame();          //初始化游戏数据
 
-	LoadMB(va("%s%s", JY_PREFIX, "hzmb.dat"));  //加载汉字字符集转换码表
+	LoadMB("hzmb.dat");  //加载汉字字符集转换码表
 
     Lua_Main();          //调用Lua主函数，开始游戏
  
@@ -189,7 +189,7 @@ int Lua_Main(void)
 //Lua读取配置信息
 int Lua_Config(void)
 {
-    char *filename=va("%s%s", JY_PREFIX, "config.lua");
+    char *filename=_("config.lua");
 	int result=0; 
 
 	//初始化lua
@@ -273,24 +273,50 @@ int getfieldstr(lua_State *pL,const char *key,char *str)
 
 // 调试函数
 // 输出到debug.txt中
-int JY_Debug(const char * str,...)
+int JY_Debug(const char * fmt,...)
+{
+    time_t t;
+	FILE *fp;
+    struct tm *newtime;
+    va_list argptr;
+	char string[1024];
+	// concatenate all the arguments in one string
+	va_start(argptr, fmt);
+	vsnprintf(string, sizeof(string), fmt, argptr);
+	va_end(argptr);
+    if(IsDebug==0)
+        return 0;
+
+	fp=fopen(_("debug.txt"),"a+t");
+	time(&t);
+    newtime=localtime(&t);
+	fprintf(fp,"%02d:%02d:%02d %s\n",newtime->tm_hour,newtime->tm_min,newtime->tm_sec,string);
+ 	fclose(fp);
+	return 0;
+}
+
+int JY_Error(const char * fmt,...)
 {
     time_t t;
 	FILE *fp;
     struct tm *newtime;
  
+    va_list argptr;
+    char string[1024];
+       
     if(IsDebug==0)
         return 0;
-
-	fp=fopen(va("%s%s", JY_PREFIX, "debug.txt"),"a+t");
+    
+	va_start(argptr, fmt);
+	vsnprintf(string, sizeof(string), fmt, argptr);
+	va_end(argptr);
+    
 	time(&t);
     newtime=localtime(&t);
-	fprintf(fp,"%02d:%02d:%02d %s\n",newtime->tm_hour,newtime->tm_min,newtime->tm_sec,str);
- 	fclose(fp);
+	fprintf(stderr,"%02d:%02d:%02d %s\n",newtime->tm_hour,newtime->tm_min,newtime->tm_sec,string);
+ 	fflush(stderr);
 	return 0;
-}
-
- 
+} 
 
 // 限制x大小
 int limitX(int x, int xmin, int xmax)
