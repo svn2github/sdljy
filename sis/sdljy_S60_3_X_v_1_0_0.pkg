@@ -27,6 +27,7 @@
 ; Symbols set up for the source location are Carbide.c++ specific symbols
 "$(EPOCROOT)epoc32\release\$(PLATFORM)\$(TARGET)\sdljy.exe"             -"!:\sys\bin\sdljy.exe"
 "$(EPOCROOT)epoc32\data\z\private\10003a3f\import\apps\sdljy_reg.rsc"   -"!:\private\10003a3f\import\apps\sdljy_reg.rsc"
-
+"$(EPOCROOT)Epoc32\data\z\resource\apps\sdljy.rsc"		-"!:\resource\apps\sdljy.rsc"
+"$(EPOCROOT)epoc32\data\z\resource\apps\sdljy_aif.mbm"				-"!:\resource\apps\sdljy_aif.mbm"
 ; required for application to be covered by backup/restore facility 
 "..\sis\backup_registration.xml"    -"!:\private\E29E53D9\backup_registration.xml"
