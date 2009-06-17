@@ -5,7 +5,11 @@
   
 #include <stdio.h>
 #include <string.h>
+#ifdef __SYMBIAN32__
 #include <stdlib.h>
+#else
+#include <malloc.h>
+#endif
 
 #include "jymain.h"
 
@@ -423,11 +427,11 @@ int HAPI_GetD(lua_State *pL)
 {
 
     int Sceneid=(int)lua_tonumber(pL,1);
-    Sint16 id=(Sint16)lua_tonumber(pL,2);
+    int id=(Sint16)lua_tonumber(pL,2);
     int i=(int)lua_tonumber(pL,3);
  
 
-	Sint16 v;
+	int v;
 	v=JY_GetD(Sceneid,id,i);
 
 	lua_pushnumber(pL,v);
@@ -492,7 +496,7 @@ int HAPI_GetWarMap(lua_State *pL)
     int level=(int)lua_tonumber(pL,3);
  
 
-	int v;
+	Sint16 v;
 	v=JY_GetWarMap(x,y,level);
 
 	lua_pushnumber(pL,v);
@@ -581,7 +585,7 @@ int Byte_create(lua_State *pL)
 	int i;
 
 	if(p==NULL){
-		JY_Error("Byte_create:cannot malloc memory\n");
+		fprintf(stderr,"Byte_create:cannot malloc memory\n");
 		return 1;
 	}
 	for(i=0;i<x;i++)
@@ -602,7 +606,7 @@ int Byte_loadfile(lua_State *pL)
     
 	FILE *fp;
     if((fp=fopen(filename,"rb"))==NULL){
-        JY_Error("Byte_loadfile:file not open ---%s",filename);
+        fprintf(stderr,"Byte_loadfile:file not open ---%s",filename);
 		
 		return 1;
 	}
@@ -621,7 +625,7 @@ int Byte_savefile(lua_State *pL)
 
 	FILE *fp;
     if((fp=fopen(filename,"r+b"))==NULL){
-        JY_Error("file not open ---%s",filename);
+        fprintf(stderr,"file not open ---%s",filename);
 		return 1;
 	}
 	fseek(fp,start,SEEK_SET);
@@ -725,15 +729,3 @@ int Byte_setstr(lua_State *pL)
  
 	return 1;
 }
-
-
-
-
-
-
-
-
-
- 
-
-

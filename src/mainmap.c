@@ -741,7 +741,7 @@ int JY_GetWarMap(int x,int y,int level)
 {
     int s=War_XMax*War_YMax*level+y*War_XMax+x;
 
-	return *((Uint16 *)pWar+s);
+	return (Sint16)*((Uint16 *)pWar+s);
 
 }
 
