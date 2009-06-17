@@ -76,7 +76,7 @@ int ExitSDL(void)
 
     ExitFont();
 
-    StopMIDI();
+    /*StopMIDI();
 
     for(i=0;i<WAVNUM;i++){
 		if(WavChunk[i]){
@@ -86,6 +86,8 @@ int ExitSDL(void)
 	}
 
 	Mix_CloseAudio();
+ 
+ */
 
     JY_LoadPicture("",0,0);    // 释放可能加载的图片表面
 
@@ -281,7 +283,7 @@ int JY_PlayMIDI(const char *filename)
 	if(strcmp(currentfile,filename)==0) //与当前播放文件相同，直接返回
 		return 0;
 
-    StopMIDI();
+    /*StopMIDI();
 	
 	currentMusic=Mix_LoadMUS(filename);
 
@@ -293,7 +295,7 @@ int JY_PlayMIDI(const char *filename)
 	Mix_VolumeMusic(g_MusicVolume);
 
 	Mix_PlayMusic(currentMusic, -1);
-
+*/
     strcpy(currentfile,filename);
 
 	return 0;
@@ -302,11 +304,11 @@ int JY_PlayMIDI(const char *filename)
 //停止音效
 int StopMIDI()
 {
-    if(currentMusic!=NULL){
+    /*if(currentMusic!=NULL){
 		Mix_HaltMusic();
 		Mix_FreeMusic(currentMusic);
 		currentMusic=NULL;
-	}
+	}*/
     return 0;
 }
 
@@ -315,7 +317,7 @@ int StopMIDI()
 int JY_PlayWAV(const char *filename)
 {
 	
-    if(g_EnableSound==0)
+    /*if(g_EnableSound==0)
 		return 1;    
 
 	if(WavChunk[currentWav]){          //释放当前音效
@@ -335,8 +337,9 @@ int JY_PlayWAV(const char *filename)
 	else{
 		JY_Error("Open wav file %s failed!",filename);
 	}
-
+*/
 	return 0;
+	
 }
 
 
