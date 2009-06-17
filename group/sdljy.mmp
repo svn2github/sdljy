@@ -38,7 +38,7 @@ SYSTEMINCLUDE   \epoc32\include\libc
 // Using main() as entry point
 //STATICLIBRARY   libcrt0.lib
 //STATICLIBRARY sdlmain.lib
-STATICLIBRARY libpng-1_2.lib
+
 
 // libc and euser are always needed when using main() entry point
 
@@ -52,7 +52,8 @@ LIBRARY		sdl.lib
 LIBRARY		sdlexe.lib
 LIBRARY		sdl_ttf.lib
 LIBRARY		sdl_image.lib
-LIBRARY		SDL_Mixer.lib
+LIBRARY		libpng-1_2.lib
+//LIBRARY		SDL_Mixer.lib
 
 
 LIBRARY		libm.lib
