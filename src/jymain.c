@@ -162,13 +162,13 @@ int Lua_Main(void)
     result=luaL_loadfile(pL_main, JYMain_Lua);
     switch(result){
     case LUA_ERRSYNTAX:
-        fprintf(stderr,"load lua file %s error: syntax error!\n",JYMain_Lua);
+    	JY_Error("load lua file %s error: syntax error!\n",JYMain_Lua);
         break;
     case LUA_ERRMEM:
-        fprintf(stderr,"load lua file %s error: memory allocation error!\n",JYMain_Lua);
+    	JY_Error("load lua file %s error: memory allocation error!\n",JYMain_Lua);
         break;
     case LUA_ERRFILE:
-        fprintf(stderr,"load lua file %s error: can not open file!\n",JYMain_Lua);
+    	JY_Error("load lua file %s error: can not open file!\n",JYMain_Lua);
         break;    
     }
     
