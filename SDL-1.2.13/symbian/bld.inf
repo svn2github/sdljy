@@ -1,0 +1,20 @@
+PRJ_PLATFORMS
+DEFAULT
+
+
+PRJ_EXPORTS
+inc\sdlepocapi.h
+inc\sdlmain.h
+
+
+
+PRJ_MMPFILES
+gnumakefile sdl_s60.mk
+SDL.mmp
+sdlexe.mmp
+sdlmain.mmp
+sdlmaint.mmp
+
+
+
+PRJ_TESTMMPFILES

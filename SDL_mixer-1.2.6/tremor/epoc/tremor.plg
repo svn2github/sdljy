@@ -1,0 +1,17 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: libtremor - Win32 Debug--------------------
+</h3>
+
+\UIQ3\epoc32\tools\MAKE.exe: Nothing to be done for `BLD'.
+
+
+
+<h3>Results</h3>
+libtremor.lib - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

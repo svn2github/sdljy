@@ -1,0 +1,14 @@
+PRJ_PLATFORMS
+
+PRJ_EXPORTS
+..\SDL_image.h				sdl\SDL_image.h
+
+PRJ_MMPFILES
+
+\sdl_image\epoc\SDL_image.mmp
+
+PRJ_TESTMMPFILES
+
+\sdl_image\Epoc\showimage.mmp
+
+

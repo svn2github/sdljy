@@ -1,0 +1,6 @@
+PRJ_EXPORTS
+..\SDL_ttf.h				sdl\SDL_ttf.h
+PRJ_MMPFILES
+SDL_TTF.MMP
+//showfont.mmp
+PRJ_TESTMMPFILES

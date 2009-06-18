@@ -1,0 +1,6 @@
+TARGETTYPE EXE
+TARGET showfont
+SOURCEPATH ..
+SOURCE showfont.c
+
+SYSTEMINCLUDE /include/sdl

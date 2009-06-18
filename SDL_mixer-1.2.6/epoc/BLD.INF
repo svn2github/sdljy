@@ -1,0 +1,10 @@
+PRJ_PLATFORMS
+//WINS ARMI ARM4 THUMB winscw gcce
+DEFAULT
+PRJ_EXPORTS
+../SDL_mixer.h				sdl\SDL_mixer.h
+
+PRJ_MMPFILES
+.\sdl_mixer.mmp
+.\sdl_mixer_ogg.mmp
+//.\sdl_mixer_mid.mmp

@@ -1,0 +1,31 @@
+// *** EPOC MMP FILE FOR SHOWIMAGE.EXE
+
+// *** Definitions
+
+TARGET          showimage.exe 
+TARGETTYPE      exe
+TARGETPATH      \system\programs
+SOURCEPATH	..\
+
+// *** Test source files
+
+SOURCE          showimage.c
+
+// *** Include paths
+
+SYSTEMINCLUDE   \epoc32\include \epoc32\include\libc \epoc32\include\sdl
+//USERINCLUDE     \sdl\include
+
+// *** Libraries
+
+// Note: sdl_image.lib MUST be before sdl.lib! Otherwise thumb build do not regocnise 
+// sdl.lib functions in sdl_image.lib!
+
+STATICLIBRARY	sdl_image.lib sdlmain.lib libpng-1_2.lib  
+LIBRARY		euser.lib
+LIBRARY 	sdl.lib
+LIBRARY 	sdlexe.lib
+LIBRARY		estlib.lib
+LIBRARY		libm.lib       
+LIBRARY     fbscli.lib ws32.lib hal.lib gdi.lib libz.lib
+LIBRARY		efsrv.lib bitgdi.lib mediaclientaudiostream.lib

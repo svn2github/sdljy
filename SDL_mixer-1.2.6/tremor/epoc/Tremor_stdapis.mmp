@@ -1,0 +1,30 @@
+// *** EPOC MMP FILE FOR libtremor.lib
+
+// *** Definitions
+
+TARGET          libtremor.lib // libvorbisidec.lib -- official lib name?
+TARGETTYPE      lib
+// advanced optimization options, when they give you trouble (VC6), just comment them out...
+OPTION			MSVC /WL /QIfist /Ob1 /Oy /GF /wd4201 /wd4512 /wd4511 /wd4100 /wd4121 /wd4310 /wd4706 /wd4127 /wd4189 /wd4702 /wd4996 /wd4291 /wd4068 /wd4244 /wd4701 /wd4715 /wd4355
+//OPTION			GCC -O3 -funroll-loops -finline-functions -ffast-math -frerun-loop-opt -fconserve-space -fexpensive-optimizations -Wno-multichar -Wno-reorder
+
+// *** defines
+MACRO _LOW_ACCURACY_
+#if !defined(WINS)
+MACRO	_ARM_ASSEM_
+#endif
+// *** General sources
+
+SOURCEPATH      ..
+USERINCLUDE     .. 
+
+SOURCE mdct.c dsp.c info.c misc.c
+source floor1.c floor0.c vorbisfile.c
+source res012.c mapping0.c codebook.c
+source framing.c bitwise.c
+source floor_lookup.c
+source alloca.c
+
+// *** Include paths
+
+SYSTEMINCLUDE   \epoc32\include \epoc32\include\stdapis

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?fileVersion 4.0.0?>
+
+<cproject>
+<storageModule buildFromInf="true" buildingTestComps="true" cleanLevel="0" concurrentBuildJobs="4" defaultMMPChangedAction="0" infBuildComponents="" infFileLocation="symbian\bld.inf" macrosFile="" makeEngineToUse="make" manageDependencies="true" moduleId="com.nokia.carbide.cdt.builder.carbideCPPBuilder" overrideMakeEngine="false" overrideWorkspaceSettings="false" promptForMMPChangedAction="false" useConcurrentBuilding="true" useDebugMode="false" useIncrementalBuilder="false" useKeepGoing="false" useMMPMacros="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.settings">
+<cconfiguration id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]">
+<externalSettings/>
+<extensions>
+<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.cdt.debug.cw.symbian.SymbianE32" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakeDefErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.SBSv2ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.GCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MWLDErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MWCCErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.CarbideMakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RCOMPErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+</extensions>
+</storageModule>
+<storageModule moduleId="CarbideConfigurationDataProvider">
+<ENV_VAR_DATA_ID/>
+<ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
+<ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
+</storageModule>
+<storageModule filesCache="Z:\SDL-1.2.13\symbian\sdlmaint.mmp;Z:\SDL-1.2.13\symbian\sdl.mmp;Z:\SDL-1.2.13\symbian\sdlexe.mmp;Z:\SDL-1.2.13\symbian\bld.inf;Z:\SDL-1.2.13\symbian\sdlmain.mmp;" includesCache="Z:/SDL-1.2.13/include[LOCAL];Z:/SDL-1.2.13/src[LOCAL];Z:/SDL-1.2.13/src/video[LOCAL];Z:/SDL-1.2.13/src/events[LOCAL];Z:/SDL-1.2.13/src/audio[LOCAL];Z:/SDL-1.2.13/src/audio/symbian[LOCAL];Z:/SDL-1.2.13/src/main/symbian[LOCAL];Z:/SDL-1.2.13/src/video/symbian[LOCAL];Z:/SDL-1.2.13/src/thread[LOCAL];Z:/SDL-1.2.13/src/thread/generic[LOCAL];Z:/SDL-1.2.13/src/thread/symbian[LOCAL];Z:/SDL-1.2.13/src/timer[LOCAL];Z:/SDL-1.2.13/src/joystick[LOCAL];Z:/epoc32/include/SDL[LOCAL];Z:/SDL-1.2.13/symbian/inc[LOCAL];Z:/SDL-1.2.13/symbian/inc/internal[LOCAL];Z:/epoc32/include;Z:/SDL-1.2.13/symbian/inc;Z:/epoc32/include/SDL;Z:/epoc32/include/middleware;Z:/epoc32/include/osextensions;Z:/epoc32/include/gles;Z:/epoc32/include/EGL;Z:/epoc32/include/libc;Z:/epoc32/include/domain/middleware;Z:/SDL-1.2.13/symbian/inc/internal;" macrosCache="DISABLE_CDROM;ENABLE_EPOC;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;SYMBIANC;__CW32__;__WINSCW__;_UNICODE;__S60_3X__;NO_SIGNAL_H;DISABLE_JOYSTICK;_DEBUG;__SERIES60_3X__;SYMBIAN_SERIES60;__S60_32__;__WINS__;" moduleId="configDataCache" sourcesCache="/SDL-1.2.13/include;/SDL-1.2.13/src;/SDL-1.2.13/symbian;" timestampCache="1242160390875" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+</cconfiguration>
+<cconfiguration id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]">
+<externalSettings/>
+<extensions>
+<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.cdt.debug.cw.symbian.SymbianE32" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RVCTCompilerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakeDefErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.SBSv2ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RVCTLinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.CarbideMakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RCOMPErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.Elf2E32ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+</extensions>
+</storageModule>
+<storageModule moduleId="CarbideConfigurationDataProvider">
+<ENV_VAR_DATA_ID/>
+<ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
+<ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
+</storageModule>
+<storageModule filesCache="Z:\SDL-1.2.13\symbian\sdlmaint.mmp;Z:\SDL-1.2.13\symbian\sdl.mmp;Z:\SDL-1.2.13\symbian\sdlexe.mmp;Z:\SDL-1.2.13\symbian\bld.inf;Z:\SDL-1.2.13\symbian\sdlmain.mmp;" includesCache="Z:/SDL-1.2.13/include[LOCAL];Z:/SDL-1.2.13/src[LOCAL];Z:/SDL-1.2.13/src/video[LOCAL];Z:/SDL-1.2.13/src/events[LOCAL];Z:/SDL-1.2.13/src/audio[LOCAL];Z:/SDL-1.2.13/src/audio/symbian[LOCAL];Z:/SDL-1.2.13/src/main/symbian[LOCAL];Z:/SDL-1.2.13/src/video/symbian[LOCAL];Z:/SDL-1.2.13/src/thread[LOCAL];Z:/SDL-1.2.13/src/thread/generic[LOCAL];Z:/SDL-1.2.13/src/thread/symbian[LOCAL];Z:/SDL-1.2.13/src/timer[LOCAL];Z:/SDL-1.2.13/src/joystick[LOCAL];Z:/epoc32/include/SDL[LOCAL];Z:/SDL-1.2.13/symbian/inc[LOCAL];Z:/SDL-1.2.13/symbian/inc/internal[LOCAL];Z:/epoc32/include;Z:/SDL-1.2.13/symbian/inc;Z:/epoc32/include/SDL;Z:/epoc32/include/middleware;Z:/epoc32/include/osextensions;Z:/epoc32/include/gles;Z:/epoc32/include/EGL;Z:/epoc32/include/libc;Z:/epoc32/include/domain/middleware;Z:/SDL-1.2.13/symbian/inc/internal;" macrosCache="__GENERIC_MARM__;DISABLE_CDROM;ENABLE_EPOC;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;SYMBIANC;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;NO_SIGNAL_H;DISABLE_JOYSTICK;_DEBUG;__SERIES60_3X__;SYMBIAN_SERIES60;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/SDL-1.2.13/include;/SDL-1.2.13/src;/SDL-1.2.13/symbian;" timestampCache="1242160390906" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+</cconfiguration>
+<cconfiguration id="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]">
+<externalSettings/>
+<extensions>
+<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.cdt.debug.cw.symbian.SymbianE32" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RVCTCompilerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakeDefErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.SBSv2ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RVCTLinkerErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.CarbideMakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RCOMPErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.Elf2E32ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+</extensions>
+</storageModule>
+<storageModule moduleId="CarbideConfigurationDataProvider">
+<ENV_VAR_DATA_ID/>
+<ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
+<ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
+</storageModule>
+<storageModule filesCache="Z:\SDL-1.2.13\symbian\sdlmaint.mmp;Z:\SDL-1.2.13\symbian\sdl.mmp;Z:\SDL-1.2.13\symbian\sdlexe.mmp;Z:\SDL-1.2.13\symbian\bld.inf;Z:\SDL-1.2.13\symbian\sdlmain.mmp;" includesCache="Z:/SDL-1.2.13/include[LOCAL];Z:/SDL-1.2.13/src[LOCAL];Z:/SDL-1.2.13/src/video[LOCAL];Z:/SDL-1.2.13/src/events[LOCAL];Z:/SDL-1.2.13/src/audio[LOCAL];Z:/SDL-1.2.13/src/audio/symbian[LOCAL];Z:/SDL-1.2.13/src/main/symbian[LOCAL];Z:/SDL-1.2.13/src/video/symbian[LOCAL];Z:/SDL-1.2.13/src/thread[LOCAL];Z:/SDL-1.2.13/src/thread/generic[LOCAL];Z:/SDL-1.2.13/src/thread/symbian[LOCAL];Z:/SDL-1.2.13/src/timer[LOCAL];Z:/SDL-1.2.13/src/joystick[LOCAL];Z:/epoc32/include/SDL[LOCAL];Z:/SDL-1.2.13/symbian/inc[LOCAL];Z:/SDL-1.2.13/symbian/inc/internal[LOCAL];Z:/epoc32/include;Z:/SDL-1.2.13/symbian/inc;Z:/epoc32/include/SDL;Z:/epoc32/include/middleware;Z:/epoc32/include/osextensions;Z:/epoc32/include/gles;Z:/epoc32/include/EGL;Z:/epoc32/include/libc;Z:/epoc32/include/domain/middleware;Z:/SDL-1.2.13/symbian/inc/internal;" macrosCache="__GENERIC_MARM__;DISABLE_CDROM;ENABLE_EPOC;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;SYMBIANC;NDEBUG;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;NO_SIGNAL_H;DISABLE_JOYSTICK;__SERIES60_3X__;SYMBIAN_SERIES60;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/SDL-1.2.13/include;/SDL-1.2.13/src;/SDL-1.2.13/symbian;" timestampCache="1242160390937" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+</cconfiguration>
+<cconfiguration id="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]">
+<externalSettings/>
+<extensions>
+<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.cdt.debug.cw.symbian.SymbianE32" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakeDefErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.SBSv2ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.GCCEErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.CarbideMakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RCOMPErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.Elf2E32ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+</extensions>
+</storageModule>
+<storageModule moduleId="CarbideConfigurationDataProvider">
+<ENV_VAR_DATA_ID/>
+<ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
+<ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
+</storageModule>
+<storageModule filesCache="Z:\SDL-1.2.13\symbian\sdlmaint.mmp;Z:\SDL-1.2.13\symbian\sdl.mmp;Z:\SDL-1.2.13\symbian\sdlexe.mmp;Z:\SDL-1.2.13\symbian\bld.inf;Z:\SDL-1.2.13\symbian\sdlmain.mmp;" includesCache="Z:/SDL-1.2.13/include[LOCAL];Z:/SDL-1.2.13/src[LOCAL];Z:/SDL-1.2.13/src/video[LOCAL];Z:/SDL-1.2.13/src/events[LOCAL];Z:/SDL-1.2.13/src/audio[LOCAL];Z:/SDL-1.2.13/src/audio/symbian[LOCAL];Z:/SDL-1.2.13/src/main/symbian[LOCAL];Z:/SDL-1.2.13/src/video/symbian[LOCAL];Z:/SDL-1.2.13/src/thread[LOCAL];Z:/SDL-1.2.13/src/thread/generic[LOCAL];Z:/SDL-1.2.13/src/thread/symbian[LOCAL];Z:/SDL-1.2.13/src/timer[LOCAL];Z:/SDL-1.2.13/src/joystick[LOCAL];Z:/epoc32/include/SDL[LOCAL];Z:/SDL-1.2.13/symbian/inc[LOCAL];Z:/SDL-1.2.13/symbian/inc/internal[LOCAL];Z:/epoc32/include;Z:/SDL-1.2.13/symbian/inc;Z:/epoc32/include/SDL;Z:/epoc32/include/middleware;Z:/epoc32/include/osextensions;Z:/epoc32/include/gles;Z:/epoc32/include/EGL;Z:/epoc32/include/libc;Z:/epoc32/include/domain/middleware;Z:/SDL-1.2.13/symbian/inc/internal;" macrosCache="__GENERIC_MARM__;DISABLE_CDROM;ENABLE_EPOC;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;SYMBIANC;__GCCE__;__MARM__;_UNICODE;__S60_3X__;NO_SIGNAL_H;DISABLE_JOYSTICK;_DEBUG;__SERIES60_3X__;SYMBIAN_SERIES60;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/SDL-1.2.13/include;/SDL-1.2.13/src;/SDL-1.2.13/symbian;" timestampCache="1242160390953" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+</cconfiguration>
+<cconfiguration id="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]">
+<externalSettings/>
+<extensions>
+<extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="org.eclipse.cdt.core.ELF" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.cdt.debug.cw.symbian.SymbianE32" point="org.eclipse.cdt.core.BinaryParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakeDefErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.SBSv2ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.GCCEErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.CarbideMakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.RCOMPErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.Elf2E32ErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+<extension id="com.nokia.carbide.cdt.builder.MakmakeErrorParser" point="org.eclipse.cdt.core.ErrorParser"/>
+</extensions>
+</storageModule>
+<storageModule moduleId="CarbideConfigurationDataProvider">
+<ENV_VAR_DATA_ID/>
+<ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
+<ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
+</storageModule>
+<storageModule filesCache="Z:\SDL-1.2.13\symbian\sdlmaint.mmp;Z:\SDL-1.2.13\symbian\sdl.mmp;Z:\SDL-1.2.13\symbian\sdlexe.mmp;Z:\SDL-1.2.13\symbian\bld.inf;Z:\SDL-1.2.13\symbian\sdlmain.mmp;" includesCache="Z:/SDL-1.2.13/include[LOCAL];Z:/SDL-1.2.13/src[LOCAL];Z:/SDL-1.2.13/src/video[LOCAL];Z:/SDL-1.2.13/src/events[LOCAL];Z:/SDL-1.2.13/src/audio[LOCAL];Z:/SDL-1.2.13/src/audio/symbian[LOCAL];Z:/SDL-1.2.13/src/main/symbian[LOCAL];Z:/SDL-1.2.13/src/video/symbian[LOCAL];Z:/SDL-1.2.13/src/thread[LOCAL];Z:/SDL-1.2.13/src/thread/generic[LOCAL];Z:/SDL-1.2.13/src/thread/symbian[LOCAL];Z:/SDL-1.2.13/src/timer[LOCAL];Z:/SDL-1.2.13/src/joystick[LOCAL];Z:/epoc32/include/SDL[LOCAL];Z:/SDL-1.2.13/symbian/inc[LOCAL];Z:/SDL-1.2.13/symbian/inc/internal[LOCAL];Z:/epoc32/include;Z:/SDL-1.2.13/symbian/inc;Z:/epoc32/include/SDL;Z:/epoc32/include/middleware;Z:/epoc32/include/osextensions;Z:/epoc32/include/gles;Z:/epoc32/include/EGL;Z:/epoc32/include/libc;Z:/epoc32/include/domain/middleware;Z:/SDL-1.2.13/symbian/inc/internal;" macrosCache="__GENERIC_MARM__;DISABLE_CDROM;ENABLE_EPOC;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;SYMBIANC;__GCCE__;NDEBUG;__MARM__;_UNICODE;__S60_3X__;NO_SIGNAL_H;DISABLE_JOYSTICK;__SERIES60_3X__;SYMBIAN_SERIES60;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/SDL-1.2.13/include;/SDL-1.2.13/src;/SDL-1.2.13/symbian;" timestampCache="1242160391000" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+</cconfiguration>
+</storageModule>
+</cproject>

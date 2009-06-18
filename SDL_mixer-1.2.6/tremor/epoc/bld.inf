@@ -1,0 +1,13 @@
+PRJ_PLATFORMS
+WINS ARMI GCCE WINSCW//ARM4 THUMB
+
+PRJ_EXPORTS
+..\ivorbisfile.h		tremor\ivorbisfile.h
+..\ivorbiscodec.h		tremor\ivorbiscodec.h
+..\ogg.h				tremor\ogg.h
+..\os_types.h 			tremor\os_types.h
+..\config_types.h		tremor\config_types.h
+
+PRJ_MMPFILES
+Tremor_stdapis.mmp BUILD_AS_ARM
+

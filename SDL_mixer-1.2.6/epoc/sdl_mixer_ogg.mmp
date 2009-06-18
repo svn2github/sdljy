@@ -1,0 +1,35 @@
+TARGET SDL_Mixer_ogg.lib
+TARGETTYPE LIB
+
+systeminclude \epoc32\include
+systeminclude \epoc32\include\sdl
+//systeminclude \epoc32\include\libc
+systeminclude \epoc32\include\stdapis
+SYSTEMINCLUDE \epoc32\include\ogg 
+SYSTEMINCLUDE \epoc32\include\vorbis
+
+userinclude .. ..\timidity ..\mikmod
+sourcepath ..
+source effects_internal.c effect_position.c effect_stereoreverse.c load_aiff.c 
+source load_ogg.c load_voc.c mixer.c music.c music_cmd.c
+source music_ogg.c  playmus.c playwave.c wavestream.c
+
+sourcepath ..\mikmod
+source load_it.c           load_mod.c          load_s3m.c          load_xm.c
+source mdreg.c             mdriver.c           mloader.c           mlreg.c             mlutil.c            mmalloc.c
+source mmerror.c           mmio.c              mplayer.c           munitrk.c           mwav.c              npertab.c
+source sloader.c           virtch.c            virtch2.c           virtch_common.c drv_nos.c drv_sdl.c
+
+MACRO WAV_MUSIC 
+MACRO OGG_MUSIC
+MACRO MOD_MUSIC
+//MACRO MID_MUSIC
+//MACRO USE_TIMIDITY_MIDI
+
+//MACRO _LOW_ACCURACY_
+#if !defined(WINS)
+//MACRO	_ARM_ASSEM_
+#endif
+// *** General sources
+
+//USERINCLUDE     ..\tremor
