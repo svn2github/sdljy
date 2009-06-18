@@ -35,9 +35,7 @@ extern "C" {
 // jymain.c
 
 // 输出信息到文件debug.txt中
-int JY_Log(const char * fmt,...);
-
-int JY_Debug(const char * str);
+int JY_Debug(const char * fmt,...);
 
 // 输出信息到文件error.txt中
 int JY_Error(const char * fmt,...);
