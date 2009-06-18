@@ -1,0 +1,14 @@
+// BLD.INF
+// Component description file
+//
+// Copyright (c) 2000 Symbian Ltd.  All rights reserved.
+
+PRJ_MMPFILES
+
+luastd51.mmp
+
+PRJ_EXPORTS
+lua.h lua\lua.h
+lauxlib.h lua\lauxlib.h
+luaconf.h lua\luaconf.h
+lualib.h lua\lualib.h

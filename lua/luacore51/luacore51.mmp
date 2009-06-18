@@ -1,0 +1,43 @@
+// CreateStaticDLL.mmp
+//
+// Copyright (c) 2000-2005 Symbian Software Ltd.  All rights reserved.
+
+// using relative paths for sourcepath and user includes
+// exports are unfrozen
+
+TARGET        luacore51.lib
+
+
+TARGETTYPE    lib
+
+VENDORID 0x70000001
+
+//MACRO	LUA_BUILD_AS_DLL
+MACRO	__STRICT_ANSI__
+
+SOURCEPATH    .
+
+SOURCE	lapi.c
+SOURCE	lcode.c
+SOURCE	ldebug.c
+SOURCE	ldo.c
+SOURCE	ldump.c
+SOURCE	lfunc.c
+SOURCE	lgc.c
+SOURCE	llex.c
+SOURCE	lmem.c
+SOURCE	lobject.c
+SOURCE	lopcodes.c
+SOURCE	lparser.c
+SOURCE	lstate.c
+SOURCE	lstring.c
+SOURCE	ltable.c
+SOURCE	ltm.c
+SOURCE	lundump.c
+SOURCE	lvm.c
+SOURCE	lzio.c
+
+USERINCLUDE   .
+
+SYSTEMINCLUDE \Epoc32\include \Epoc32\include\lua \Epoc32\include\libc
+

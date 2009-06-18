@@ -1,0 +1,32 @@
+// CreateStaticDLL.mmp
+//
+// Copyright (c) 2000-2005 Symbian Software Ltd.  All rights reserved.
+
+// using relative paths for sourcepath and user includes
+// exports are unfrozen
+
+TARGET        luastd51.lib
+
+
+TARGETTYPE    LIB
+
+//MACRO	LUA_BUILD_AS_DLL
+MACRO	__STRICT_ANSI__
+
+SOURCEPATH    .
+
+SOURCE	lauxlib.c
+SOURCE	lbaselib.c
+SOURCE	ldblib.c
+SOURCE	liolib.c
+SOURCE	linit.c
+SOURCE	lmathlib.c
+SOURCE	loadlib.c
+SOURCE	loslib.c
+SOURCE	lstrlib.c
+SOURCE	ltablib.c
+
+USERINCLUDE   .
+
+SYSTEMINCLUDE \Epoc32\include \Epoc32\include\libc
+
