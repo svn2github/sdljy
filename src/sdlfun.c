@@ -51,9 +51,10 @@ int InitSDL(void)
     if(r<0)
         g_EnableSound=0;
 
-    r= -1; /*Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096);*/
-    //r=Mix_OpenAudio(22050, AUDIO_S16LSB, 2, 4096 );
+    r = Mix_OpenAudio(MIX_DEFAULT_FREQUENCY, MIX_DEFAULT_FORMAT, 2, 4096);
     
+    //r = Mix_OpenAudio(22050, AUDIO_S16LSB, 2, 4096 );
+    //r= -1; 
     
     if( r < 0 ) {
         JY_Error(
@@ -76,7 +77,7 @@ int ExitSDL(void)
 
     ExitFont();
 
-    /*StopMIDI();
+    StopOGG();
 
     for(i=0;i<WAVNUM;i++){
 		if(WavChunk[i]){
@@ -87,8 +88,6 @@ int ExitSDL(void)
 
 	Mix_CloseAudio();
  
- */
-
     JY_LoadPicture("",0,0);    // 释放可能加载的图片表面
 
     return 0;
@@ -267,15 +266,16 @@ int JY_GetTime()
 }
 
 //播放音乐
-int JY_PlayMIDI(const char *filename)
+int JY_PlayOGG(const char *filename)
 {
+
 	static char currentfile[255]="\0";
 
     if(g_EnableSound==0)
 		return 1;
 
 	if(strlen(filename)==0){  //文件名为空，停止播放
-        StopMIDI();
+        StopOGG();
         strcpy(currentfile,filename);
 		return 0;
 	}
@@ -283,32 +283,34 @@ int JY_PlayMIDI(const char *filename)
 	if(strcmp(currentfile,filename)==0) //与当前播放文件相同，直接返回
 		return 0;
 
-    /*StopMIDI();
+    StopOGG();
 	
 	currentMusic=Mix_LoadMUS(filename);
 
 	if(currentMusic==NULL){
-		JY_Error("Open music file %s failed!",filename);
+		JY_Error("Open music file %s failed!\n%s",filename,Mix_GetError());
 		return 1;
 	}
 
 	Mix_VolumeMusic(g_MusicVolume);
 
 	Mix_PlayMusic(currentMusic, -1);
-*/
+
     strcpy(currentfile,filename);
 
 	return 0;
 }
 
 //停止音效
-int StopMIDI()
+int StopOGG()
 {
-    /*if(currentMusic!=NULL){
+
+	if(currentMusic!=NULL){
 		Mix_HaltMusic();
 		Mix_FreeMusic(currentMusic);
 		currentMusic=NULL;
-	}*/
+	}
+
     return 0;
 }
 
@@ -317,7 +319,7 @@ int StopMIDI()
 int JY_PlayWAV(const char *filename)
 {
 	
-    /*if(g_EnableSound==0)
+    if(g_EnableSound==0)
 		return 1;    
 
 	if(WavChunk[currentWav]){          //释放当前音效
@@ -337,7 +339,7 @@ int JY_PlayWAV(const char *filename)
 	else{
 		JY_Error("Open wav file %s failed!",filename);
 	}
-*/
+
 	return 0;
 	
 }

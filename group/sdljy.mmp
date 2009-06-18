@@ -38,8 +38,12 @@ SYSTEMINCLUDE   \epoc32\include\libc
 // Using main() as entry point
 //STATICLIBRARY   libcrt0.lib
 //STATICLIBRARY sdlmain.lib
-
-
+STATICLIBRARY		sdl_ttf.lib
+STATICLIBRARY		sdl_image.lib
+STATICLIBRARY		libpng_1_2.lib
+STATICLIBRARY		vorbis.lib
+STATICLIBRARY		ogg.lib
+STATICLIBRARY		SDL_Mixer_ogg.lib
 // libc and euser are always needed when using main() entry point
 
 LIBRARY		libc.lib
@@ -50,10 +54,7 @@ LIBRARY		luastd51.lib
 //LIBRARY		ecrt0.lib
 LIBRARY		sdl.lib
 LIBRARY		sdlexe.lib
-LIBRARY		sdl_ttf.lib
-LIBRARY		sdl_image.lib
-LIBRARY		libpng-1_2.lib
-//LIBRARY		SDL_Mixer.lib
+
 
 
 LIBRARY		libm.lib
@@ -75,6 +76,7 @@ DEBUGGABLE_UDEBONLY
 
 //MACRO	LUA_BUILD_AS_DLL
 MACRO	__STRICT_ANSI__
-
+MACRO WAV_MUSIC 
+MACRO OGG_MUSIC
 SOURCEPATH ..\src
 SOURCE charset.c jymain.c luafun.c mainmap.c piccache.c sdlfun.c jy_s60.cpp 

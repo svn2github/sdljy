@@ -70,7 +70,7 @@ static const struct luaL_reg jylib [] = {
 
       {"LoadPicture", HAPI_LoadPicture},
 
-      {"PlayMIDI", HAPI_PlayMIDI},
+      {"PlayOGG", HAPI_PlayOGG},
       {"PlayWAV", HAPI_PlayWAV},
       {"PlayMPEG", HAPI_PlayMPEG},
       

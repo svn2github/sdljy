@@ -205,12 +205,12 @@ int HAPI_SetClip(lua_State *pL)
 
 
 
-int HAPI_PlayMIDI(lua_State *pL)
+int HAPI_PlayOGG(lua_State *pL)
 {
  
 	const char *filename=lua_tostring(pL,1);
 
-    JY_PlayMIDI(filename);
+    JY_PlayOGG(filename);
 
 	return 0;
 }
@@ -431,7 +431,7 @@ int HAPI_GetD(lua_State *pL)
     int i=(int)lua_tonumber(pL,3);
  
 
-	int v;
+    Sint16 v;
 	v=JY_GetD(Sceneid,id,i);
 
 	lua_pushnumber(pL,v);
