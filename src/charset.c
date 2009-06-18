@@ -281,16 +281,19 @@ int LoadMB(const char* mbfile)
 				fread(&gbkf,2,1,fp);
 				fread(&big5,2,1,fp);
 				fread(&unicode,2,1,fp);
+//				gbkf = swap16(gbkf);
+//				big5 = swap16(big5);
+//				unicode = swap16(unicode);
                 
 				if(gbk!=gbkf){
  				    gbkj_f[i-128][j]=gbkf;
-				    gbkf_j[(gbkf&0xff)-128][(gbkf&0xff00)>>8]=gbk;
+				    gbkf_j[(gbkf & 0xff)-128][(gbkf & 0xff00)>>8]=gbk;
 				}
 				gbk_unicode[i-128][j]=unicode;
 
 				if(gbkj_f[i-128][j]==0){   //Ã»ÓÐ¼òÌå
 				    gbk_big5[i-128][j]=big5;
-				    big5_gbk[(big5 & 0xff)-128][( big5 &0xff00)>>8]=gbk;
+				    big5_gbk[(big5 & 0xff) & 0x7F][( big5 & 0xff00)>>8]=gbk;
 				}
             }
 		}

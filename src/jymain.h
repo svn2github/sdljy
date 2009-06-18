@@ -23,6 +23,8 @@ extern "C" {
 // 公共部分
 
 //安全free指针的宏
+#define swap16( x )  ( ((x & 0x00ffU) << 8) |  ((x & 0xff00U) >> 8) )
+
 
 #define SafeFree(p) do {if(p) {free(p);p=NULL;}} while(0)
 

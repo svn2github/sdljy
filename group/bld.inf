@@ -1,12 +1,16 @@
 /*
 ============================================================================
- Name        : bld.inf
- Author      : netwan@163.com
+ Name		: bld.inf
+ Author	  : adouming
  Copyright   : Your copyright notice
  Description : This file provides the information required for building the
-               whole of a sdljy2.
+				whole of a sdljy.
 ============================================================================
 */
+
+
+PRJ_PLATFORMS
+WINSCW ARMV5 GCCE
 
 PRJ_MMPFILES
 sdljy.mmp
