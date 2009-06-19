@@ -5,10 +5,10 @@ PRJ_EXPORTS
 
 PRJ_MMPFILES
 
-\sdl_image\epoc\SDL_image.mmp
+sdl_image.mmp
 
 PRJ_TESTMMPFILES
 
-\sdl_image\Epoc\showimage.mmp
+//showimage.mmp
 
 

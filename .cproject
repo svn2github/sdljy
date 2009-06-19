@@ -4,8 +4,8 @@
 <cproject>
 <storageModule buildFromInf="true" buildingTestComps="true" cleanLevel="0" concurrentBuildJobs="4" defaultMMPChangedAction="0" infBuildComponents="" infFileLocation="group\bld.inf" macrosFile="" makeEngineToUse="make" manageDependencies="true" moduleId="com.nokia.carbide.cdt.builder.carbideCPPBuilder" overrideMakeEngine="false" overrideWorkspaceSettings="false" promptForMMPChangedAction="false" useConcurrentBuilding="true" useDebugMode="false" useIncrementalBuilder="false" useKeepGoing="false" useMMPMacros="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.settings">
-<cconfiguration id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -26,13 +26,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;OGG_MUSIC;WAV_MUSIC;__CW32__;__WINSCW__;_UNICODE;__S60_3X__;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__S60_32__;__WINS__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245354661375" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;OGG_MUSIC;WAV_MUSIC;__CW32__;__WINSCW__;_UNICODE;__S60_3X__;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__S60_32__;__WINS__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245408159484" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 <storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
-<cconfiguration id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -53,13 +53,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245354661375" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245408159500" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Phone Release (ARMV5) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (ARMV5) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (ARMV5) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -81,13 +81,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;NDEBUG;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245354661390" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;NDEBUG;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245408159500" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Phone Debug (GCCE) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (GCCE) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (GCCE) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -107,13 +107,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__GCCE__;__MARM__;_UNICODE;__S60_3X__;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245354661406" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__GCCE__;__MARM__;_UNICODE;__S60_3X__;__STRICT_ANSI__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245408159515" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Phone Release (GCCE) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (GCCE) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (GCCE) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -133,10 +133,10 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__GCCE__;NDEBUG;__MARM__;_UNICODE;__S60_3X__;__STRICT_ANSI__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245354661421" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\group\sdljy.mmp;Z:\sdljy\group\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__EXE__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__GCCE__;NDEBUG;__MARM__;_UNICODE;__S60_3X__;__STRICT_ANSI__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="/sdljy/group;/sdljy/src;" timestampCache="1245408159546" useMmpMacrosCache="true"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
 </storageModule>
 </cproject>

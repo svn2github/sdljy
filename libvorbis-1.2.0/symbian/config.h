@@ -50,5 +50,5 @@
 #pragma warning(disable: 4761) /* integral size mismatch in argument: conversion supplied */
 
 #endif
-
+//#define HAVE_ALLOCA_H
 #endif /* ! CONFIG_H */

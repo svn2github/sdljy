@@ -275,7 +275,7 @@ function newCallEvent(flag)
 		eventnum=GetD(JY.SubScene,JY.CurrentD,4);
 	end
 	lib.Debug(string.format("newCallEvent(flag:%d,eventnum:%d)",flag,eventnum));
-    if eventnum>0 then           --只有大于或等于0时才调用lua文件。
+    if eventnum>=0 then           --只有大于或等于0时才调用lua文件。
 	--按照给定格式生成要调用的D*处理文件名。然后加载运行
 		local eventfilename=string.format(CONFIG.NewEventPath .. "scene_%d_event_%d.lua",JY.SubScene,JY.CurrentD);
 		dofile(eventfilename);

@@ -32,4 +32,4 @@ MACRO MOD_MUSIC
 #endif
 // *** General sources
 
-//USERINCLUDE     ..\tremor
+USERINCLUDE     ..\tremor

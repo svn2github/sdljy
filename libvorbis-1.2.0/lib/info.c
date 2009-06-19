@@ -72,7 +72,7 @@ void vorbis_comment_add(vorbis_comment *vc,char *comment){
 }
 
 void vorbis_comment_add_tag(vorbis_comment *vc, char *tag, char *contents){
-  char *comment=alloca(strlen(tag)+strlen(contents)+2); /* +2 for = and \0 */
+  char *comment=(char *)alloca(strlen(tag)+strlen(contents)+2); /* +2 for = and \0 */
   strcpy(comment, tag);
   strcat(comment, "=");
   strcat(comment, contents);
@@ -95,7 +95,7 @@ char *vorbis_comment_query(vorbis_comment *vc, char *tag, int count){
   long i;
   int found = 0;
   int taglen = strlen(tag)+1; /* +1 for the = we append */
-  char *fulltag = alloca(taglen+ 1);
+  char *fulltag = (char *)alloca(taglen+ 1);
 
   strcpy(fulltag, tag);
   strcat(fulltag, "=");
@@ -115,7 +115,7 @@ char *vorbis_comment_query(vorbis_comment *vc, char *tag, int count){
 int vorbis_comment_query_count(vorbis_comment *vc, char *tag){
   int i,count=0;
   int taglen = strlen(tag)+1; /* +1 for the = we append */
-  char *fulltag = alloca(taglen+1);
+  char *fulltag = (char *)alloca(taglen+1);
   strcpy(fulltag,tag);
   strcat(fulltag, "=");
 

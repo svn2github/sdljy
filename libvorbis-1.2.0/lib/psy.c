@@ -89,7 +89,7 @@ static float ***setup_tone_curves(float curveatt_dB[P_BANDS],float binHz,int n,
   float ath[EHMER_MAX];
   float workc[P_BANDS][P_LEVELS][EHMER_MAX];
   float athc[P_LEVELS][EHMER_MAX];
-  float *brute_buffer=alloca(n*sizeof(*brute_buffer));
+  float *brute_buffer=(float *)alloca(n*sizeof(*brute_buffer));
 
   float ***ret=_ogg_malloc(sizeof(*ret)*P_BANDS);
 
@@ -445,8 +445,8 @@ static void seed_loop(vorbis_look_psy *p,
 }
 
 static void seed_chase(float *seeds, int linesper, long n){
-  long  *posstack=alloca(n*sizeof(*posstack));
-  float *ampstack=alloca(n*sizeof(*ampstack));
+  long  *posstack=(long*)alloca(n*sizeof(*posstack));
+  float *ampstack=(float*)alloca(n*sizeof(*ampstack));
   long   stack=0;
   long   pos=0;
   long   i;
@@ -543,11 +543,11 @@ static void bark_noise_hybridmp(int n,const long *b,
                                 const float offset,
                                 const int fixed){
   
-  float *N=alloca(n*sizeof(*N));
-  float *X=alloca(n*sizeof(*N));
-  float *XX=alloca(n*sizeof(*N));
-  float *Y=alloca(n*sizeof(*N));
-  float *XY=alloca(n*sizeof(*N));
+  float *N=(float*)alloca(n*sizeof(*N));
+  float *X=(float*)alloca(n*sizeof(*N));
+  float *XX=(float*)alloca(n*sizeof(*N));
+  float *Y=(float*)alloca(n*sizeof(*N));
+  float *XY=(float*)alloca(n*sizeof(*N));
 
   float tN, tX, tXX, tY, tXY;
   int i;
@@ -783,7 +783,7 @@ void _vp_noisemask(vorbis_look_psy *p,
 		   float *logmask){
 
   int i,n=p->n;
-  float *work=alloca(n*sizeof(*work));
+  float *work=(float*)alloca(n*sizeof(*work));
 
   bark_noise_hybridmp(n,p->bark,logmdct,logmask,
 		      140.,-1);
@@ -834,7 +834,7 @@ void _vp_tonemask(vorbis_look_psy *p,
 
   int i,n=p->n;
 
-  float *seed=alloca(sizeof(*seed)*p->total_octave_lines);
+  float *seed=(float*)alloca(sizeof(*seed)*p->total_octave_lines);
   float att=local_specmax+p->vi->ath_adjatt;
   for(i=0;i<p->total_octave_lines;i++)seed[i]=NEGINF;
   
@@ -1034,7 +1034,7 @@ int **_vp_quantize_couple_sort(vorbis_block *vb,
     int i,j,k,n=p->n;
     int **ret=_vorbis_block_alloc(vb,vi->coupling_steps*sizeof(*ret));
     int partition=p->vi->normal_partition;
-    float **work=alloca(sizeof(*work)*partition);
+    float **work=(float**)alloca(sizeof(*work)*partition);
     
     for(i=0;i<vi->coupling_steps;i++){
       ret[i]=_vorbis_block_alloc(vb,n*sizeof(**ret));
@@ -1055,7 +1055,7 @@ void _vp_noise_normalize_sort(vorbis_look_psy *p,
   int i,j,n=p->n;
   vorbis_info_psy *vi=p->vi;
   int partition=vi->normal_partition;
-  float **work=alloca(sizeof(*work)*partition);
+  float **work=(float**)alloca(sizeof(*work)*partition);
   int start=vi->normal_start;
 
   for(j=start;j<n;j+=partition){

@@ -44,13 +44,14 @@ STATICLIBRARY		libpng_1_2.lib
 STATICLIBRARY		vorbis.lib
 STATICLIBRARY		ogg.lib
 STATICLIBRARY		SDL_Mixer_ogg.lib
+STATICLIBRARY		luacore51.lib
+STATICLIBRARY		luastd51.lib
+
 // libc and euser are always needed when using main() entry point
 
 LIBRARY		libc.lib
 LIBRARY		euser.lib
 LIBRARY		estlib.lib
-LIBRARY		luacore51.lib
-LIBRARY		luastd51.lib
 //LIBRARY		ecrt0.lib
 LIBRARY		sdl.lib
 LIBRARY		sdlexe.lib

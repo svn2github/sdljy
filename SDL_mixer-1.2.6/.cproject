@@ -4,8 +4,8 @@
 <cproject>
 <storageModule buildFromInf="true" buildingTestComps="true" cleanLevel="0" concurrentBuildJobs="4" defaultMMPChangedAction="0" infBuildComponents="" infFileLocation="epoc\BLD.INF" macrosFile="" makeEngineToUse="make" manageDependencies="true" moduleId="com.nokia.carbide.cdt.builder.carbideCPPBuilder" overrideMakeEngine="false" overrideWorkspaceSettings="false" promptForMMPChangedAction="false" useConcurrentBuilding="true" useDebugMode="false" useIncrementalBuilder="false" useKeepGoing="false" useMMPMacros="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.settings">
-<cconfiguration id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -26,13 +26,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/SDL_mixer-1.2.6[LOCAL];Z:/SDL_mixer-1.2.6/timidity[LOCAL];Z:/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;OGG_MUSIC;WAV_MUSIC;__CW32__;__WINSCW__;_UNICODE;__S60_3X__;_DEBUG;__SERIES60_3X__;__LIB__;__S60_32__;__WINS__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245348939390" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/sdljy/SDL_mixer-1.2.6[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/timidity[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/tremor[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;OGG_MUSIC;WAV_MUSIC;__CW32__;__WINSCW__;_UNICODE;__S60_3X__;_DEBUG;__SERIES60_3X__;__LIB__;__S60_32__;__WINS__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245409173890" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -53,13 +53,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/SDL_mixer-1.2.6[LOCAL];Z:/SDL_mixer-1.2.6/timidity[LOCAL];Z:/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245348939406" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/sdljy/SDL_mixer-1.2.6[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/timidity[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/tremor[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245409173890" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Phone Release (ARMV5) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (ARMV5) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (ARMV5) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -80,13 +80,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/SDL_mixer-1.2.6[LOCAL];Z:/SDL_mixer-1.2.6/timidity[LOCAL];Z:/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;NDEBUG;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245348939421" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/sdljy/SDL_mixer-1.2.6[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/timidity[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/tremor[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;NDEBUG;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245409173921" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Phone Debug (GCCE) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (GCCE) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (GCCE) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -106,13 +106,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/SDL_mixer-1.2.6[LOCAL];Z:/SDL_mixer-1.2.6/timidity[LOCAL];Z:/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__GCCE__;__MARM__;_UNICODE;__S60_3X__;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245348939437" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/sdljy/SDL_mixer-1.2.6[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/timidity[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/tremor[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__GCCE__;__MARM__;_UNICODE;__S60_3X__;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245409173937" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]">
+<cconfiguration id="Phone Release (GCCE) [S60_3rd_FP2_Beta]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (GCCE) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (GCCE) [S60_3rd_FP2_Beta]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -132,10 +132,10 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/SDL_mixer-1.2.6[LOCAL];Z:/SDL_mixer-1.2.6/timidity[LOCAL];Z:/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__GCCE__;NDEBUG;__MARM__;_UNICODE;__S60_3X__;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245348939453" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_mixer-1.2.6\epoc\BLD.INF;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer_ogg.mmp;Z:\sdljy\SDL_mixer-1.2.6\epoc\sdl_mixer.mmp;" includesCache="Z:/sdljy/SDL_mixer-1.2.6[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/timidity[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/mikmod[LOCAL];Z:/sdljy/SDL_mixer-1.2.6/tremor[LOCAL];Z:/epoc32/include;Z:/epoc32/include/SDL;Z:/epoc32/include/libc;Z:/epoc32/include/stdapis;Z:/epoc32/include/ogg;Z:/epoc32/include/vorbis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;OGG_MUSIC;__EABI__;WAV_MUSIC;__GCCE__;NDEBUG;__MARM__;_UNICODE;__S60_3X__;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;MOD_MUSIC;" moduleId="configDataCache" sourcesCache="" timestampCache="1245409173953" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
-<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 <storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
 </storageModule>
 </cproject>

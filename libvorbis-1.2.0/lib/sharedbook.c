@@ -343,7 +343,7 @@ int vorbis_book_init_decode(codebook *c,const static_codebook *s){
 
     /* perform sort */
     ogg_uint32_t *codes=_make_words(s->lengthlist,s->entries,c->used_entries);
-    ogg_uint32_t **codep=alloca(sizeof(*codep)*n);
+    ogg_uint32_t **codep=(ogg_uint32_t**)alloca(sizeof(*codep)*n);
     
     if(codes==NULL)goto err_out;
     
@@ -354,7 +354,7 @@ int vorbis_book_init_decode(codebook *c,const static_codebook *s){
     
     qsort(codep,n,sizeof(*codep),sort32a);
     
-    sortindex=alloca(n*sizeof(*sortindex));
+    sortindex=(int*)alloca(n*sizeof(*sortindex));
     c->codelist=_ogg_malloc(n*sizeof(*c->codelist));
     /* the index is a reverse index */
     for(i=0;i<n;i++){

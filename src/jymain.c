@@ -120,24 +120,32 @@ static const struct luaL_reg bytelib [] = {
 // 主程序
 int main(int argc, char *argv[])
 {
-    
+    JY_Debug("main() start;");
 	remove(_("debug.txt"));
     freopen(_("error.txt"),"wt",stderr);    //设置stderr输出到文件
 
+    JY_Debug("Lua_Config();");
     Lua_Config();        //读取lua配置文件，设置参数
-
+    
+    JY_Debug("InitSDL();");
     InitSDL();           //初始化SDL
-
+    
+    JY_Debug("InitGame();");
 	InitGame();          //初始化游戏数据
-
+	
+	JY_Debug("LoadMB();");
 	LoadMB("hzmb.dat");  //加载汉字字符集转换码表
-
+	
+	JY_Debug("Lua_Main();");
     Lua_Main();          //调用Lua主函数，开始游戏
- 
+    
+    JY_Debug("ExitGame();");
 	ExitGame();       //释放游戏数据
- 
+	
+	JY_Debug("ExitSDL();");
     ExitSDL();        //退出SDL
- 
+    
+    JY_Debug("main() end;");
     return 0;
 }
 
@@ -290,7 +298,7 @@ int JY_Debug(const char * fmt,...)
 	fp=fopen(_("debug.txt"),"a+t");
 	time(&t);
     newtime=localtime(&t);
-	fprintf(fp,"%02d:%02d:%02d %s\n",newtime->tm_hour,newtime->tm_min,newtime->tm_sec,string);
+	fprintf(fp,"%02d:%02d:%02d %s\r\n",newtime->tm_hour,newtime->tm_min,newtime->tm_sec,string);
  	fclose(fp);
 	return 0;
 }
