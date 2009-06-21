@@ -357,6 +357,14 @@ int JY_GetKey()
             break;
         case SDL_MOUSEMOTION:
             break;
+        case SDL_QUIT:
+			//
+			// clicked on the close button of the window. Quit immediately.
+			//
+			ExitGame(); 
+			ExitSDL();
+			exit(0);
+			break;
         default: 
             break;
         }

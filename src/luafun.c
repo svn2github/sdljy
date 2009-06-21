@@ -425,14 +425,14 @@ int HAPI_SetS(lua_State *pL)
  
 int HAPI_GetD(lua_State *pL)
 {
-
+	Sint16 v = -1;
     int Sceneid=(int)lua_tonumber(pL,1);
     int id=(Sint16)lua_tonumber(pL,2);
     int i=(int)lua_tonumber(pL,3);
  
 
-    Sint16 v;
-	v=JY_GetD(Sceneid,id,i);
+    v=JY_GetD(Sceneid,id,i);
+    
 
 	lua_pushnumber(pL,v);
 	return 1;

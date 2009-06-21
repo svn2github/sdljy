@@ -272,9 +272,12 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
 	        if(tmpsurf==NULL){
 		        JY_Error("LoadPic: cannot create SDL_Surface tmpsurf!\n");
 	        }
+	        else
+	        {
             *xoffset=tmpsurf->w/2;
             *yoffset=tmpsurf->h/2;
             surf=tmpsurf;
+	        }
  		}
         SDL_FreeRW(fp_SDL);
     }
