@@ -18,6 +18,7 @@
 
 #include "lauxlib.h"
 #include "lualib.h"
+#include <unistd.h>
 
 
 static int os_pushresult (lua_State *L, int i, const char *filename) {
@@ -72,7 +73,10 @@ static int os_getenv (lua_State *L) {
 
 
 static int os_clock (lua_State *L) {
-  lua_pushnumber(L, ((lua_Number)clock())/(lua_Number)CLOCKS_PER_SEC);
+  static uint32_t ticks_per_sec;
+  ticks_per_sec = sysconf (_SC_CLK_TCK);
+
+  lua_pushnumber(L, ((lua_Number)clock())/(lua_Number)ticks_per_sec);
   return 1;
 }
 

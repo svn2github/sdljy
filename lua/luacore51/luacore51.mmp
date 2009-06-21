@@ -39,5 +39,7 @@ SOURCE	lzio.c
 
 USERINCLUDE   .
 
-SYSTEMINCLUDE \Epoc32\include \Epoc32\include\lua \Epoc32\include\libc
-
+SYSTEMINCLUDE \Epoc32\include 
+SYSTEMINCLUDE \Epoc32\include\lua
+//SYSTEMINCLUDE \Epoc32\include\libc
+SYSTEMINCLUDE \Epoc32\include\stdapis

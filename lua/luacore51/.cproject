@@ -4,8 +4,8 @@
 <cproject>
 <storageModule buildFromInf="true" buildingTestComps="true" cleanLevel="0" concurrentBuildJobs="4" defaultMMPChangedAction="0" infBuildComponents="" infFileLocation="Bld.inf" macrosFile="" makeEngineToUse="make" manageDependencies="true" moduleId="com.nokia.carbide.cdt.builder.carbideCPPBuilder" overrideMakeEngine="false" overrideWorkspaceSettings="false" promptForMMPChangedAction="false" useConcurrentBuilding="true" useDebugMode="false" useIncrementalBuilder="false" useKeepGoing="false" useMMPMacros="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.settings">
-<cconfiguration id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta]">
+<cconfiguration id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Emulator Debug (WINSCW) [S60_3rd_FP2_Beta_3]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -27,11 +27,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__WINSCW__;__SUPPORT_CPP_EXCEPTIONS__;__SYMBIAN32__;__S60_3X__;_UNICODE;__STRICT_ANSI__;__LIB__;__SERIES60_3X__;_DEBUG;__S60_32__;__WINS__;__CW32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245387207093" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__WINSCW__;__SUPPORT_CPP_EXCEPTIONS__;__SYMBIAN32__;__S60_3X__;_UNICODE;__STRICT_ANSI__;__LIB__;__SERIES60_3X__;_DEBUG;__S60_32__;__WINS__;__CW32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245562908515" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]">
+<cconfiguration id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (ARMV5) [S60_3rd_FP2_Beta_3]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -53,11 +55,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245387207109" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245562908546" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Release (ARMV5) [S60_3rd_FP2_Beta]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (ARMV5) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (ARMV5) [S60_3rd_FP2_Beta]">
+<cconfiguration id="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (ARMV5) [S60_3rd_FP2_Beta_3]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -79,11 +83,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;NDEBUG;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245387207125" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;NDEBUG;__ARMCC__;__MARM__;__S60_3X__;__ARMCC_2_2__;_UNICODE;__STRICT_ANSI__;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245562908562" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Debug (GCCE) [S60_3rd_FP2_Beta]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (GCCE) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (GCCE) [S60_3rd_FP2_Beta]">
+<cconfiguration id="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (GCCE) [S60_3rd_FP2_Beta_3]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -104,11 +110,13 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;__MARM__;_UNICODE;__S60_3X__;__STRICT_ANSI__;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245387207140" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;__MARM__;_UNICODE;__S60_3X__;__STRICT_ANSI__;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245562908562" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
-<cconfiguration id="Phone Release (GCCE) [S60_3rd_FP2_Beta]">
-<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (GCCE) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (GCCE) [S60_3rd_FP2_Beta]">
+<cconfiguration id="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]">
+<storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (GCCE) [S60_3rd_FP2_Beta_3]">
 <externalSettings/>
 <extensions>
 <extension id="org.eclipse.cdt.core.PE" point="org.eclipse.cdt.core.BinaryParser"/>
@@ -129,8 +137,10 @@
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/libc;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;NDEBUG;__MARM__;_UNICODE;__S60_3X__;__STRICT_ANSI__;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245387207156" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\lua\luacore51\Bld.inf;Z:\sdljy\lua\luacore51\luacore51.mmp;" includesCache="Z:/sdljy/lua/luacore51[LOCAL];Z:/epoc32/include;Z:/epoc32/include/lua;Z:/epoc32/include/stdapis;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;NDEBUG;__MARM__;_UNICODE;__S60_3X__;__STRICT_ANSI__;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245562908578" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
 </cconfiguration>
 </storageModule>
 </cproject>

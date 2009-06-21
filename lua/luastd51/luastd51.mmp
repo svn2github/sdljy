@@ -28,5 +28,6 @@ SOURCE	ltablib.c
 
 USERINCLUDE   .
 
-SYSTEMINCLUDE \Epoc32\include \Epoc32\include\libc
-
+SYSTEMINCLUDE \Epoc32\include 
+//SYSTEMINCLUDE \Epoc32\include\libc
+SYSTEMINCLUDE \Epoc32\include\stdapis
