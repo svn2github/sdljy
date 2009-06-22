@@ -395,7 +395,7 @@ int HAPI_SaveSMap(lua_State *pL)
 int HAPI_GetS(lua_State *pL)
 {
 
-    int id=(int)lua_tonumber(pL,1);
+    int id=(Sint16)lua_tonumber(pL,1);
     int x=(int)lua_tonumber(pL,2);
     int y=(int)lua_tonumber(pL,3);
     int level=(int)lua_tonumber(pL,4);
@@ -426,7 +426,7 @@ int HAPI_SetS(lua_State *pL)
 int HAPI_GetD(lua_State *pL)
 {
 	Sint16 v = -1;
-    int Sceneid=(int)lua_tonumber(pL,1);
+    int Sceneid=(Sint16)lua_tonumber(pL,1);
     int id=(Sint16)lua_tonumber(pL,2);
     int i=(int)lua_tonumber(pL,3);
  

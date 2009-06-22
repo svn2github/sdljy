@@ -22,6 +22,7 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
@@ -47,6 +48,7 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
@@ -72,6 +74,7 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
@@ -96,6 +99,7 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
@@ -120,6 +124,7 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
