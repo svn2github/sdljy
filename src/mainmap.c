@@ -517,7 +517,7 @@ int JY_GetS(int id,int x,int y,int level)
     else{
         s=S_XMax*S_YMax*(id*6+level)+y*S_XMax+x;
     }
- 	return *(Uint16 *)(pS+s);
+ 	return (Sint16)*((Uint16 *)(pS+s));
 
 }
 

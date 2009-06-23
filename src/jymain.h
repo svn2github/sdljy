@@ -238,6 +238,8 @@ int StopOGG();
 
 int JY_PlayWAV(const char *filename);
 
+void JY_GetKey2();
+
 int JY_GetKey();
 
 

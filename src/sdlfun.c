@@ -89,7 +89,8 @@ int ExitSDL(void)
 	Mix_CloseAudio();
  
     JY_LoadPicture("",0,0);    // 释放可能加载的图片表面
-
+    
+    //SDL_Quit();
     return 0;
 }
 
@@ -343,7 +344,136 @@ int JY_PlayWAV(const char *filename)
 	return 0;
 	
 }
+//抓屏
+void
+JY_SaveScreenshot(
+   void
+)
+/*++
+  Purpose:
 
+    Save the screenshot of current screen to a BMP file.
+
+  Parameters:
+
+    None.
+
+  Return value:
+
+    None.
+
+--*/
+{
+   int      iNumBMP = 0;
+   FILE    *fp;
+
+   //
+   // Find a usable BMP filename.
+   //
+   for (iNumBMP = 0; iNumBMP <= 9999; iNumBMP++)
+   {
+      fp = fopen(va("%sscrn%.4d.bmp", JY_PREFIX, iNumBMP), "rb");
+      if (fp == NULL)
+      {
+         break;
+      }
+      fclose(fp);
+   }
+
+   if (iNumBMP > 9999)
+   {
+      return;
+   }
+
+   //
+   // Save the screenshot.
+   //
+   SDL_SaveBMP(g_Surface, va("%sscrn%.4d.bmp", JY_PREFIX, iNumBMP));
+}
+void
+JY_AdjustVolume(
+   int iDirectory
+)
+/*++
+  Purpose:
+
+    SDL sound volume adjust function.
+
+  Parameters:
+
+    [IN]  iDirectory - value, Increase (>0) or decrease (<=0) 3% volume.
+
+  Return value:
+
+    None.
+
+--*/
+{
+   if (iDirectory > 0)
+   {
+      if (g_MusicVolume <= 128)
+      {
+		  g_MusicVolume += 128 * 0.03;
+      }
+      else
+      {
+		  g_MusicVolume = 128;
+      }
+   }
+   else
+   {
+      if (g_MusicVolume > 0)
+      {
+		  g_MusicVolume -= 128 * 0.03;
+      }
+      else
+      {
+		  g_MusicVolume = 0;
+      }
+   }
+   g_SoundVolume = g_MusicVolume;
+   Mix_VolumeMusic(g_MusicVolume);
+}
+//抓强制退出，音量修改等事件
+void JY_GetKey2()
+{
+	SDL_Event event;
+	SDL_PollEvent(&event);   
+	switch(event.type){
+	case SDL_KEYDOWN:
+		SDL_PushEvent(&event); //thow to process JY_Getkey
+		break;
+	case SDL_KEYUP:
+		switch (event.key.keysym.sym)
+		{
+		case SDLK_HASH: //# for mobile device
+		case SDLK_p:
+			JY_SaveScreenshot();
+			break;
+		case SDLK_1:
+			JY_AdjustVolume(0);
+		 break;
+		 case SDLK_3:
+			JY_AdjustVolume(1);
+		}
+		break;
+	case SDL_MOUSEMOTION:
+		break;
+	case SDL_QUIT:
+		//
+		// clicked on the close button of the window. Quit immediately.
+		//
+		ExitGame(); 
+		ExitSDL();
+		exit(0);
+		break;
+	
+	default: 
+		break;
+	}
+	
+
+}
 
 // 得到前面按下的字符
 int JY_GetKey()
@@ -352,19 +482,19 @@ int JY_GetKey()
 	int keyPress=-1;
     while(SDL_PollEvent(&event)){   
 		switch(event.type){   
-        case SDL_KEYDOWN:  
+		case SDL_KEYDOWN:
             keyPress=event.key.keysym.sym;
             break;
         case SDL_MOUSEMOTION:
             break;
-        case SDL_QUIT:
-			//
-			// clicked on the close button of the window. Quit immediately.
-			//
-			ExitGame(); 
-			ExitSDL();
-			exit(0);
-			break;
+    	case SDL_QUIT:
+    		//
+    		// clicked on the close button of the window. Quit immediately.
+    		//
+    		ExitGame(); 
+    		ExitSDL();
+    		exit(0);
+    		break;
         default: 
             break;
         }
