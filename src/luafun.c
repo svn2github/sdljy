@@ -141,7 +141,6 @@ int HAPI_Delay(lua_State *pL)
 {
     int x=(int)lua_tonumber(pL,1);
     JY_Delay(x);
-    JY_GetKey2();
 	return 0;
 }
 

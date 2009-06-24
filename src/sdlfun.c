@@ -24,6 +24,160 @@ extern int g_EnableSound;
 extern int g_MusicVolume;
 extern int g_SoundVolume;
 
+//抓屏
+void
+JY_SaveScreenshot(
+   void
+)
+/*++
+  Purpose:
+
+    Save the screenshot of current screen to a BMP file.
+
+  Parameters:
+
+    None.
+
+  Return value:
+
+    None.
+
+--*/
+{
+   int      iNumBMP = 0;
+   FILE    *fp;
+
+   //
+   // Find a usable BMP filename.
+   //
+   for (iNumBMP = 0; iNumBMP <= 9999; iNumBMP++)
+   {
+      fp = fopen(va("%sscrn%.4d.bmp", JY_PREFIX, iNumBMP), "rb");
+      if (fp == NULL)
+      {
+         break;
+      }
+      fclose(fp);
+   }
+
+   if (iNumBMP > 9999)
+   {
+      return;
+   }
+
+   //
+   // Save the screenshot.
+   //
+   SDL_SaveBMP(g_Surface, va("%sscrn%.4d.bmp", JY_PREFIX, iNumBMP));
+}
+void
+JY_AdjustVolume(
+   int iDirectory
+)
+/*++
+  Purpose:
+
+    SDL sound volume adjust function.
+
+  Parameters:
+
+    [IN]  iDirectory - value, Increase (>0) or decrease (<=0) 3% volume.
+
+  Return value:
+
+    None.
+
+--*/
+{
+   if (iDirectory > 0)
+   {
+      if (g_MusicVolume <= 128)
+      {
+		  g_MusicVolume += 128 * 0.03;
+      }
+      else
+      {
+		  g_MusicVolume = 128;
+      }
+   }
+   else
+   {
+      if (g_MusicVolume > 0)
+      {
+		  g_MusicVolume -= 128 * 0.03;
+      }
+      else
+      {
+		  g_MusicVolume = 0;
+      }
+   }
+   g_SoundVolume = g_MusicVolume;
+   Mix_VolumeMusic(g_MusicVolume);
+}
+
+static int SDLCALL
+JY_EventFilter(
+   const SDL_Event       *lpEvent
+)
+/*++
+  Purpose:
+
+    SDL event filter function. A filter to process all events.
+
+  Parameters:
+
+    [IN]  lpEvent - pointer to the event.
+
+  Return value:
+
+    1 = the event will be added to the internal queue.
+    0 = the event will be dropped from the queue.
+
+--*/
+{
+   switch (lpEvent->type)
+   {
+   case SDL_VIDEORESIZE:
+      //
+      // resized the window
+      //
+      //VIDEO_Resize(lpEvent->resize.w, lpEvent->resize.h);
+      break;
+   case SDL_KEYUP:
+   		switch (lpEvent->key.keysym.sym)
+   		{
+   		case SDLK_HASH: //# for mobile device
+   		case SDLK_p:
+   			JY_SaveScreenshot();
+   			break;
+   		case SDLK_1:
+   			JY_AdjustVolume(0);
+   		 break;
+   		case SDLK_3:
+   			JY_AdjustVolume(1);
+   		}
+   		break;
+   	case SDL_MOUSEMOTION:
+   		break;
+   	case SDL_QUIT:
+   		//
+   		// clicked on the close button of the window. Quit immediately.
+   		//
+   		ExitGame(); 
+   		ExitSDL();
+   		exit(0);
+   		break;
+   }
+
+   //PAL_KeyboardEventFilter(lpEvent);
+   //PAL_MouseEventFilter(lpEvent);
+   //PAL_JoystickEventFilter(lpEvent);
+
+   //
+   // All events are handled here; don't put anything to the internal queue
+   //
+   return 1;
+}
 
 
 // 初始化SDL
@@ -66,7 +220,8 @@ int InitSDL(void)
 
     for(i=0;i<WAVNUM;i++)
          WavChunk[i]=NULL;
-
+    
+    SDL_SetEventFilter(JY_EventFilter);
     return 0;
 }
 
@@ -344,136 +499,7 @@ int JY_PlayWAV(const char *filename)
 	return 0;
 	
 }
-//抓屏
-void
-JY_SaveScreenshot(
-   void
-)
-/*++
-  Purpose:
 
-    Save the screenshot of current screen to a BMP file.
-
-  Parameters:
-
-    None.
-
-  Return value:
-
-    None.
-
---*/
-{
-   int      iNumBMP = 0;
-   FILE    *fp;
-
-   //
-   // Find a usable BMP filename.
-   //
-   for (iNumBMP = 0; iNumBMP <= 9999; iNumBMP++)
-   {
-      fp = fopen(va("%sscrn%.4d.bmp", JY_PREFIX, iNumBMP), "rb");
-      if (fp == NULL)
-      {
-         break;
-      }
-      fclose(fp);
-   }
-
-   if (iNumBMP > 9999)
-   {
-      return;
-   }
-
-   //
-   // Save the screenshot.
-   //
-   SDL_SaveBMP(g_Surface, va("%sscrn%.4d.bmp", JY_PREFIX, iNumBMP));
-}
-void
-JY_AdjustVolume(
-   int iDirectory
-)
-/*++
-  Purpose:
-
-    SDL sound volume adjust function.
-
-  Parameters:
-
-    [IN]  iDirectory - value, Increase (>0) or decrease (<=0) 3% volume.
-
-  Return value:
-
-    None.
-
---*/
-{
-   if (iDirectory > 0)
-   {
-      if (g_MusicVolume <= 128)
-      {
-		  g_MusicVolume += 128 * 0.03;
-      }
-      else
-      {
-		  g_MusicVolume = 128;
-      }
-   }
-   else
-   {
-      if (g_MusicVolume > 0)
-      {
-		  g_MusicVolume -= 128 * 0.03;
-      }
-      else
-      {
-		  g_MusicVolume = 0;
-      }
-   }
-   g_SoundVolume = g_MusicVolume;
-   Mix_VolumeMusic(g_MusicVolume);
-}
-//抓强制退出，音量修改等事件
-void JY_GetKey2()
-{
-	SDL_Event event;
-	SDL_PollEvent(&event);   
-	switch(event.type){
-	case SDL_KEYDOWN:
-		SDL_PushEvent(&event); //thow to process JY_Getkey
-		break;
-	case SDL_KEYUP:
-		switch (event.key.keysym.sym)
-		{
-		case SDLK_HASH: //# for mobile device
-		case SDLK_p:
-			JY_SaveScreenshot();
-			break;
-		case SDLK_1:
-			JY_AdjustVolume(0);
-		 break;
-		 case SDLK_3:
-			JY_AdjustVolume(1);
-		}
-		break;
-	case SDL_MOUSEMOTION:
-		break;
-	case SDL_QUIT:
-		//
-		// clicked on the close button of the window. Quit immediately.
-		//
-		ExitGame(); 
-		ExitSDL();
-		exit(0);
-		break;
-	
-	default: 
-		break;
-	}
-	
-
-}
 
 // 得到前面按下的字符
 int JY_GetKey()
