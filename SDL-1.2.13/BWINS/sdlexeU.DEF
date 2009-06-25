@@ -1,3 +1,0 @@
-EXPORTS
-	?SetMain@SDLEnv@@SAHABVTMainFunc@@HPAVMSDLMainObs@@H@Z @ 1 NONAME ; int SDLEnv::SetMain(class TMainFunc const &, int, class MSDLMainObs *, int)
-

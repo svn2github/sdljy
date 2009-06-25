@@ -1,9 +1,0 @@
-TARGET 				sdlmain.lib
-TARGETTYPE 		lib
-
-SOURCEPATH 		src 
-SOURCE			sdllib.cpp
-
-SYSTEMINCLUDE   \epoc32\include .\inc\internal
- 
-
