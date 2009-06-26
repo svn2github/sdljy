@@ -216,7 +216,7 @@ int JY_DrawStr(int x, int y, const char *str,int color,int size,const char *font
 	c.g=(color & 0xff00)>>8;
 	c.b=(color & 0xff);
  
-    tmp=(unsigned char*)malloc(2*strlen(str)+1);  //分配两倍原字符串大小的内存，避免转换到unicode时溢出
+    tmp=(unsigned char*)malloc(2*strlen(str)+2);  //分配两倍原字符串大小的内存，避免转换到unicode时溢出
 
     if(charset==0){     //GBK
         JY_CharSet(str,
