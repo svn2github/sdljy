@@ -260,7 +260,7 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
 	// 处理一些特殊情况，按照修改器中的代码
 	if(id1<0)
 		datalong=0;
- 
+	
 	if(id2>pic_file[fileid].filelength)
 		id2=pic_file[fileid].filelength;
 
