@@ -19,7 +19,6 @@ function IncludeFile()              --µ¼ÈëÆäËûÄ£¿é
     require("old_talk");
 	require("jyconst");
     require("jymodify");
-	lib.Debug("IncludeFile done!"); 
 end
 
 
@@ -66,7 +65,7 @@ function SetGlobal()   --ÉèÖÃÓÎÏ·ÄÚ²¿Ê¹ÓÃµÄÈ«³Ì±äÁ¿
 
    JY.MmapMusic=-1;         --ÇĞ»»´óµØÍ¼ÒôÀÖ£¬·µ»ØÖ÷µØÍ¼Ê±£¬Èç¹ûÉèÖÃ£¬Ôò²¥·Å´ËÒôÀÖ
 
-   JY.CurrentOGG=-1;       --µ±Ç°²¥·ÅµÄÒôÀÖid£¬ÓÃÀ´ÔÚ¹Ø±ÕÒôÀÖÊ±±£´æÒôÀÖid¡£
+   JY.CurrentMIDI=-1;       --µ±Ç°²¥·ÅµÄÒôÀÖid£¬ÓÃÀ´ÔÚ¹Ø±ÕÒôÀÖÊ±±£´æÒôÀÖid¡£
    JY.EnableMusic=1;        --ÊÇ·ñ²¥·ÅÒôÀÖ 1 ²¥·Å£¬0 ²»²¥·Å
    JY.EnableSound=1;        --ÊÇ·ñ²¥·ÅÒôĞ§ 1 ²¥·Å£¬0 ²»²¥·Å
 
@@ -93,6 +92,12 @@ function JY_Main_sub()        --ÕæÕıµÄÓÎÏ·Ö÷³ÌĞòÈë¿Ú
     SetGlobalConst();    --ÉèÖÃÈ«³Ì±äÁ¿CC, ³ÌĞòÊ¹ÓÃµÄ³£Á¿
     SetGlobal();         --ÉèÖÃÈ«³Ì±äÁ¿JY
 
+    GenTalkIdx()
+
+	if lib.PlayOGG ~=nil then
+	    lib.PlayMIDI=lib.PlayOGG
+	end
+
     SetModify();         --ÉèÖÃ¶Ôº¯ÊıµÄĞŞ¸Ä£¬¶¨ÒåĞÂµÄÎïÆ·£¬ÊÂ¼şµÈµÈ
 
     --½ûÖ¹·ÃÎÊÈ«³Ì±äÁ¿
@@ -117,7 +122,7 @@ function JY_Main_sub()        --ÕæÕıµÄÓÎÏ·Ö÷³ÌĞòÈë¿Ú
 	lib.FillColor(0,0,0,0,0);
 	Cls();
 
-    PlayOGG(16);
+    PlayMIDI(16);
 	lib.ShowSlow(50,0);
 
 	local menu={  {"ÖØĞÂ¿ªÊ¼",nil,1},
@@ -145,7 +150,7 @@ function JY_Main_sub()        --ÕæÕıµÄÓÎÏ·Ö÷³ÌĞòÈë¿Ú
 	    lib.PicLoadFile(CC.HeadPicFile,1);
 	    lib.PicLoadFile(CC.ThingPicFile,2);
 
-        PlayOGG(JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]);
+        PlayMIDI(JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]);
 
         JY.SubSceneX=0;
         JY.SubSceneY=0;
@@ -279,7 +284,7 @@ function Game_Cycle()       --ÓÎÏ·Ö÷Ñ­»·
             lib.PicLoadFile(CC.HeadPicFile,1);
             lib.PicLoadFile(CC.ThingPicFile,2);
 
-            PlayOGG(16);
+            PlayMIDI(16);
             JY.Status=GAME_MMAP;
             lib.DrawMMap(JY.Base["ÈËX"],JY.Base["ÈËY"],GetMyPic());
 			lib.ShowSlow(50,0);
@@ -367,7 +372,7 @@ function Game_MMap()      --Ö÷µØÍ¼
 	    lib.PicLoadFile(CC.ThingPicFile,2);
 
 
-        PlayOGG(JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]);
+        PlayMIDI(JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]);
         JY.MyPic=GetMyPic();
         JY.Base["ÈËX1"]=JY.Scene[JY.SubScene]["Èë¿ÚX"]
         JY.Base["ÈËY1"]=JY.Scene[JY.SubScene]["Èë¿ÚY"]
@@ -1175,9 +1180,9 @@ function Game_SMap()         --³¡¾°´¦ÀíÖ÷º¯Êı
 
 
         if JY.MMAPMusic>=0 then
-            PlayOGG(JY.MMAPMusic);
+            PlayMIDI(JY.MMAPMusic);
         else
-            PlayOGG(JY.Scene[JY.SubScene]["³öÃÅÒôÀÖ"]);
+            PlayMIDI(JY.Scene[JY.SubScene]["³öÃÅÒôÀÖ"]);
         end
 
         JY.SubScene=-1;
@@ -1193,7 +1198,7 @@ function Game_SMap()         --³¡¾°´¦ÀíÖ÷º¯Êı
         if JY.Base["ÈËX1"]==JY.Scene[JY.SubScene]["Ìø×ª¿ÚX1"] and JY.Base["ÈËY1"]==JY.Scene[JY.SubScene]["Ìø×ª¿ÚY1"] then
             JY.SubScene=JY.Scene[JY.SubScene]["Ìø×ª³¡¾°"];
             lib.ShowSlow(50,1);
-            PlayOGG(JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]);
+            PlayMIDI(JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]);
             if JY.Scene[JY.SubScene]["Íâ¾°Èë¿ÚX1"]==0 and JY.Scene[JY.SubScene]["Íâ¾°Èë¿ÚY1"]==0 then
                 JY.Base["ÈËX1"]=JY.Scene[JY.SubScene]["Èë¿ÚX"];            --ĞÂ³¡¾°µÄÍâ¾°Èë¿ÚÎª0£¬±íÊ¾ÕâÊÇÒ»¸öÄÚ²¿³¡¾°
                 JY.Base["ÈËY1"]=JY.Scene[JY.SubScene]["Èë¿ÚY"];
@@ -1328,6 +1333,8 @@ end
 --ÓëÒÔÇ°µÄÊµÏÖÏà±È£¬´ÓÎÄ¼şÖĞ¶ÁÈ¡ºÍ±£´æµ½ÎÄ¼şµÄÊ±¼äÏÔÖø¼Ó¿ì¡£¶øÇÒÄÚ´æÕ¼ÓÃÉÙÁË
 function LoadRecord(id)       -- ¶ÁÈ¡ÓÎÏ·½ø¶È
 
+    local t1=lib.GetTime();
+
     --¶ÁÈ¡R*.idxÎÄ¼ş
     local data=Byte.create(6*4);
     Byte.loadfile(data,CC.R_IDXFilename[id],0,6*4);
@@ -1338,6 +1345,7 @@ function LoadRecord(id)       -- ¶ÁÈ¡ÓÎÏ·½ø¶È
 	    idx[i]=Byte.get32(data,4*(i-1));
 	end
 
+
     --¶ÁÈ¡R*.grpÎÄ¼ş
     JY.Data_Base=Byte.create(idx[1]-idx[0]);              --»ù±¾Êı¾İ
     Byte.loadfile(JY.Data_Base,CC.R_GRPFilename[id],idx[0],idx[1]-idx[0]);
@@ -1345,108 +1353,98 @@ function LoadRecord(id)       -- ¶ÁÈ¡ÓÎÏ·½ø¶È
     --ÉèÖÃ·ÃÎÊ»ù±¾Êı¾İµÄ·½·¨£¬ÕâÑù¾Í¿ÉÒÔÓÃ·ÃÎÊ±íµÄ·½Ê½·ÃÎÊÁË¡£¶ø²»ÓÃ°Ñ¶ş½øÖÆÊı¾İ×ª»¯Îª±í¡£½ÚÔ¼¼ÓÔØÊ±¼äºÍ¿Õ¼ä
 	local meta_t={
 	    __index=function(t,k)
-	        return GetDataFromStruct(JY.Data_Base,CC.Base_S,k);
+	        return GetDataFromStruct(JY.Data_Base,0,CC.Base_S,k);
 		end,
 
 		__newindex=function(t,k,v)
-	        SetDataFromStruct(JY.Data_Base,CC.Base_S,k,v);
+	        SetDataFromStruct(JY.Data_Base,0,CC.Base_S,k,v);
 	 	end
 	}
     setmetatable(JY.Base,meta_t);
 
-    JY.PersonNum=math.floor((idx[2]-idx[1])/CC.PersonSize);   --ÈËÎï
-	JY.Data_Person={};
-	for i=0,JY.PersonNum-1 do
-        JY.Data_Person[i]=Byte.create(CC.PersonSize);
-        Byte.loadfile(JY.Data_Person[i],CC.R_GRPFilename[id],idx[1]+i*CC.PersonSize,CC.PersonSize);
-		JY.Person[i]={};
 
+    JY.PersonNum=math.floor((idx[2]-idx[1])/CC.PersonSize);   --ÈËÎï
+
+	JY.Data_Person=Byte.create(CC.PersonSize*JY.PersonNum);
+	Byte.loadfile(JY.Data_Person,CC.R_GRPFilename[id],idx[1],CC.PersonSize*JY.PersonNum);
+
+	for i=0,JY.PersonNum-1 do
+		JY.Person[i]={};
 		local meta_t={
 			__index=function(t,k)
-				return GetDataFromStruct(JY.Data_Person[i],CC.Person_S,k);
+				return GetDataFromStruct(JY.Data_Person,i*CC.PersonSize,CC.Person_S,k);
 			end,
 
 			__newindex=function(t,k,v)
-				SetDataFromStruct(JY.Data_Person[i],CC.Person_S,k,v);
+				SetDataFromStruct(JY.Data_Person,i*CC.PersonSize,CC.Person_S,k,v);
 			end
 		}
         setmetatable(JY.Person[i],meta_t);
-
 	end
 
     JY.ThingNum=math.floor((idx[3]-idx[2])/CC.ThingSize);     --ÎïÆ·
-
-	JY.Data_Thing={};
+	JY.Data_Thing=Byte.create(CC.ThingSize*JY.ThingNum);
+	Byte.loadfile(JY.Data_Thing,CC.R_GRPFilename[id],idx[2],CC.ThingSize*JY.ThingNum);
 	for i=0,JY.ThingNum-1 do
-	    JY.Data_Thing[i]=Byte.create(CC.ThingSize);
-        Byte.loadfile(JY.Data_Thing[i],CC.R_GRPFilename[id],idx[2]+i*CC.ThingSize,CC.ThingSize);
 		JY.Thing[i]={};
-
 		local meta_t={
 			__index=function(t,k)
-				return GetDataFromStruct(JY.Data_Thing[i],CC.Thing_S,k);
+				return GetDataFromStruct(JY.Data_Thing,i*CC.ThingSize,CC.Thing_S,k);
 			end,
 
 			__newindex=function(t,k,v)
-				SetDataFromStruct(JY.Data_Thing[i],CC.Thing_S,k,v);
+				SetDataFromStruct(JY.Data_Thing,i*CC.ThingSize,CC.Thing_S,k,v);
 			end
 		}
         setmetatable(JY.Thing[i],meta_t);
-
 	end
 
     JY.SceneNum=math.floor((idx[4]-idx[3])/CC.SceneSize);     --³¡¾°
-    JY.Data_Scene={};
+	JY.Data_Scene=Byte.create(CC.SceneSize*JY.SceneNum);
+	Byte.loadfile(JY.Data_Scene,CC.R_GRPFilename[id],idx[3],CC.SceneSize*JY.SceneNum);
 	for i=0,JY.SceneNum-1 do
-	    JY.Data_Scene[i]=Byte.create(CC.SceneSize);
-        Byte.loadfile(JY.Data_Scene[i],CC.R_GRPFilename[id],idx[3]+i*CC.SceneSize,CC.SceneSize);
 		JY.Scene[i]={};
-
 		local meta_t={
 			__index=function(t,k)
-				return GetDataFromStruct(JY.Data_Scene[i],CC.Scene_S,k);
+				return GetDataFromStruct(JY.Data_Scene,i*CC.SceneSize,CC.Scene_S,k);
 			end,
 
 			__newindex=function(t,k,v)
-				SetDataFromStruct(JY.Data_Scene[i],CC.Scene_S,k,v);
+				SetDataFromStruct(JY.Data_Scene,i*CC.SceneSize,CC.Scene_S,k,v);
 			end
 		}
         setmetatable(JY.Scene[i],meta_t);
 	end
 
     JY.WugongNum=math.floor((idx[5]-idx[4])/CC.WugongSize);     --Îä¹¦
-    JY.Data_Wugong={};
+	JY.Data_Wugong=Byte.create(CC.WugongSize*JY.WugongNum);
+	Byte.loadfile(JY.Data_Wugong,CC.R_GRPFilename[id],idx[4],CC.WugongSize*JY.WugongNum);
 	for i=0,JY.WugongNum-1 do
-        JY.Data_Wugong[i]=Byte.create(CC.WugongSize);
-        Byte.loadfile(JY.Data_Wugong[i],CC.R_GRPFilename[id],idx[4]+i*CC.WugongSize,CC.WugongSize);
 		JY.Wugong[i]={};
-
 		local meta_t={
 			__index=function(t,k)
-				return GetDataFromStruct(JY.Data_Wugong[i],CC.Wugong_S,k);
+				return GetDataFromStruct(JY.Data_Wugong,i*CC.WugongSize,CC.Wugong_S,k);
 			end,
 
 			__newindex=function(t,k,v)
-				SetDataFromStruct(JY.Data_Wugong[i],CC.Wugong_S,k,v);
+				SetDataFromStruct(JY.Data_Wugong,i*CC.WugongSize,CC.Wugong_S,k,v);
 			end
 		}
         setmetatable(JY.Wugong[i],meta_t);
-
 	end
 
     JY.ShopNum=math.floor((idx[6]-idx[5])/CC.ShopSize);     --Ğ¡±¦ÉÌµê
-    JY.Data_Shop={};
+	JY.Data_Shop=Byte.create(CC.ShopSize*JY.ShopNum);
+	Byte.loadfile(JY.Data_Shop,CC.R_GRPFilename[id],idx[5],CC.ShopSize*JY.ShopNum);
 	for i=0,JY.ShopNum-1 do
-        JY.Data_Shop[i]=Byte.create(CC.ShopSize);
-        Byte.loadfile(JY.Data_Shop[i],CC.R_GRPFilename[id],idx[5]+i*CC.ShopSize,CC.ShopSize);
 		JY.Shop[i]={};
 		local meta_t={
 			__index=function(t,k)
-				return GetDataFromStruct(JY.Data_Shop[i],CC.Shop_S,k);
+				return GetDataFromStruct(JY.Data_Shop,i*CC.ShopSize,CC.Shop_S,k);
 			end,
 
 			__newindex=function(t,k,v)
-				SetDataFromStruct(JY.Data_Shop[i],CC.Shop_S,k,v);
+				SetDataFromStruct(JY.Data_Shop,i*CC.ShopSize,CC.Shop_S,k,v);
 			end
 		}
         setmetatable(JY.Shop[i],meta_t);
@@ -1454,13 +1452,17 @@ function LoadRecord(id)       -- ¶ÁÈ¡ÓÎÏ·½ø¶È
     end
 
     lib.LoadSMap(CC.S_Filename[id],CC.TempS_Filename,JY.SceneNum,CC.SWidth,CC.SHeight,CC.D_Filename[id],CC.DNum,11);
-    collectgarbage();
+	collectgarbage();
+
+	lib.Debug(string.format("Loadrecord time=%d",lib.GetTime()-t1));
 end
 
 -- Ğ´ÓÎÏ·½ø¶È
 -- id=0 ĞÂ½ø¶È£¬=1/2/3 ½ø¶È
 function SaveRecord(id)         -- Ğ´ÓÎÏ·½ø¶È
     --¶ÁÈ¡R*.idxÎÄ¼ş
+    local t1=lib.GetTime();
+
     local data=Byte.create(6*4);
     Byte.loadfile(data,CC.R_IDXFilename[id],0,6*4);
 
@@ -1471,32 +1473,22 @@ function SaveRecord(id)         -- Ğ´ÓÎÏ·½ø¶È
 	end
 
     --Ğ´R*.grpÎÄ¼ş
-    Byte.savefile(JY.Data_Base,CC.R_GRPFilename[id],idx[0],idx[1]-idx[0]);  --»ù±¾Êı¾İ
+    Byte.savefile(JY.Data_Base,CC.R_GRPFilename[id],idx[0],idx[1]-idx[0]);
 
-	for i=0,JY.PersonNum-1 do                   --ÈËÎï
- 		Byte.savefile(JY.Data_Person[i],CC.R_GRPFilename[id],idx[1]+i*CC.PersonSize,CC.PersonSize);
-	end
+	Byte.savefile(JY.Data_Person,CC.R_GRPFilename[id],idx[1],CC.PersonSize*JY.PersonNum);
 
-	for i=0,JY.ThingNum-1 do              --ÎïÆ·
- 		Byte.savefile(JY.Data_Thing[i],CC.R_GRPFilename[id],idx[2]+i*CC.ThingSize,CC.ThingSize);
-	end
+	Byte.savefile(JY.Data_Thing,CC.R_GRPFilename[id],idx[2],CC.ThingSize*JY.ThingNum);
 
-	for i=0,JY.SceneNum-1 do              --³¡¾°
- 	      Byte.savefile(JY.Data_Scene[i],CC.R_GRPFilename[id],idx[3]+i*CC.SceneSize,CC.SceneSize);
-	end
+	Byte.savefile(JY.Data_Scene,CC.R_GRPFilename[id],idx[3],CC.SceneSize*JY.SceneNum);
 
-	for i=0,JY.WugongNum-1 do                --Îä¹¦
- 	    Byte.savefile(JY.Data_Wugong[i],CC.R_GRPFilename[id],idx[4]+i*CC.WugongSize,CC.WugongSize);
-	end
+	Byte.savefile(JY.Data_Wugong,CC.R_GRPFilename[id],idx[4],CC.WugongSize*JY.WugongNum);
 
-	for i=0,JY.ShopNum-1 do                --Ğ¡±¦ÉÌµê
-  		Byte.savefile(JY.Data_Shop[i],CC.R_GRPFilename[id],idx[5]+i*CC.ShopSize,CC.ShopSize);
-	end
+	Byte.savefile(JY.Data_Shop,CC.R_GRPFilename[id],idx[5],CC.ShopSize*JY.ShopNum);
 
     lib.SaveSMap(CC.S_Filename[id],CC.D_Filename[id]);
+    lib.Debug(string.format("SaveRecord time=%d",lib.GetTime()-t1));
 
 end
-
 -------------------------------------------------------------------------------------
 -----------------------------------Í¨ÓÃº¯Êı-------------------------------------------
 
@@ -1534,31 +1526,32 @@ end
 
 --´ÓÊı¾İµÄ½á¹¹ÖĞ·­ÒëÊı¾İ
 --data ¶ş½øÖÆÊı×é
+--offset dataÖĞµÄÆ«ÒÆ
 --t_struct Êı¾İµÄ½á¹¹£¬ÔÚjyconstÖĞÓĞºÜ¶à¶¨Òå
 --key  ·ÃÎÊµÄkey
-function GetDataFromStruct(data,t_struct,key)  --´ÓÊı¾İµÄ½á¹¹ÖĞ·­ÒëÊı¾İ£¬ÓÃÀ´È¡Êı¾İ
+function GetDataFromStruct(data,offset,t_struct,key)  --´ÓÊı¾İµÄ½á¹¹ÖĞ·­ÒëÊı¾İ£¬ÓÃÀ´È¡Êı¾İ
     local t=t_struct[key];
 	local r;
 	if t[2]==0 then
-		r=Byte.get16(data,t[1]);
+		r=Byte.get16(data,t[1]+offset);
 	elseif t[2]==1 then
-		r=Byte.getu16(data,t[1]);
+		r=Byte.getu16(data,t[1]+offset);
 	elseif t[2]==2 then
 		if CC.SrcCharSet==0 then
-			r=lib.CharSet(Byte.getstr(data,t[1],t[3]),0);
+			r=lib.CharSet(Byte.getstr(data,t[1]+offset,t[3]),0);
 		else
-			r=Byte.getstr(data,t[1],t[3]);
+			r=Byte.getstr(data,t[1]+offset,t[3]);
 		end
 	end
 	return r;
 end
 
-function SetDataFromStruct(data,t_struct,key,v)  --´ÓÊı¾İµÄ½á¹¹ÖĞ·­ÒëÊı¾İ£¬±£´æÊı¾İ
+function SetDataFromStruct(data,offset,t_struct,key,v)  --´ÓÊı¾İµÄ½á¹¹ÖĞ·­ÒëÊı¾İ£¬±£´æÊı¾İ
     local t=t_struct[key];
 	if t[2]==0 then
-		Byte.set16(data,t[1],v);
+		Byte.set16(data,t[1]+offset,v);
 	elseif t[2]==1 then
-		Byte.setu16(data,t[1],v);
+		Byte.setu16(data,t[1]+offset,v);
 	elseif t[2]==2 then
 		local s;
 		if CC.SrcCharSet==0 then
@@ -1566,10 +1559,9 @@ function SetDataFromStruct(data,t_struct,key,v)  --´ÓÊı¾İµÄ½á¹¹ÖĞ·­ÒëÊı¾İ£¬±£´æÊ
 		else
 			s=v;
 		end
-		Byte.setstr(data,t[1],t[3],s);
+		Byte.setstr(data,t[1]+offset,t[3],s);
 	end
 end
-
 
 --°´ÕÕt_struct ¶¨ÒåµÄ½á¹¹°ÑÊı¾İ´Ódata¶ş½øÖÆ´®ÖĞ¶Áµ½±ítÖĞ
 function LoadData(t,t_struct,data)        --data¶ş½øÖÆ´®ÖĞ¶Áµ½±ítÖĞ
@@ -1774,13 +1766,13 @@ function AddPersonAttrib(id,str,value)            --Ôö¼ÓÈËÎïÊôĞÔ
 end
 
 --²¥·Åmidi
-function PlayOGG(id)             --²¥·Åmidi
-    JY.CurrentOGG=id;
+function PlayMIDI(id)             --²¥·Åmidi
+    JY.CurrentMIDI=id;
     if JY.EnableMusic==0 then
         return ;
     end
     if id>=0 then
-        lib.PlayOGG(string.format(CC.OGGFile,id+1));
+        lib.PlayMIDI(string.format(CC.MIDIFile,id+1));
     end
 end
 
@@ -2472,7 +2464,6 @@ end
 --id£¬d*ÖĞµÄ±àºÅ
 --flag 1 ¿Õ¸ñ´¥·¢£¬2£¬ÎïÆ·´¥·¢£¬3£¬Â·¹ı´¥·¢
 function EventExecute(id,flag)               --ÊÂ¼şµ÷ÓÃÖ÷Èë¿Ú
-    lib.Debug(string.format("EventExecute(%d,%d)",id,flag));
     JY.CurrentD=id;
     if JY.SceneNewEventFunction[JY.SubScene]==nil then         --Ã»ÓĞ¶¨ÒåĞÂµÄÊÂ¼ş´¦Àíº¯Êı£¬µ÷ÓÃ¾ÉµÄ
         oldEventExecute(flag)
@@ -2719,12 +2710,70 @@ end
 --            5 ÆÁÄ»ÏÂ·½ÏÔÊ¾, ×ó±ßÍ·Ïñ£¬ÓÒ±ß¶Ô»°
 
 function instruct_1(talkid,headid,flag)        --¶Ô»°
-    local s=oldtalk[talkid];
+    local s=ReadTalk(talkid);
 	if s==nil then        --¶Ô»°id²»´æÔÚ
 	    return ;
 	end
-    TalkEx(oldtalk[talkid],headid,flag);
+    TalkEx(s,headid,flag);
 end
+
+--¸ù¾İoldtalk.grpÎÄ¼şÀ´idxË÷ÒıÎÄ¼ş¡£¹©ºóÃæ¶Á¶Ô»°Ê¹ÓÃ
+function GenTalkIdx()         --Éú³É¶Ô»°Ë÷ÒıÎÄ¼ş
+	os.remove(CC.TalkIdxFile);
+	local p=io.open(CC.TalkIdxFile,"w");
+	p:close();
+
+	p=io.open(CC.TalkGrpFile,"r");
+	local num=0
+	for line in p:lines() do
+	    num=num+1;
+	end
+    p:seek("set",0);
+	local data=Byte.create(num*4);
+
+	for i=0,num-1 do
+	    local talk=p:read("*line");
+		local offset=p:seek();
+		Byte.set32(data,i*4,offset);
+	end
+    p:close();
+
+	Byte.savefile(data,CC.TalkIdxFile,0,num*4);
+end
+
+--´Óold_talk.luaÖĞ¶ÁÈ¡±àºÅÎªtalkidµÄ×Ö·û´®¡£
+--ĞèÒªµÄÊ±ºò¶ÁÈ¡£¬¿ÉÒÔ½ÚÔ¼ÄÚ´æÕ¼ÓÃ£¬²»ÓÃÔÙ°ÑÕû¸öÎÄ¼ş¶ÁÈëÄÚ´æÊı¾İÁË¡£
+function ReadTalk(talkid)            --´ÓÎÄ¼ş¶ÁÈ¡Ò»Ìõ¶Ô»°
+	local idxfile=CC.TalkIdxFile
+    local grpfile=CC.TalkGrpFile
+
+	local length=filelength(idxfile);
+
+	if talkid<0 and talkid>=length/4 then
+	    return
+	end
+
+	local data=Byte.create(2*4);
+	local id1,id2;
+	if talkid==0 then
+        Byte.loadfile(data,idxfile,0,4);
+		id1=0;
+	    id2=Byte.get32(data,0);
+    else
+        Byte.loadfile(data,idxfile,(talkid-1)*4,4*2);
+		id1=Byte.get32(data,0);
+	    id2=Byte.get32(data,4);
+    end
+
+    local p=io.open(grpfile,"r");
+    p:seek("set",id1);
+	local talk=p:read("*line");
+	p:close();
+
+	return talk;
+
+end
+
 
 --µÃµ½ÎïÆ·
 function instruct_2(thingid,num)            --µÃµ½ÎïÆ·
@@ -3696,7 +3745,7 @@ function instruct_62(id1,startnum1,endnum1,id2,startnum2,endnum2)      --²¥·ÅÊ±¿
 
 	  lib.LoadPicture(CONFIG.PicturePath .."end.png",-1,-1);
 	  lib.ShowSurface();
-	  PlayOGG(24);
+	  PlayMIDI(24);
 	  lib.Delay(5000);
 	  lib.GetKey();
 	  WaitKey();
@@ -3792,7 +3841,7 @@ end
 
 --²¥·ÅÒôÀÖ
 function instruct_66(id)       --²¥·ÅÒôÀÖ
-    PlayOGG(id);
+    PlayMIDI(id);
 end
 
 --²¥·ÅÒôĞ§
@@ -3887,7 +3936,7 @@ function WarMain(warid,isexp)           --Õ½¶·Ö÷º¯Êı
     lib.PicLoadFile(CC.ThingPicFile,2);
     lib.PicLoadFile(CC.EffectFile,3);
 
-    PlayOGG(WAR.Data["ÒôÀÖ"]);
+    PlayMIDI(WAR.Data["ÒôÀÖ"]);
 
     local first=0;            --µÚÒ»´ÎÏÔÊ¾Õ½¶·±ê¼Ç
     local warStatus;          --Õ½¶·×´Ì¬
@@ -3978,9 +4027,9 @@ function WarMain(warid,isexp)           --Õ½¶·Ö÷º¯Êı
     lib.ShowSlow(50,1);
 
     if JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]>=0 then
-        PlayOGG(JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]);
+        PlayMIDI(JY.Scene[JY.SubScene]["½øÃÅÒôÀÖ"]);
     else
-        PlayOGG(0);
+        PlayMIDI(0);
     end
 
     CleanMemory();

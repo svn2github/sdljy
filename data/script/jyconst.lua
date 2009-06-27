@@ -86,14 +86,18 @@ function SetGlobalConst()
    CC.ThingPicFile=CONFIG.DataPath .. "thing";
 
 
-   CC.MIDIFile=CONFIG.SoundPath .. "game%02d.mid";
-   CC.OGGFile=CONFIG.SoundPath .. "game%02d.ogg";
+   CC.MIDIFile=CONFIG.SoundPath .. "game%02d.ogg";
+   --CC.OGGFile=CONFIG.SoundPath .. "game%02d.ogg";
    CC.ATKFile=CONFIG.SoundPath .. "atk%02d.wav";
    CC.EFile=CONFIG.SoundPath .. "e%02d.wav";
 
    CC.WarFile=CONFIG.DataPath .. "war.sta";
    CC.WarMapFile={CONFIG.DataPath .. "warfld.idx",
                   CONFIG.DataPath .. "warfld.grp"};
+
+   CC.TalkIdxFile=CONFIG.ScriptPath .. "oldtalk.idx";
+   CC.TalkGrpFile=CONFIG.ScriptPath .. "oldtalk.grp";
+
 
    --定义记录文件R×结构。  lua不支持结构，无法直接从二进制文件中读取，因此需要这些定义，用table中不同的名字来仿真结构。
    CC.TeamNum=6;          --队伍人数
