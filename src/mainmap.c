@@ -2,16 +2,16 @@
 //绘制主地图、场景地图和战斗地图
 //为加快速度，这些函数改为c中实现
 
- 
+#include <stdlib.h> 
 #include "jymain.h"
 
  
 //主地图数据
-static unsigned short *pEarth=NULL;
-static unsigned short *pSurface=NULL;
-static unsigned short *pBuilding=NULL;
-static unsigned short *pBuildX=NULL;
-static unsigned short *pBuildY=NULL;
+static short *pEarth=NULL;
+static short *pSurface=NULL;
+static short *pBuilding=NULL;
+static short *pBuildX=NULL;
+static short *pBuildY=NULL;
 
 static int XMax,YMax;  //主地图大小
  
@@ -21,7 +21,7 @@ static BuildingType Build[2000];        // 建筑排序数组
   
 static int S_XMax,S_YMax;      // 场景地图大小
 static int S_Num;
-static Uint16 *pS=NULL;              // 场景S*数据
+static Sint16 *pS=NULL;              // 场景S*数据
 
 // 为减少内存占用，对S文件采用临时文件方式访问，只在内存中保存当前场景的S数据
 static char TempS_filename[255];     //临时S文件名
@@ -30,11 +30,11 @@ static int currentS=-1;              //当前加载的场景S数据
 static int D_Num1;             // 每个场景D的个数
 static int D_Num2;             // 每个D的数据个数
 
-static Uint16 *pD=NULL;              // 场景D*数据
+static Sint16 *pD=NULL;              // 场景D*数据
 
 static int War_XMax,War_YMax;      // 战斗地图大小
 static int War_Num;                // 战斗地图层数
-static Uint16 *pWar=NULL;           // 战斗地图数据
+static Sint16 *pWar=NULL;           // 战斗地图数据
 
  
 extern int g_ScreenW;
@@ -64,7 +64,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
 
     JY_UnloadMMap();
 	//读取earth文件
-    pEarth=(Uint16*) malloc(XMax*YMax*2);
+    pEarth=(short*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(earthname,"rb"))==NULL){
         JY_Error("file not open ---%s",earthname);
@@ -74,7 +74,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
 	fclose(fp);
 
 	//读取surface文件
-    pSurface=(Uint16*) malloc(XMax*YMax*2);
+    pSurface=(short*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(surfacename,"rb"))==NULL){
         JY_Error("file not open ---%s",surfacename);
@@ -84,7 +84,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
 	fclose(fp); 
 
 	//读取building文件
-    pBuilding=(Uint16*) malloc(XMax*YMax*2);
+    pBuilding=(short*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(buildingname,"rb"))==NULL){
         JY_Error("file not open ---%s",buildingname);
@@ -94,7 +94,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
 	fclose(fp); 
 
 	//读取building文件
-    pBuildX=(Uint16*) malloc(XMax*YMax*2);
+    pBuildX=(short*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(buildxname,"rb"))==NULL){
         JY_Error("file not open ---%s",buildxname);
@@ -104,7 +104,7 @@ int JY_LoadMMap(const char* earthname, const char* surfacename, const char*build
 	fclose(fp); 
 
 	//读取building文件
-    pBuildY=(Uint16*) malloc(XMax*YMax*2);
+    pBuildY=(short*) malloc(XMax*YMax*2);
 
 	if((fp=fopen(buildyname,"rb"))==NULL){
         JY_Error("file not open ---%s",buildyname);
@@ -339,7 +339,7 @@ int JY_LoadSMap(const char *Sfilename,const char*tmpfilename, int num,int x_max,
     if(g_LoadFullS==0){     //读取s到临时文件
         strcpy(TempS_filename,tmpfilename);  
         if(pS==NULL)
-            pS=(Uint16*) malloc(S_XMax*S_YMax*6*2);
+            pS=(short*) malloc(S_XMax*S_YMax*6*2);
 
 	    if(pS==NULL){
 		    JY_Error("JY_LoadSMap error: can not malloc memory\n");
@@ -364,7 +364,7 @@ int JY_LoadSMap(const char *Sfilename,const char*tmpfilename, int num,int x_max,
     }
     else{      //全部读入内存
         if(pS==NULL)
-            pS=(Uint16*) malloc(S_XMax*S_YMax*6*2*S_Num);
+            pS=(short*) malloc(S_XMax*S_YMax*6*2*S_Num);
 
 	    if(pS==NULL){
 		    JY_Error("JY_LoadSMap error: can not malloc memory\n");
@@ -386,7 +386,7 @@ int JY_LoadSMap(const char *Sfilename,const char*tmpfilename, int num,int x_max,
   
 
 	if(pD==NULL)
-        pD=(Uint16*) malloc(D_Num1*D_Num2*S_Num*2);
+        pD=(short*) malloc(D_Num1*D_Num2*S_Num*2);
 	if(pD==NULL){
 		JY_Error("JY_LoadSMap error: can not malloc memory\n");
 		return 0;
@@ -517,7 +517,7 @@ int JY_GetS(int id,int x,int y,int level)
     else{
         s=S_XMax*S_YMax*(id*6+level)+y*S_XMax+x;
     }
- 	return (Sint16)*((Uint16 *)(pS+s));
+ 	return *(pS+s);
 
 }
 
@@ -695,7 +695,7 @@ int JY_LoadWarMap(const char *WarIDXfilename,const char *WarGRPfilename, int map
     JY_UnloadWarMap();
 
     if(pWar==NULL)
-	    pWar=(Uint16*) malloc(x_max*y_max*num*2);
+	    pWar=(short*) malloc(x_max*y_max*num*2);
 
 	if(pWar==NULL){
 		JY_Error("JY_LoadWarMap error: can not malloc memory\n");
@@ -741,7 +741,7 @@ int JY_GetWarMap(int x,int y,int level)
 {
     int s=War_XMax*War_YMax*level+y*War_XMax+x;
 
-	return (Sint16)*((Uint16 *)pWar+s);
+	return *(pWar+s);
 
 }
 
@@ -759,7 +759,7 @@ int JY_SetWarMap(int x,int y,int level,int v)
 //设置某层战斗地图为给定值
 int JY_CleanWarMap(int level,int v)
 {
-    unsigned short *p=pWar+War_XMax*War_YMax*level;
+    short *p=pWar+War_XMax*War_YMax*level;
     int i;
     for(i=0;i<War_XMax*War_YMax;i++){
         *p=(short)v;

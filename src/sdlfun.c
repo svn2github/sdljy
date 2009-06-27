@@ -194,7 +194,8 @@ int InitSDL(void)
         exit(1);
     }
 
-    atexit(SDL_Quit);    
+    atexit(SDL_Quit);
+    atexit((void*)ExitSDL);
  
     SDL_VideoDriverName(tmpstr, 255);
     JY_Debug("Video Driver: %s\n",tmpstr);
@@ -220,7 +221,7 @@ int InitSDL(void)
 
     for(i=0;i<WAVNUM;i++)
          WavChunk[i]=NULL;
-    
+
     SDL_SetEventFilter(JY_EventFilter);
     return 0;
 }
@@ -242,10 +243,9 @@ int ExitSDL(void)
 	}
 
 	Mix_CloseAudio();
- 
+
     JY_LoadPicture("",0,0);    // 释放可能加载的图片表面
-    
-    //SDL_Quit();
+
     return 0;
 }
 
@@ -424,7 +424,6 @@ int JY_GetTime()
 //播放音乐
 int JY_PlayOGG(const char *filename)
 {
-
 	static char currentfile[255]="\0";
 
     if(g_EnableSound==0)
@@ -460,13 +459,11 @@ int JY_PlayOGG(const char *filename)
 //停止音效
 int StopOGG()
 {
-
-	if(currentMusic!=NULL){
+    if(currentMusic!=NULL){
 		Mix_HaltMusic();
 		Mix_FreeMusic(currentMusic);
 		currentMusic=NULL;
 	}
-
     return 0;
 }
 
@@ -497,7 +494,6 @@ int JY_PlayWAV(const char *filename)
 	}
 
 	return 0;
-	
 }
 
 
@@ -508,19 +504,11 @@ int JY_GetKey()
 	int keyPress=-1;
     while(SDL_PollEvent(&event)){   
 		switch(event.type){   
-		case SDL_KEYDOWN:
+        case SDL_KEYDOWN:  
             keyPress=event.key.keysym.sym;
             break;
         case SDL_MOUSEMOTION:
             break;
-    	case SDL_QUIT:
-    		//
-    		// clicked on the close button of the window. Quit immediately.
-    		//
-    		ExitGame(); 
-    		ExitSDL();
-    		exit(0);
-    		break;
         default: 
             break;
         }
@@ -855,7 +843,6 @@ int JY_Background(int x1,int y1,int x2,int y2,int Bright)
 	SDL_FreeSurface(lps1);
 	return 1;
 }
-
 
 //播放mpeg
 // esckey 停止播放的按键
