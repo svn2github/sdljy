@@ -395,7 +395,7 @@ int HAPI_SaveSMap(lua_State *pL)
 int HAPI_GetS(lua_State *pL)
 {
 
-    int id=(int)lua_tonumber(pL,1);
+    int id=(Sint16)lua_tonumber(pL,1);
     int x=(int)lua_tonumber(pL,2);
     int y=(int)lua_tonumber(pL,3);
     int level=(int)lua_tonumber(pL,4);
@@ -425,14 +425,14 @@ int HAPI_SetS(lua_State *pL)
  
 int HAPI_GetD(lua_State *pL)
 {
-
-    int Sceneid=(int)lua_tonumber(pL,1);
-    int id=(int)lua_tonumber(pL,2);
+	Sint16 v = -1;
+    int Sceneid=(Sint16)lua_tonumber(pL,1);
+    int id=(Sint16)lua_tonumber(pL,2);
     int i=(int)lua_tonumber(pL,3);
  
 
-	int v;
-	v=JY_GetD(Sceneid,id,i);
+    v=JY_GetD(Sceneid,id,i);
+    
 
 	lua_pushnumber(pL,v);
 	return 1;
@@ -442,8 +442,8 @@ int HAPI_GetD(lua_State *pL)
 int HAPI_SetD(lua_State *pL)
 {
 
-    int Sceneid=(int)lua_tonumber(pL,1);
-    int id=(int)lua_tonumber(pL,2);
+    int Sceneid=(Sint16)lua_tonumber(pL,1);
+    int id=(Sint16)lua_tonumber(pL,2);
     int i=(int)lua_tonumber(pL,3);
     int v=(int)lua_tonumber(pL,4); 
 
@@ -456,7 +456,7 @@ int HAPI_SetD(lua_State *pL)
 
 int HAPI_DrawSMap(lua_State *pL)
 {
-	int sceneid=(int)lua_tonumber(pL,1);
+	int sceneid=(Sint16)lua_tonumber(pL,1);
 	int x=(int)lua_tonumber(pL,2);
 	int y=(int)lua_tonumber(pL,3);
 	int xoff=(int)lua_tonumber(pL,4);
@@ -496,7 +496,7 @@ int HAPI_GetWarMap(lua_State *pL)
     int level=(int)lua_tonumber(pL,3);
  
 
-	int v;
+	Sint16 v;
 	v=JY_GetWarMap(x,y,level);
 
 	lua_pushnumber(pL,v);
@@ -729,15 +729,3 @@ int Byte_setstr(lua_State *pL)
  
 	return 1;
 }
-
-
-
-
-
-
-
-
-
- 
-
-

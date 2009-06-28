@@ -1,7 +1,4 @@
-
-
 // 头文件 
-
 #ifndef _JYMAIN_H
 #define _JYMAIN_H
 
@@ -26,6 +23,8 @@ extern "C" {
 // 公共部分
 
 //安全free指针的宏
+#define swap16( x )  ( ((x & 0x00ffU) << 8) |  ((x & 0xff00U) >> 8) )
+
 
 #define SafeFree(p) do {if(p) {free(p);p=NULL;}} while(0)
 
@@ -53,7 +52,6 @@ char *va(
    const char *format,
    ...
 );
-
 
 //CharSet.c
 
@@ -117,8 +115,7 @@ struct PicFileCache{   //贴图文件链表节点
 	int num;                    // 文件贴图个数
     int *idx;                  // idx的内容
     int filelength;            //grp文件长度
-    FILE *fp;                  //grp文件句柄
-    unsigned char *grp;         // grp的内容
+    unsigned char *grp;                  // grp的内容
     struct CacheNode **pcache;  // 文件中所有的贴图对应的cache节点指针，为空则表示没有。
 };
 

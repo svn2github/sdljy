@@ -2,11 +2,8 @@
 // 主程序
 // 本程序为游泳的鱼编写。
 // 版权所无，您可以以任何方式使用代码
-  
- 
 #include <stdio.h>
 #include <time.h>
-
 #include "jymain.h"
 
 // 全程变量
@@ -36,7 +33,6 @@ int g_WMapAddY;
 int g_MAXCacheNum=1000;     //最大缓存数量
 
 int g_LoadFullS=1;          //是否全部加载S文件
-int g_PreLoadPicGrp=1;      //是否预先加载贴图文件的grp
 
 
 static int IsDebug=0;         //是否打开跟踪文件
@@ -164,6 +160,7 @@ int Lua_Main(void)
 	//初始化lua
 	pL_main=lua_open();
     luaL_openlibs(pL_main);
+
  
     //注册lua函数
     luaL_register(pL_main,"lib", jylib);
@@ -171,7 +168,7 @@ int Lua_Main(void)
  
 
 	//加载lua文件
-    result=luaL_loadfile(pL_main,JYMain_Lua);
+    result=luaL_loadfile(pL_main, JYMain_Lua);
     switch(result){
     case LUA_ERRSYNTAX:
     	JY_Error("load lua file %s error: syntax error!\n",JYMain_Lua);
@@ -207,7 +204,6 @@ int Lua_Config(void)
 	//初始化lua
 	lua_State *pL=lua_open();
     luaL_openlibs(pL);
- 
 	//加载lua配置文件
     result=luaL_loadfile(pL,filename);
     switch(result){
@@ -244,7 +240,6 @@ int Lua_Config(void)
 
     g_MAXCacheNum =getfield(pL, "MAXCacheNum");
     g_LoadFullS =getfield(pL, "LoadFullS");
-    g_PreLoadPicGrp =getfield(pL, "PreLoadPicGrp");
   
  
     getfieldstr(pL,"JYMain_Lua",JYMain_Lua);

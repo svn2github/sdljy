@@ -3,7 +3,7 @@
 // 为提高速度，采用缓存方式读取。把idx/grp读入内存，然后定义若干个缓存表面
 // 经常访问的pic放在缓存表面中
 
-#include <stdlib.h>
+
 #include "jymain.h"
 
 static struct PicFileCache pic_file[PIC_FILE_NUM];     
@@ -19,8 +19,6 @@ extern Uint32 g_MaskColor32;      // 透明色
 extern int g_ScreenW ;
 extern int g_ScreenH ;
 
-extern int g_PreLoadPicGrp;
-
 int CacheFailNum=0;
 
 // 初始化Cache数据。游戏开始时调用
@@ -31,7 +29,6 @@ int Init_Cache()
         pic_file[i].num =0;
         pic_file[i].idx =NULL;
         pic_file[i].grp=NULL;
-        pic_file[i].fp=NULL;
         pic_file[i].pcache=NULL;
     }
     return 0;
@@ -62,10 +59,6 @@ int JY_PicInit(char *PalletteFilename)
         SafeFree(pic_file[i].idx);
         SafeFree(pic_file[i].grp);
         SafeFree(pic_file[i].pcache);
-        if(pic_file[i].fp){
-            fclose(pic_file[i].fp);
-            pic_file[i].fp=NULL;
-        }
     }
 
     currentCacheNum=0; 
@@ -105,11 +98,6 @@ int JY_PicLoadFile(const char*filename, int id)
     }
     SafeFree(pic_file[id].idx);
     SafeFree(pic_file[id].grp);
-    if(pic_file[id].fp){
-        fclose(pic_file[id].fp);
-        pic_file[id].fp=NULL;
-    }
-
 
     // 读取idx文件
     sprintf(str,"%s.idx",filename);
@@ -136,23 +124,18 @@ int JY_PicLoadFile(const char*filename, int id)
 
     pic_file[id].filelength=FileLength(str);
 
+    pic_file[id].grp =(unsigned char*)malloc(pic_file[id].filelength);
+    if(pic_file[id].grp ==NULL){
+		JY_Error("JY_PicLoadFile: cannot malloc grp memory!\n");
+		return 1;
+    }
 		//读取贴图grp文件
 	if((fp=fopen(str,"rb"))==NULL){
         JY_Error("JY_PicLoadFile: grp file not open ---%s",str);
 		return 1;
 	}
-    if(g_PreLoadPicGrp==1){   //grp文件读入内存
-        pic_file[id].grp =(unsigned char*)malloc(pic_file[id].filelength);
-        if(pic_file[id].grp ==NULL){
-		    fprintf(stderr,"JY_PicLoadFile: cannot malloc grp memory!\n");
-		    return 1;
-        }
-        count=fread(pic_file[id].grp,1,pic_file[id].filelength,fp);
-        fclose(fp);
-    }
-    else{
-        pic_file[id].fp=fp;
-    }
+    count=fread(pic_file[id].grp,1,pic_file[id].filelength,fp);
+    fclose(fp);
 
 
     pic_file[id].pcache =(struct CacheNode **)malloc(pic_file[id].num*sizeof(struct CacheNode *));
@@ -243,7 +226,7 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
 	SDL_RWops *fp_SDL;
 	int id1,id2;
 	int datalong;
-    unsigned char *data;
+    unsigned char *p,*data;
 
     SDL_Surface *tmpsurf=NULL;
 
@@ -260,7 +243,7 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
 	// 处理一些特殊情况，按照修改器中的代码
 	if(id1<0)
 		datalong=0;
-	
+ 
 	if(id2>pic_file[fileid].filelength)
 		id2=pic_file[fileid].filelength;
 
@@ -268,26 +251,18 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
 
  
 	if(datalong>0){
-		//读取贴图grp文件，得到原始数据   
-        if(g_PreLoadPicGrp==1){         //有预读，从内存中读数据
-            fp_SDL=SDL_RWFromMem(pic_file[fileid].grp+id1,datalong);
-        }
-        else{       //没有预读，从文件中读取
-            fp_SDL=SDL_RWFromFP(pic_file[fileid].fp,0);
-            SDL_RWseek(fp_SDL,id1,SEEK_SET);
-        }
+		//读取贴图grp文件，得到原始数据        
+        p=pic_file[fileid].grp+id1;
+        fp_SDL=SDL_RWFromMem(p,datalong);
 		if(IMG_isPNG(fp_SDL)==0){
 	        short width,height,xoff,yoff;
-            SDL_RWread(fp_SDL,&width,2,1);
-            SDL_RWread(fp_SDL,&height,2,1);
-            SDL_RWread(fp_SDL,&xoff,2,1);
-            SDL_RWread(fp_SDL,&yoff,2,1);
-            data=(unsigned char *)malloc(datalong-8);
-            SDL_RWread(fp_SDL,data,1,datalong-8);
- 
-			surf=CreatePicSurface32(data,width,height,datalong-8);
+            width =*(short*)p;
+            height=*(short*)(p+2);
+            xoff=*(short*)(p+4);
+            yoff=*(short*)(p+6);
+			data=p+8;
 
-            SafeFree(data);
+			surf=CreatePicSurface32(data,width,height,datalong-8);
 
 			*xoffset =xoff;
 			*yoffset =yoff;
@@ -297,13 +272,14 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
 	        if(tmpsurf==NULL){
 		        JY_Error("LoadPic: cannot create SDL_Surface tmpsurf!\n");
 	        }
+	        else
+	        {
             *xoffset=tmpsurf->w/2;
             *yoffset=tmpsurf->h/2;
             surf=tmpsurf;
+	        }
  		}
         SDL_FreeRW(fp_SDL);
- 
-
     }
     else{
 
