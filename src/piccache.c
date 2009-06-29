@@ -20,7 +20,7 @@ extern int g_ScreenW ;
 extern int g_ScreenH ;
 
 int CacheFailNum=0;
-
+int g_PreLoadPicGrp = 0;
 // 初始化Cache数据。游戏开始时调用
 int Init_Cache()
 {
@@ -251,39 +251,47 @@ static SDL_Surface *LoadPic(int fileid,int picid, int *xoffset,int *yoffset)
 
  
 	if(datalong>0){
-		//读取贴图grp文件，得到原始数据        
-        p=pic_file[fileid].grp+id1;
-        fp_SDL=SDL_RWFromMem(p,datalong);
-		if(IMG_isPNG(fp_SDL)==0){
-	        short width,height,xoff,yoff;
-            width =*(short*)p;
-            height=*(short*)(p+2);
-            xoff=*(short*)(p+4);
-            yoff=*(short*)(p+6);
-			data=p+8;
-
-			surf=CreatePicSurface32(data,width,height,datalong-8);
-
-			*xoffset =xoff;
-			*yoffset =yoff;
-		}
-        else{      //读取png格式
-            tmpsurf=IMG_LoadPNG_RW(fp_SDL);
-	        if(tmpsurf==NULL){
-		        JY_Error("LoadPic: cannot create SDL_Surface tmpsurf!\n");
+	        //读取贴图grp文件，得到原始数据   
+	        if(g_PreLoadPicGrp==1){         //有预读，从内存中读数据
+	            data=pic_file[fileid].grp+id1;
+	            p=NULL;
 	        }
-	        else
-	        {
-            *xoffset=tmpsurf->w/2;
-            *yoffset=tmpsurf->h/2;
-            surf=tmpsurf;
+	        else{       //没有预读，从文件中读取
+	            fseek(pic_file[fileid].fp,id1,SEEK_SET);
+	            data=(unsigned char *)malloc(datalong);
+	            p=data;
+	            fread(data,1,datalong,pic_file[fileid].fp);
 	        }
- 		}
-        SDL_FreeRW(fp_SDL);
-    }
-    else{
 
-	}
+	        fp_SDL=SDL_RWFromMem(data,datalong);
+	        if(IMG_isPNG(fp_SDL)==0){
+	            short width,height,xoff,yoff;
+	            width =*(short*)data;
+	            height=*(short*)(data+2);
+	            xoff=*(short*)(data+4);
+	            yoff=*(short*)(data+6);
+	            surf=CreatePicSurface32(data+8,width,height,datalong-8);
+	            *xoffset =xoff;
+	            *yoffset =yoff;
+	        }
+	        else{      //读取png格式
+	            tmpsurf=IMG_LoadPNG_RW(fp_SDL);
+	            if(tmpsurf==NULL){
+	                fprintf(stderr,"LoadPic: cannot create SDL_Surface tmpsurf!\n");
+	            }
+	            *xoffset=tmpsurf->w/2;
+	            *yoffset=tmpsurf->h/2;
+	            surf=tmpsurf;
+	         }
+	        SDL_FreeRW(fp_SDL);
+	        SafeFree(p);
+	 
+
+	    }
+	    else{
+
+	    }
+
 
   
 
