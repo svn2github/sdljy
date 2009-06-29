@@ -29,8 +29,8 @@ SYSTEMINCLUDE   \epoc32\include
 
 SYSTEMINCLUDE   \epoc32\include\sdl
 SYSTEMINCLUDE   \epoc32\include\lua
-SYSTEMINCLUDE   \epoc32\include\libc
-//SYSTEMINCLUDE   \epoc32\include\stdapis
+//SYSTEMINCLUDE   \epoc32\include\libc
+SYSTEMINCLUDE   \epoc32\include\stdapis
 //SYSTEMINCLUDE	\epoc32\include\stdapis\sys
 //SYSTEMINCLUDE	\epoc32\include\stdapis\stlport
 //SYSTEMINCLUDE	\epoc32\include\stdapis\stlport\stl
@@ -64,20 +64,21 @@ CAPABILITY ReadUserData WriteUserData
 
 EPOCSTACKSIZE 0x5000
 
-EPOCHEAPSIZE 0x1000 0x1000000
+EPOCHEAPSIZE 0x1000 0x1800000
+//max 24M
 
-//OPTION_REPLACE ARMCC --cpu ARM926EJ-S -O2
-// -Otime
-//ALWAYS_BUILD_AS_ARM
+//OPTION_REPLACE ARMCC --cpu ARM926EJ-S -O2 -Otime
+ALWAYS_BUILD_AS_ARM
 
 #ifdef ENABLE_ABIV2_MODE
 DEBUGGABLE_UDEBONLY
 #endif
-
+MACRO JY_HAS_MOUSE
 //MACRO	LUA_BUILD_AS_DLL
 //MACRO	__STRICT_ANSI__
 //MACRO WAV_MUSIC 
 //MACRO OGG_MUSIC
+//MACRO HAVE_STDIO_H
 SOURCEPATH ..\src
 SOURCE charset.c jymain.c luafun.c mainmap.c piccache.c sdlfun.c jy_s60.cpp 
 //SOURCE alloca.c

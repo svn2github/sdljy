@@ -3,7 +3,8 @@
 // SDL Ïà¹Øº¯Êı
 
 #include "jymain.h"
- 
+#include <math.h>
+
 static Mix_Music *currentMusic=NULL;         //²¥·ÅÒôÀÖÊı¾İ£¬ÓÉÓÚÍ¬Ê±Ö»²¥·ÅÒ»¸ö£¬ÓÃÒ»¸ö±äÁ¿
 
 #define WAVNUM 5
@@ -11,7 +12,7 @@ static Mix_Music *currentMusic=NULL;         //²¥·ÅÒôÀÖÊı¾İ£¬ÓÉÓÚÍ¬Ê±Ö»²¥·ÅÒ»¸ö£
 static Mix_Chunk *WavChunk[WAVNUM];        //²¥·ÅÒôĞ§Êı¾İ£¬¿ÉÒÔÍ¬Ê±²¥·Å¼¸¸ö£¬Òò´ËÓÃÊı×é
 
 static int currentWav=0;                  //µ±Ç°²¥·ÅµÄÒôĞ§
-
+static g_keyPress = -1;
 extern SDL_Surface* g_Surface;        // ÓÎÏ·Ê¹ÓÃµÄÊÓÆµ±íÃæ
 extern Uint32 g_MaskColor32;      // Í¸Ã÷É«
 
@@ -23,6 +24,16 @@ extern int g_FullScreen;
 extern int g_EnableSound;
 extern int g_MusicVolume;
 extern int g_SoundVolume;
+
+#ifndef BOOL
+#define BOOL unsigned char
+#endif
+#ifndef TRUE
+#define TRUE (BOOL) 1
+#endif
+#ifndef FALSE
+#define FALSE (BOOL) 0
+#endif
 
 //×¥ÆÁ
 void
@@ -115,6 +126,191 @@ JY_AdjustVolume(
    Mix_VolumeMusic(g_MusicVolume);
 }
 
+void
+VIDEO_Resize(
+   int             w,
+   int             h
+)
+/*++
+  Purpose:
+
+    This function is called when user resized the window.
+
+  Parameters:
+
+    [IN]  w - width of the window after resizing.
+
+    [IN]  h - height of the window after resizing.
+
+  Return value:
+
+    None.
+
+--*/
+{
+   unsigned long          flags;
+   static SDL_Color      palette[256];
+   int            i;
+
+   //
+   // Get the original palette.
+   //
+   for (i = 0; i < g_Surface->format->palette->ncolors; i++)
+   {
+      palette[i] = g_Surface->format->palette->colors[i];
+   }
+
+   //
+   // Create the screen surface.
+   //
+   flags = g_Surface->flags;
+
+   SDL_FreeSurface(g_Surface);
+   g_Surface = SDL_SetVideoMode(w, h, 8, flags);
+
+   if (g_Surface == NULL)
+   {
+
+	   g_Surface = SDL_SetVideoMode(w, h, 8, SDL_SWSURFACE);
+
+   }
+
+   SDL_SetPalette(g_Surface, SDL_PHYSPAL | SDL_LOGPAL, palette, 0, i);
+   JY_ShowSurface();
+}
+int
+getKeyPressByMouseEvent(
+   const SDL_Event *lpEvent
+)
+/*++
+  Purpose:
+
+    Handle mouse events.
+
+  Parameters:
+
+    [IN]  lpEvent - pointer to the event.
+
+  Return value:
+
+    None.
+
+--*/
+{
+#ifdef JY_HAS_MOUSE
+   int keyPress=-1;
+   static short hitTest = 0; // Double click detect;	
+   const SDL_VideoInfo *vi;
+
+   double       screenWidth, gridWidth;
+   double       screenHeight, gridHeight;
+   double       mx, my;
+   double       thumbx;
+   double       thumby;
+   int          gridIndex;
+   BOOL			isLeftMouseDBClick = FALSE;
+   BOOL			isLeftMouseClick = FALSE;
+   BOOL			isRightMouseClick = FALSE;
+   static int   lastReleaseButtonTime, lastPressButtonTime, betweenTime;
+   static int   lastPressx = 0;
+   static int   lastPressy = 0;
+   static int   lastReleasex = 0;
+   static int   lastReleasey = 0;
+
+   if (lpEvent->type!= SDL_MOUSEBUTTONDOWN && lpEvent->type != SDL_MOUSEBUTTONUP)
+      return -1;
+
+   vi = SDL_GetVideoInfo();
+   screenWidth = vi->current_w;
+   screenHeight = vi->current_h;
+   gridWidth = screenWidth / 3;
+   gridHeight = screenHeight / 3;
+   mx = lpEvent->button.x;
+   my = lpEvent->button.y;
+   thumbx = ceil(mx / gridWidth);
+   thumby = floor(my / gridHeight);
+   gridIndex = thumbx + thumby * 3 - 1;
+   
+   switch (lpEvent->type)
+   {
+   case SDL_MOUSEBUTTONDOWN:
+      lastPressButtonTime = SDL_GetTicks();
+      lastPressx = lpEvent->button.x;
+      lastPressy = lpEvent->button.y;
+      switch (gridIndex)
+      {
+      case 2:
+	  case 1:
+		 keyPress =  SDLK_UP;
+		 break;
+	  case 8:
+	  case 5:
+         keyPress = SDLK_RIGHT;
+         break;
+      case 3:
+      case 0:  
+    	 keyPress = SDLK_LEFT;
+         break;
+      case 7:
+      case 6:	  
+    	 keyPress =  SDLK_DOWN;
+         break;
+      }
+      break;
+   case SDL_MOUSEBUTTONUP:
+      lastReleaseButtonTime = SDL_GetTicks();
+      lastReleasex = lpEvent->button.x;
+      lastReleasey = lpEvent->button.y;
+      hitTest ++;
+      
+      if (abs(lastPressx - lastReleasex) < 25 &&
+                     abs(lastPressy - lastReleasey) < 25)
+      {
+		  betweenTime = lastReleaseButtonTime - lastPressButtonTime;
+		  if (betweenTime >500)
+		  {
+			  isRightMouseClick = TRUE;
+		  }
+		  else if (betweenTime >=0)
+		  {
+			  if((betweenTime < 100) && (hitTest >= 2))
+			  {
+				  isLeftMouseClick = TRUE;
+			  	  hitTest = 0;  
+			  }
+			  else
+			  {  
+				  isLeftMouseClick = TRUE;
+				  if(betweenTime > 100)
+				  {
+					  hitTest = 0;
+				  }
+				  
+			  }
+		  }
+      }
+      switch (gridIndex)
+      {
+     
+      case 4:
+		if (isRightMouseClick) // menu
+		{
+			keyPress =  SDLK_ESCAPE;
+		}
+		else if (isLeftMouseClick) // search
+		{
+			keyPress = SDLK_RETURN;
+		}
+        break;
+       
+      }
+      break;
+   }
+   return keyPress;
+#endif
+}
+
+
 static int SDLCALL
 JY_EventFilter(
    const SDL_Event       *lpEvent
@@ -141,7 +337,7 @@ JY_EventFilter(
       //
       // resized the window
       //
-      //VIDEO_Resize(lpEvent->resize.w, lpEvent->resize.h);
+      VIDEO_Resize(lpEvent->resize.w, lpEvent->resize.h);
       break;
    case SDL_KEYUP:
    		switch (lpEvent->key.keysym.sym)
@@ -159,6 +355,11 @@ JY_EventFilter(
    		break;
    	case SDL_MOUSEMOTION:
    		break;
+    case SDL_MOUSEBUTTONDOWN:
+    case SDL_MOUSEBUTTONUP:
+    	g_keyPress = getKeyPressByMouseEvent(lpEvent);
+    	break;
+   		
    	case SDL_QUIT:
    		//
    		// clicked on the close button of the window. Quit immediately.
@@ -169,13 +370,6 @@ JY_EventFilter(
    		break;
    }
 
-   //PAL_KeyboardEventFilter(lpEvent);
-   //PAL_MouseEventFilter(lpEvent);
-   //PAL_JoystickEventFilter(lpEvent);
-
-   //
-   // All events are handled here; don't put anything to the internal queue
-   //
    return 1;
 }
 
@@ -500,19 +694,30 @@ int JY_PlayWAV(const char *filename)
 	
 }
 
-
 // µÃµ½Ç°Ãæ°´ÏÂµÄ×Ö·û
 int JY_GetKey()
 {
     SDL_Event event;
 	int keyPress=-1;
+	
+		
     while(SDL_PollEvent(&event)){   
-		switch(event.type){   
+		switch(event.type){
+		
 		case SDL_KEYDOWN:
             keyPress=event.key.keysym.sym;
             break;
-        case SDL_MOUSEMOTION:
-            break;
+		case SDL_MOUSEMOTION:
+        	break;
+		//case SDL_MOUSEBUTTONDOWN:
+		case SDL_MOUSEBUTTONUP:
+			if(g_keyPress>=0)
+			{
+				keyPress = g_keyPress;
+				g_keyPress = -1;
+				return keyPress;//i have handle mouse press;
+			}
+			break;
     	case SDL_QUIT:
     		//
     		// clicked on the close button of the window. Quit immediately.
@@ -521,10 +726,16 @@ int JY_GetKey()
     		ExitSDL();
     		exit(0);
     		break;
-        default: 
+    	default:
+    		
             break;
         }
-	}	
+	}
+    if(g_keyPress>=0)
+	{
+		keyPress = g_keyPress;
+		return keyPress;//i have handle mouse press;
+	}
 	return keyPress;
 }
 

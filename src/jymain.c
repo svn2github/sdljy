@@ -34,7 +34,6 @@ int g_MAXCacheNum=1000;     //最大缓存数量
 
 int g_LoadFullS=1;          //是否全部加载S文件
 
-
 static int IsDebug=0;         //是否打开跟踪文件
 
 static char JYMain_Lua[255];  //lua主函数

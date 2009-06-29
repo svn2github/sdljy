@@ -15,3 +15,9 @@ WINSCW ARMV5 GCCE
 PRJ_MMPFILES
 sdljy.mmp
 gnumakefile jy_icons.mk
+
+PRJ_EXPORTS
+../data/config.lua /epoc32/winscw/e/data/jy/config.lua
+../data/script/jyconst.lua /epoc32/winscw/e/data/jy/script/jyconst.lua
+../data/script/jymain.lua /epoc32/winscw/e/data/jy/script/jymain.lua
+../data/script/jymodify.lua /epoc32/winscw/e/data/jy/script/jymodify.lua

@@ -65,10 +65,8 @@ if LargeMemory==1 then
     CONFIG.MAXCacheNum=1000;
 	CONFIG.CleanMemory=0;         --场景切换时是否清理lua内存。0 不清理 1 清理
 	CONFIG.LoadFullS=1;           --1 整个S*文件载入内存 0 只载入当前场景，由于S*有4M多，这样可以解决很多内存
-	CONFIG.PreLoadPicGrp=1;       --1 预加载贴图文件*.grp, 0 不预加载。预加载可以避免走路偶尔停顿和战斗出招停顿。但占用内存
 else
     CONFIG.MAXCacheNum=500;
 	CONFIG.CleanMemory=1;
 	CONFIG.LoadFullS=0;
-	CONFIG.PreLoadPicGrp=0;
 end

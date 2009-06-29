@@ -115,7 +115,7 @@ struct PicFileCache{   //贴图文件链表节点
 	int num;                    // 文件贴图个数
     int *idx;                  // idx的内容
     int filelength;            //grp文件长度
-    FILE *fp;
+    FILE *fp;                  //grp文件句柄
     unsigned char *grp;                  // grp的内容
     struct CacheNode **pcache;  // 文件中所有的贴图对应的cache节点指针，为空则表示没有。
 };
