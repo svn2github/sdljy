@@ -194,23 +194,12 @@ int HAPI_SetClip(lua_State *pL)
 	return 0;
 }
 
- 
-
-
-
-
-
-
-
-
-
-
-int HAPI_PlayOGG(lua_State *pL)
+int HAPI_PlayMIDI(lua_State *pL)
 {
  
 	const char *filename=lua_tostring(pL,1);
 
-    JY_PlayOGG(filename);
+    JY_PlayMIDI(filename);
 
 	return 0;
 }

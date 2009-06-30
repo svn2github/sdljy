@@ -65,7 +65,7 @@ function SetGlobal()   --…Ë÷√”Œœ∑ƒ⁄≤ø π”√µƒ»´≥Ã±‰¡ø
 
    JY.MmapMusic=-1;         --«–ªª¥ÛµÿÕº“Ù¿÷£¨∑µªÿ÷˜µÿÕº ±£¨»Áπ˚…Ë÷√£¨‘Ú≤•∑≈¥À“Ù¿÷
 
-   JY.CurrentOGG=-1;       --µ±«∞≤•∑≈µƒ“Ù¿÷id£¨”√¿¥‘⁄πÿ±’“Ù¿÷ ±±£¥Ê“Ù¿÷id°£
+   JY.CurrentMIDI=-1;       --µ±«∞≤•∑≈µƒ“Ù¿÷id£¨”√¿¥‘⁄πÿ±’“Ù¿÷ ±±£¥Ê“Ù¿÷id°£
    JY.EnableMusic=1;        -- «∑Ò≤•∑≈“Ù¿÷ 1 ≤•∑≈£¨0 ≤ª≤•∑≈
    JY.EnableSound=1;        -- «∑Ò≤•∑≈“Ù–ß 1 ≤•∑≈£¨0 ≤ª≤•∑≈
 
@@ -117,7 +117,7 @@ function JY_Main_sub()        --’Ê’˝µƒ”Œœ∑÷˜≥Ã–Ú»Îø⁄
 	lib.FillColor(0,0,0,0,0);
 	Cls();
 
-    PlayOGG(16);
+    PlayMIDI(16);
 	lib.ShowSlow(50,0);
 
 	local menu={  {"÷ÿ–¬ø™ º",nil,1},
@@ -145,7 +145,7 @@ function JY_Main_sub()        --’Ê’˝µƒ”Œœ∑÷˜≥Ã–Ú»Îø⁄
 	    lib.PicLoadFile(CC.HeadPicFile,1);
 	    lib.PicLoadFile(CC.ThingPicFile,2);
 
-        PlayOGG(JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]);
+        PlayMIDI(JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]);
 
         JY.SubSceneX=0;
         JY.SubSceneY=0;
@@ -279,7 +279,7 @@ function Game_Cycle()       --”Œœ∑÷˜—≠ª∑
             lib.PicLoadFile(CC.HeadPicFile,1);
             lib.PicLoadFile(CC.ThingPicFile,2);
 
-            PlayOGG(16);
+            PlayMIDI(16);
             JY.Status=GAME_MMAP;
             lib.DrawMMap(JY.Base["»ÀX"],JY.Base["»ÀY"],GetMyPic());
 			lib.ShowSlow(50,0);
@@ -367,7 +367,7 @@ function Game_MMap()      --÷˜µÿÕº
 	    lib.PicLoadFile(CC.ThingPicFile,2);
 
 
-        PlayOGG(JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]);
+        PlayMIDI(JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]);
         JY.MyPic=GetMyPic();
         JY.Base["»ÀX1"]=JY.Scene[JY.SubScene]["»Îø⁄X"]
         JY.Base["»ÀY1"]=JY.Scene[JY.SubScene]["»Îø⁄Y"]
@@ -1175,9 +1175,9 @@ function Game_SMap()         --≥°æ∞¥¶¿Ì÷˜∫Ø ˝
 
 
         if JY.MMAPMusic>=0 then
-            PlayOGG(JY.MMAPMusic);
+            PlayMIDI(JY.MMAPMusic);
         else
-            PlayOGG(JY.Scene[JY.SubScene]["≥ˆ√≈“Ù¿÷"]);
+            PlayMIDI(JY.Scene[JY.SubScene]["≥ˆ√≈“Ù¿÷"]);
         end
 
         JY.SubScene=-1;
@@ -1193,7 +1193,7 @@ function Game_SMap()         --≥°æ∞¥¶¿Ì÷˜∫Ø ˝
         if JY.Base["»ÀX1"]==JY.Scene[JY.SubScene]["Ã¯◊™ø⁄X1"] and JY.Base["»ÀY1"]==JY.Scene[JY.SubScene]["Ã¯◊™ø⁄Y1"] then
             JY.SubScene=JY.Scene[JY.SubScene]["Ã¯◊™≥°æ∞"];
             lib.ShowSlow(50,1);
-            PlayOGG(JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]);
+            PlayMIDI(JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]);
             if JY.Scene[JY.SubScene]["Õ‚æ∞»Îø⁄X1"]==0 and JY.Scene[JY.SubScene]["Õ‚æ∞»Îø⁄Y1"]==0 then
                 JY.Base["»ÀX1"]=JY.Scene[JY.SubScene]["»Îø⁄X"];            --–¬≥°æ∞µƒÕ‚æ∞»Îø⁄Œ™0£¨±Ì æ’‚ «“ª∏ˆƒ⁄≤ø≥°æ∞
                 JY.Base["»ÀY1"]=JY.Scene[JY.SubScene]["»Îø⁄Y"];
@@ -1763,13 +1763,13 @@ function AddPersonAttrib(id,str,value)            --‘ˆº”»ÀŒÔ Ù–‘
 end
 
 --≤•∑≈midi
-function PlayOGG(id)             --≤•∑≈midi
-    JY.CurrentOGG=id;
+function PlayMIDI(id)             --≤•∑≈midi
+    JY.CurrentMIDI=id;
     if JY.EnableMusic==0 then
         return ;
     end
     if id>=0 then
-        lib.PlayOGG(string.format(CC.OGGFile,id+1));
+        lib.PlayMIDI(string.format(CC.MIDIFile,id+1));
     end
 end
 
@@ -3743,7 +3743,7 @@ function instruct_62(id1,startnum1,endnum1,id2,startnum2,endnum2)      --≤•∑≈ ±ø
 
 	  lib.LoadPicture(CONFIG.PicturePath .."end.png",-1,-1);
 	  lib.ShowSurface();
-	  PlayOGG(24);
+	  PlayMIDI(24);
 	  lib.Delay(5000);
 	  lib.GetKey();
 	  WaitKey();
@@ -3839,7 +3839,7 @@ end
 
 --≤•∑≈“Ù¿÷
 function instruct_66(id)       --≤•∑≈“Ù¿÷
-    PlayOGG(id);
+    PlayMIDI(id);
 end
 
 --≤•∑≈“Ù–ß
@@ -3934,7 +3934,7 @@ function WarMain(warid,isexp)           --’Ω∂∑÷˜∫Ø ˝
     lib.PicLoadFile(CC.ThingPicFile,2);
     lib.PicLoadFile(CC.EffectFile,3);
 
-    PlayOGG(WAR.Data["“Ù¿÷"]);
+    PlayMIDI(WAR.Data["“Ù¿÷"]);
 
     local first=0;            --µ⁄“ª¥Œœ‘ æ’Ω∂∑±Íº«
     local warStatus;          --’Ω∂∑◊¥Ã¨
@@ -4025,9 +4025,9 @@ function WarMain(warid,isexp)           --’Ω∂∑÷˜∫Ø ˝
     lib.ShowSlow(50,1);
 
     if JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]>=0 then
-        PlayOGG(JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]);
+        PlayMIDI(JY.Scene[JY.SubScene]["Ω¯√≈“Ù¿÷"]);
     else
-        PlayOGG(0);
+        PlayMIDI(0);
     end
 
     CleanMemory();

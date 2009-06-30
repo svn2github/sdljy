@@ -21,3 +21,4 @@ PRJ_EXPORTS
 ../data/script/jyconst.lua /epoc32/winscw/e/data/jy/script/jyconst.lua
 ../data/script/jymain.lua /epoc32/winscw/e/data/jy/script/jymain.lua
 ../data/script/jymodify.lua /epoc32/winscw/e/data/jy/script/jymodify.lua
+../data/timidity/ /epoc32/winscw/e/data/timidity/

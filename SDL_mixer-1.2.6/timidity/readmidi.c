@@ -976,7 +976,7 @@ MidiEvent *read_midi_file(FILE *mfp, int32 *count, int32 *sp)
      }
 
 past_riff:
-
+  rewind(fp);	
   if ((fread(tmp,1,4,fp) != 4) || (fread(&len,4,1,fp) != 1))
     {
       if (ferror(fp))

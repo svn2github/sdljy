@@ -180,6 +180,10 @@ typedef double FLOAT_T;
 #ifdef __WIN32__
 #  define LITTLE_ENDIAN
 #endif
+/* Symbian machines */
+#ifdef __SYMBIAN32__
+#  define LITTLE_ENDIAN
+#endif
 
 #ifdef i386
 #define LITTLE_ENDIAN
@@ -223,11 +227,11 @@ typedef char int8;
 
 /* You could specify a complete path, e.g. "/etc/timidity.cfg", and
    then specify the library directory in the configuration file. */
-#define CONFIG_FILE	"c:\\media files\\other\\timidity\\timidity.cfg"
+#define CONFIG_FILE	"e:\\data\\timidity\\timidity.cfg"
 #if defined (__WIN32__) && !defined(__SYMBIAN32__)
 #define DEFAULT_PATH	"\\TIMIDITY"
 #elif defined __SYMBIAN32__
-#define DEFAULT_PATH	"c:\\media files\\other\\timidity"
+#define DEFAULT_PATH	"e:\\data\\TIMIDITY"
 #else
 #define DEFAULT_PATH	"/usr/local/lib/timidity"
 #endif

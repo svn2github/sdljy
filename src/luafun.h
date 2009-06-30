@@ -58,7 +58,7 @@ int HAPI_EnableKeyRepeat(lua_State *pL);
 
  int HAPI_GetPicXY(lua_State *pL);
 
- int HAPI_PlayOGG(lua_State *pL);
+ int HAPI_PlayMIDI(lua_State *pL);
 
 
   int HAPI_PlayWAV(lua_State *pL);

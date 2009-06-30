@@ -43,7 +43,7 @@ STATICLIBRARY		sdl_image.lib
 STATICLIBRARY		libpng_1_2.lib
 STATICLIBRARY		vorbis.lib
 STATICLIBRARY		ogg.lib
-STATICLIBRARY		SDL_Mixer_ogg.lib
+STATICLIBRARY		SDL_Mixer_mid.lib
 STATICLIBRARY		luacore51.lib
 STATICLIBRARY		luastd51.lib
 

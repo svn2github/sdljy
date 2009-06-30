@@ -6,5 +6,5 @@ PRJ_EXPORTS
 
 PRJ_MMPFILES
 .\sdl_mixer.mmp
-.\sdl_mixer_ogg.mmp
-//.\sdl_mixer_mid.mmp
+//.\sdl_mixer_ogg.mmp
+.\sdl_mixer_mid.mmp

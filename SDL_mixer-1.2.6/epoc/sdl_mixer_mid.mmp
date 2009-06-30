@@ -1,4 +1,4 @@
-TARGET SDL_Mixer.lib
+TARGET SDL_Mixer_mid.lib
 TARGETTYPE LIB
 
 systeminclude \epoc32\include \epoc32\include\sdl \epoc32\include\libc 

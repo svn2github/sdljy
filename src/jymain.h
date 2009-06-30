@@ -233,9 +233,9 @@ int JY_Delay(int x);
 
 int JY_GetTime();
 
-int JY_PlayOGG(const char *filename);
+int JY_PlayMIDI(const char *filename);
 
-int StopOGG();
+int StopMIDI();
 
 int JY_PlayWAV(const char *filename);
 

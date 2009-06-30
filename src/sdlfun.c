@@ -426,7 +426,7 @@ int ExitSDL(void)
 
     ExitFont();
 
-    StopOGG();
+    StopMIDI();
 
     for(i=0;i<WAVNUM;i++){
 		if(WavChunk[i]){
@@ -616,7 +616,7 @@ int JY_GetTime()
 }
 
 //播放音乐
-int JY_PlayOGG(const char *filename)
+int JY_PlayMIDI(const char *filename)
 {
 
 	static char currentfile[255]="\0";
@@ -625,7 +625,7 @@ int JY_PlayOGG(const char *filename)
 		return 1;
 
 	if(strlen(filename)==0){  //文件名为空，停止播放
-        StopOGG();
+        StopMIDI();
         strcpy(currentfile,filename);
 		return 0;
 	}
@@ -633,7 +633,7 @@ int JY_PlayOGG(const char *filename)
 	if(strcmp(currentfile,filename)==0) //与当前播放文件相同，直接返回
 		return 0;
 
-    StopOGG();
+    StopMIDI();
 	
 	currentMusic=Mix_LoadMUS(filename);
 
@@ -652,7 +652,7 @@ int JY_PlayOGG(const char *filename)
 }
 
 //停止音效
-int StopOGG()
+int StopMIDI()
 {
 
 	if(currentMusic!=NULL){

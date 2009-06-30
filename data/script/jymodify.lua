@@ -72,10 +72,10 @@ end
 function Menu_SetMusic()
     if JY.EnableMusic==0 then
 	    JY.EnableMusic=1;
-		PlayOGG(JY.CurrentOGG);
+		PlayMIDI(JY.CurrentMIDI);
 	else
 	    JY.EnableMusic=0;
-		lib.PlayOGG("");
+		lib.PlayMIDI("");
 	end
 	return 1;
 end
