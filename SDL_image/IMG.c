@@ -1,26 +1,24 @@
 /*
     SDL_image:  An example image loading library for use with SDL
-    Copyright (C) 1999-2004 Sam Lantinga
+    Copyright (C) 1997-2006 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
+    modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+    version 2.1 of the License, or (at your option) any later version.
 
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
+    Lesser General Public License for more details.
 
-    You should have received a copy of the GNU Library General Public
-    License along with this library; if not, write to the Free
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
     Sam Lantinga
     slouken@libsdl.org
 */
-
-/* $Id: IMG.c,v 1.15 2004/01/04 17:33:01 slouken Exp $ */
 
 /* A simple library to load images of various formats as SDL surfaces */
 
@@ -35,21 +33,22 @@
 /* Table of image detection and loading functions */
 static struct {
 	char *type;
-	int (*is)(SDL_RWops *src);
-	SDL_Surface *(*load)(SDL_RWops *src);
+	int (SDLCALL *is)(SDL_RWops *src);
+	SDL_Surface *(SDLCALL *load)(SDL_RWops *src);
 } supported[] = {
 	/* keep magicless formats first */
 	{ "TGA", NULL,      IMG_LoadTGA_RW },
 	{ "BMP", IMG_isBMP, IMG_LoadBMP_RW },
-	{ "PNM", IMG_isPNM, IMG_LoadPNM_RW }, /* P[BGP]M share code */
-	{ "XPM", IMG_isXPM, IMG_LoadXPM_RW },
-	{ "XCF", IMG_isXCF, IMG_LoadXCF_RW },
-	{ "PCX", IMG_isPCX, IMG_LoadPCX_RW },
 	{ "GIF", IMG_isGIF, IMG_LoadGIF_RW },
 	{ "JPG", IMG_isJPG, IMG_LoadJPG_RW },
-	{ "TIF", IMG_isTIF, IMG_LoadTIF_RW },
 	{ "LBM", IMG_isLBM, IMG_LoadLBM_RW },
-	{ "PNG", IMG_isPNG, IMG_LoadPNG_RW }
+	{ "PCX", IMG_isPCX, IMG_LoadPCX_RW },
+	{ "PNG", IMG_isPNG, IMG_LoadPNG_RW },
+	{ "PNM", IMG_isPNM, IMG_LoadPNM_RW }, /* P[BGP]M share code */
+	{ "TIF", IMG_isTIF, IMG_LoadTIF_RW },
+	{ "XCF", IMG_isXCF, IMG_LoadXCF_RW },
+	{ "XPM", IMG_isXPM, IMG_LoadXPM_RW },
+	{ "XV",  IMG_isXV,  IMG_LoadXV_RW  }
 };
 
 const SDL_version *IMG_Linked_Version(void)
@@ -96,7 +95,7 @@ static int IMG_string_equals(const char *str1, const char *str2)
 /* Load an image from an SDL datasource, optionally specifying the type */
 SDL_Surface *IMG_LoadTyped_RW(SDL_RWops *src, int freesrc, char *type)
 {
-	int i, start;
+	int i;
 	SDL_Surface *image;
 
 	/* Make sure there is something to do.. */
@@ -114,11 +113,9 @@ SDL_Surface *IMG_LoadTyped_RW(SDL_RWops *src, int freesrc, char *type)
 	}
 
 	/* Detect the type of image being loaded */
-	start = SDL_RWtell(src);
 	image = NULL;
 	for ( i=0; i < ARRAYSIZE(supported); ++i ) {
 		if(supported[i].is) {
-			SDL_RWseek(src, start, SEEK_SET);
 			if(!supported[i].is(src))
 				continue;
 		} else {
@@ -131,7 +128,6 @@ SDL_Surface *IMG_LoadTyped_RW(SDL_RWops *src, int freesrc, char *type)
 		fprintf(stderr, "IMGLIB: Loading image as %s\n",
 			supported[i].type);
 #endif
-		SDL_RWseek(src, start, SEEK_SET);
 		image = supported[i].load(src);
 		if(freesrc)
 			SDL_RWclose(src);

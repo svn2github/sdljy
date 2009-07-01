@@ -1,26 +1,24 @@
 /*
     SDL_image:  An example image loading library for use with SDL
-    Copyright (C) 1999-2004 Sam Lantinga
+    Copyright (C) 1997-2006 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
+    modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+    version 2.1 of the License, or (at your option) any later version.
 
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
+    Lesser General Public License for more details.
 
-    You should have received a copy of the GNU Library General Public
-    License along with this library; if not, write to the Free
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
     Sam Lantinga
     slouken@libsdl.org
 */
-
-/* $Id: IMG_bmp.c,v 1.4 2004/08/21 13:25:56 slouken Exp $ */
 
 /* This is a BMP image file loading framework */
 
@@ -34,15 +32,20 @@
 /* See if an image is contained in a data source */
 int IMG_isBMP(SDL_RWops *src)
 {
+	int start;
 	int is_BMP;
 	char magic[2];
 
+	if ( !src )
+		return 0;
+	start = SDL_RWtell(src);
 	is_BMP = 0;
-	if ( SDL_RWread(src, magic, 2, 1) ) {
+	if ( SDL_RWread(src, magic, sizeof(magic), 1) ) {
 		if ( strncmp(magic, "BM", 2) == 0 ) {
 			is_BMP = 1;
 		}
 	}
+	SDL_RWseek(src, start, SEEK_SET);
 	return(is_BMP);
 }
 
@@ -65,10 +68,14 @@ static int readRlePixels(SDL_Surface * surface, SDL_RWops * src, int isRle8)
 	*/
 	int pitch = surface->pitch;
 	int height = surface->h;
-	Uint8 * bits = (Uint8 *)surface->pixels + ((height-1) * pitch);
+	Uint8 *start = (Uint8 *)surface->pixels;
+	Uint8 *end = start + (height*pitch);
+	Uint8 *bits = end-pitch, *spot;
 	int ofs = 0;
 	Uint8 ch;
 	Uint8 needsPad;
+
+#define COPY_PIXEL(x)	spot = &bits[ofs++]; if(spot >= start && spot < end) *spot = (x)
 
 	for (;;) {
 		if ( !SDL_RWread(src, &ch, 1, 1) ) return 1;
@@ -81,15 +88,15 @@ static int readRlePixels(SDL_Surface * surface, SDL_RWops * src, int isRle8)
 			if ( !SDL_RWread(src, &pixel, 1, 1) ) return 1;
 			if ( isRle8 ) {                 /* 256-color bitmap, compressed */
 				do {
-					bits[ofs++] = pixel;
+					COPY_PIXEL(pixel);
 				} while (--ch);
-			}else {                         /* 16-color bitmap, compressed */
+			} else {                         /* 16-color bitmap, compressed */
 				Uint8 pixel0 = pixel >> 4;
 				Uint8 pixel1 = pixel & 0x0F;
 				for (;;) {
-					bits[ofs++] = pixel0;     /* even count, high nibble */
+					COPY_PIXEL(pixel0);	/* even count, high nibble */
 					if (!--ch) break;
-					bits[ofs++] = pixel1;     /* odd count, low nibble */
+					COPY_PIXEL(pixel1);	/* odd count, low nibble */
 					if (!--ch) break;
 				}
 			}
@@ -117,16 +124,18 @@ static int readRlePixels(SDL_Surface * surface, SDL_RWops * src, int isRle8)
 				if (isRle8) {
 					needsPad = ( ch & 1 );
 					do {
-						if ( !SDL_RWread(src, bits + ofs++, 1, 1) ) return 1;
+						Uint8 pixel;
+						if ( !SDL_RWread(src, &pixel, 1, 1) ) return 1;
+						COPY_PIXEL(pixel);
 					} while (--ch);
 				} else {
 					needsPad = ( ((ch+1)>>1) & 1 ); /* (ch+1)>>1: bytes size */
 					for (;;) {
 						Uint8 pixel;
 						if ( !SDL_RWread(src, &pixel, 1, 1) ) return 1;
-						bits[ofs++] = pixel >> 4;
+						COPY_PIXEL(pixel >> 4);
 						if (!--ch) break;
-						bits[ofs++] = pixel & 0x0F;
+						COPY_PIXEL(pixel & 0x0F);
 						if (!--ch) break;
 					}
 				}
@@ -148,6 +157,7 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 	Uint32 Rmask;
 	Uint32 Gmask;
 	Uint32 Bmask;
+	Uint32 Amask;
 	SDL_Palette *palette;
 	Uint8 *bits;
 	int ExpandBMP;
@@ -243,7 +253,7 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 	}
 
 	/* RLE4 and RLE8 BMP compression is supported */
-	Rmask = Gmask = Bmask = 0;
+	Rmask = Gmask = Bmask = Amask = 0;
 	switch (biCompression) {
 		case BI_RGB:
 			/* If there are no masks, use the defaults */
@@ -261,9 +271,14 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 					        Rmask = 0x000000FF;
 					        Gmask = 0x0000FF00;
 					        Bmask = 0x00FF0000;
-						break;
+#else
+						Rmask = 0x00FF0000;
+						Gmask = 0x0000FF00;
+						Bmask = 0x000000FF;
 #endif
+						break;
 					case 32:
+						Amask = 0xFF000000;
 						Rmask = 0x00FF0000;
 						Gmask = 0x0000FF00;
 						Bmask = 0x000000FF;
@@ -283,6 +298,7 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 					Rmask = SDL_ReadLE32(src);
 					Gmask = SDL_ReadLE32(src);
 					Bmask = SDL_ReadLE32(src);
+					Amask = SDL_ReadLE32(src);
 					break;
 				default:
 					break;
@@ -292,7 +308,7 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 
 	/* Create a compatible surface, note that the colors are RGB ordered */
 	surface = SDL_CreateRGBSurface(SDL_SWSURFACE,
-			biWidth, biHeight, biBitCount, Rmask, Gmask, Bmask, 0);
+			biWidth, biHeight, biBitCount, Rmask, Gmask, Bmask, Amask);
 	if ( surface == NULL ) {
 		was_error = 1;
 		goto done;
@@ -301,6 +317,12 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 	/* Load the palette, if any */
 	palette = (surface->format)->palette;
 	if ( palette ) {
+		if ( SDL_RWseek(src, fp_offset+14+biSize, SEEK_SET) < 0 ) {
+			SDL_Error(SDL_EFSEEK);
+			was_error = 1;
+			goto done;
+		}
+
 		/*
 		| guich: always use 1<<bpp b/c some bitmaps can bring wrong information
 		| for colorsUsed
@@ -412,6 +434,9 @@ static SDL_Surface *LoadBMP_RW (SDL_RWops *src, int freesrc)
 	}
 done:
 	if ( was_error ) {
+		if ( src ) {
+			SDL_RWseek(src, fp_offset, SEEK_SET);
+		}
 		if ( surface ) {
 			SDL_FreeSurface(surface);
 		}

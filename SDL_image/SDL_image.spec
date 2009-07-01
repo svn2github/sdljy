@@ -1,5 +1,5 @@
 %define name SDL_image
-%define version 1.2.4
+%define version 1.2.7
 %define release 1
 
 Summary: Simple DirectMedia Layer - Sample Image Loading Library
@@ -7,7 +7,7 @@ Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: %{name}-%{version}.tar.gz
-Copyright: LGPL
+License: LGPL
 Group: System Environment/Libraries
 BuildRoot: /var/tmp/%{name}-buildroot
 Prefix: %{_prefix}

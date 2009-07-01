@@ -1,26 +1,24 @@
 /*
     showimage:  A test application for the SDL image loading library.
-    Copyright (C) 1999-2004 Sam Lantinga
+    Copyright (C) 1997-2006 Sam Lantinga
 
     This library is free software; you can redistribute it and/or
-    modify it under the terms of the GNU Library General Public
+    modify it under the terms of the GNU Lesser General Public
     License as published by the Free Software Foundation; either
-    version 2 of the License, or (at your option) any later version.
+    version 2.1 of the License, or (at your option) any later version.
 
     This library is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-    Library General Public License for more details.
+    Lesser General Public License for more details.
 
-    You should have received a copy of the GNU Library General Public
-    License along with this library; if not, write to the Free
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    You should have received a copy of the GNU Lesser General Public
+    License along with this library; if not, write to the Free Software
+    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
     Sam Lantinga
     slouken@libsdl.org
 */
-
-/* $Id: showimage.c,v 1.12 2004/01/04 17:33:01 slouken Exp $ */
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -51,21 +49,21 @@ void draw_background(SDL_Surface *screen)
 	    Uint32 c = col[((x ^ y) >> 3) & 1];
 	    switch(bpp) {
 	    case 1:
-		dst[x] = c;
+		dst[x] = (Uint8)c;
 		break;
 	    case 2:
-		((Uint16 *)dst)[x] = c;
+		((Uint16 *)dst)[x] = (Uint16)c;
 		break;
 	    case 3:
-		if(SDL_BYTEORDER == SDL_LIL_ENDIAN) {
-		    dst[x * 3] = c;
-		    dst[x * 3 + 1] = c >> 8;
-		    dst[x * 3 + 2] = c >> 16;
-		} else {
-		    dst[x * 3] = c >> 16;
-		    dst[x * 3 + 1] = c >> 8;
-		    dst[x * 3 + 2] = c;
-		}
+#if SDL_BYTEORDER == SDL_LIL_ENDIAN
+		dst[x * 3]     = (Uint8)(c);
+		dst[x * 3 + 1] = (Uint8)(c >> 8);
+		dst[x * 3 + 2] = (Uint8)(c >> 16);
+#else
+		dst[x * 3]     = (Uint8)(c >> 16);
+		dst[x * 3 + 1] = (Uint8)(c >> 8);
+		dst[x * 3 + 2] = (Uint8)(c);
+#endif
 		break;
 	    case 4:
 		((Uint32 *)dst)[x] = c;
