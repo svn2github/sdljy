@@ -1317,7 +1317,15 @@ end
 
 
 function DrawSMap()         --绘场景地图
-    lib.DrawSMap(JY.SubScene,JY.Base["人X1"],JY.Base["人Y1"],JY.SubSceneX,JY.SubSceneY,JY.MyPic);
+	local x0=JY.SubSceneX+JY.Base["人X1"]-1;    --绘图中心点
+    local y0=JY.SubSceneY+JY.Base["人Y1"]-1;
+
+    local x=limitX(x0,12,45)-JY.Base["人X1"];
+    local y=limitX(y0,12,45)-JY.Base["人Y1"];
+
+    lib.DrawSMap(JY.SubScene,JY.Base["人X1"],JY.Base["人Y1"],x,y,JY.MyPic);
+
+    --lib.DrawSMap(JY.SubScene,JY.Base["人X1"],JY.Base["人Y1"],JY.SubSceneX,JY.SubSceneY,JY.MyPic);
 end
 
 
@@ -4331,17 +4339,18 @@ function War_PersonTrainDrug(pid)         --战斗后是否修炼出物品
                 end
             end
             local newThingID=JY.Thing[thingid]["练出物品" .. makeID];
-
-            DrawStrBoxWaitKey(string.format("%s 制造出 %s",p["姓名"],JY.Thing[newThingID]["名称"]),C_WHITE,CC.DefaultFont);
-
-            if instruct_18(newThingID)==true then       --已经有物品
-                instruct_32(newThingID,1);
-            else
-                instruct_32(newThingID,1+Rnd(3));
+			if(newThingID>=0) then
+	            DrawStrBoxWaitKey(string.format("%s 制造出 %s",p["姓名"],JY.Thing[newThingID]["名称"]),C_WHITE,CC.DefaultFont);
+	
+	            if instruct_18(newThingID)==true then       --已经有物品
+	                instruct_32(newThingID,1);
+	            else
+	                instruct_32(newThingID,1+Rnd(3));
+	            end
+	
+	            instruct_32(JY.Thing[thingid]["需材料"],-JY.Thing[thingid]["需要物品数量" .. makeID]);
+	            p["物品修炼点数"]=0;
             end
-
-            instruct_32(JY.Thing[thingid]["需材料"],-JY.Thing[thingid]["需要物品数量" .. makeID]);
-            p["物品修炼点数"]=0;
         end
     end
 end
