@@ -1,9 +1,9 @@
 //
 // Copyright (c) 2009, netwan. All rights reserved.
 //
-// This file is part of SDLPAL.
+// This file is part of SDLJY.
 //
-// SDLPAL is free software: you can redistribute it and/or modify
+// SDLJY is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
@@ -32,11 +32,11 @@ compilation. Then you dont statically link  sdlmain.lib or  sdlmaint.lib librari
 GLREF_C TInt E32Main()
     {
 #ifdef __S60_5X__
-    return SDLEnv::SetMain(CSDL::EOwnThread |SDL_main,CSDL::EEnableFocusStop
+    return SDLEnv::SetMain(SDL_main,CSDL::EEnableFocusStop
                     | CSDL::EAutoOrientation /*| CSDL::EAllowImageResizeKeepRatio | CSDL::EDrawModeGdi*/,
              NULL/*, SDLEnv::EParamQuery | SDLEnv::EEnableVirtualMouseMoveEvents*/);
 #else
-    return SDLEnv::SetMain(SDL_main,CSDL::EOwnThread |CSDL::EEnableFocusStop
+    return SDLEnv::SetMain(SDL_main,CSDL::EEnableFocusStop
                 | CSDL::EAutoOrientation | CSDL::EAllowImageResizeKeepRatio /*| CSDL::EDrawModeGdi*/,
          NULL, /*SDLEnv::EParamQuery |*/ SDLEnv::EEnableVirtualMouseMoveEvents);
 #endif
