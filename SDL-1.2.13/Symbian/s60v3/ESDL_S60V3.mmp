@@ -2,7 +2,7 @@
 
 // *** Definitions
 
-TARGET          ESDL.lib
+TARGET          sdl.lib
 TARGETTYPE      lib
 
 MACRO			S60V3
@@ -93,6 +93,9 @@ SOURCE		stdlib\SDL_stdlib.c
 SOURCE		stdlib\SDL_string.c
 // *** Include paths
 
+//SOURCEPATH ..\..\src\main\symbian\EKA2
+//SOURCE SDL_main.cpp
+
 SYSTEMINCLUDE	\epoc32\include \epoc32\include\libc \epoc32\include\mmf\plugin
 USERINCLUDE		..
 USERINCLUDE		..\..\include ..\..\src ..\..\src\video ..\..\src\video\symbian ..\..\src\events
@@ -107,3 +110,5 @@ USERINCLUDE		..\..\src\audio ..\..\src\audio\symbian
 LIBRARY     euser.lib fbscli.lib ws32.LIB hal.lib gdi.lib
 LIBRARY		bitgdi.lib mediaclientaudiostream.lib
 ALWAYS_BUILD_AS_ARM
+
+

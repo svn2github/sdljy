@@ -82,3 +82,5 @@ MACRO JY_HAS_MOUSE
 SOURCEPATH ..\src
 SOURCE charset.c jymain.c luafun.c mainmap.c piccache.c sdlfun.c jy_s60.cpp 
 //SOURCE alloca.c
+SOURCEPATH ..\SDL_image
+SOURCE IMG_xv.c

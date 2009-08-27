@@ -22,12 +22,15 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/SDL;Z:/epoc32/include/libpng-1.2;" macrosCache="__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__CW32__;LOAD_XPM;LOAD_PNG;__WINSCW__;_UNICODE;__S60_3X__;_DEBUG;__SERIES60_3X__;__LIB__;LOAD_PCX;__S60_32__;__WINS__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245818764500" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/sdl;Z:/epoc32/include/libpng-1.2;" macrosCache="__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__CW32__;LOAD_XPM;LOAD_PNG;__WINSCW__;_UNICODE;__S60_3X__;_DEBUG;__SERIES60_3X__;__LIB__;LOAD_PCX;__S60_32__;__WINS__;" moduleId="configDataCache" sourcesCache="" timestampCache="1246421626734" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 <cconfiguration id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]">
 <storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (ARMV5) [S60_3rd_FP2_Beta]">
@@ -47,12 +50,15 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/SDL;Z:/epoc32/include/libpng-1.2;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__ARMCC__;__MARM__;LOAD_XPM;LOAD_PNG;__S60_3X__;__ARMCC_2_2__;_UNICODE;LOAD_PCX;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245818764515" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/sdl;Z:/epoc32/include/libpng-1.2;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__ARMCC__;__MARM__;LOAD_XPM;LOAD_PNG;__S60_3X__;__ARMCC_2_2__;_UNICODE;LOAD_PCX;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1246421626750" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 <cconfiguration id="Phone Release (ARMV5) [S60_3rd_FP2_Beta]">
 <storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (ARMV5) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (ARMV5) [S60_3rd_FP2_Beta]">
@@ -72,12 +78,15 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/SDL;Z:/epoc32/include/libpng-1.2;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;NDEBUG;__ARMCC__;__MARM__;LOAD_XPM;LOAD_PNG;__S60_3X__;__ARMCC_2_2__;_UNICODE;LOAD_PCX;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245818764531" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/sdl;Z:/epoc32/include/libpng-1.2;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;NDEBUG;__ARMCC__;__MARM__;LOAD_XPM;LOAD_PNG;__S60_3X__;__ARMCC_2_2__;_UNICODE;LOAD_PCX;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1246421626765" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 <cconfiguration id="Phone Debug (GCCE) [S60_3rd_FP2_Beta]">
 <storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Debug (GCCE) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Debug (GCCE) [S60_3rd_FP2_Beta]">
@@ -96,12 +105,15 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/SDL;Z:/epoc32/include/libpng-1.2;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;__MARM__;LOAD_XPM;LOAD_PNG;_UNICODE;__S60_3X__;LOAD_PCX;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245818764546" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/sdl;Z:/epoc32/include/libpng-1.2;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;__MARM__;LOAD_XPM;LOAD_PNG;_UNICODE;__S60_3X__;LOAD_PCX;__LIB__;_DEBUG;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1246421626781" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 <cconfiguration id="Phone Release (GCCE) [S60_3rd_FP2_Beta]">
 <storageModule buildSystemId="com.nokia.carbide.cdt.builder.CarbideConfigurationDataProvider" id="Phone Release (GCCE) [S60_3rd_FP2_Beta]" moduleId="org.eclipse.cdt.core.settings" name="Phone Release (GCCE) [S60_3rd_FP2_Beta]">
@@ -120,12 +132,15 @@
 </extensions>
 </storageModule>
 <storageModule moduleId="CarbideConfigurationDataProvider">
+
 <ENV_VAR_DATA_ID/>
 <ARGUMENTS_DATA_ID ABLDFREEZEARGSSTORAGE="-r"/>
 <ROM_BUILDER_DATA_ID ROMBUILDWORKINGDIRECTORYSTORAGE="C:\"/>
 </storageModule>
-<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/SDL;Z:/epoc32/include/libpng-1.2;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;NDEBUG;__MARM__;LOAD_XPM;LOAD_PNG;_UNICODE;__S60_3X__;LOAD_PCX;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1245818764562" useMmpMacrosCache="true"/>
+<storageModule filesCache="Z:\sdljy\SDL_image\Epoc\sdl_image.mmp;Z:\sdljy\SDL_image\Epoc\bld.inf;" includesCache="Z:/epoc32/include;Z:/epoc32/include/libc;Z:/epoc32/include/sdl;Z:/epoc32/include/libpng-1.2;" macrosCache="__GENERIC_MARM__;__SYMBIAN32__;__SUPPORT_CPP_EXCEPTIONS__;__EPOC32__;__EABI__;__GCCE__;NDEBUG;__MARM__;LOAD_XPM;LOAD_PNG;_UNICODE;__S60_3X__;LOAD_PCX;__LIB__;__SERIES60_3X__;__MARM_ARMV5__;__S60_32__;" moduleId="configDataCache" sourcesCache="" timestampCache="1246421626796" useMmpMacrosCache="true"/>
 <storageModule moduleId="org.eclipse.cdt.core.externalSettings"/>
+<storageModule moduleId="org.eclipse.cdt.core.language.mapping"/>
+<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 </cconfiguration>
 </storageModule>
 </cproject>

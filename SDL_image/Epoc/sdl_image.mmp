@@ -36,7 +36,7 @@ SOURCE          IMG_tif.c
 SOURCE          IMG_xcf.c
 SOURCE          IMG_xpm.c
 SOURCE          IMG_lbm.c
-SOURCE          IMG_xxx.c
+SOURCE          IMG_xxx.c IMG_xv.c
 
 // *** Include paths
 
