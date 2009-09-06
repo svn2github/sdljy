@@ -1,10 +1,6 @@
- 
-
 // SDL 相关函数
-
 #include "jymain.h"
 #include <math.h>
-
 static Mix_Music *currentMusic=NULL;         //播放音乐数据，由于同时只播放一个，用一个变量
 
 #define WAVNUM 5
